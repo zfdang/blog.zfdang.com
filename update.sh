@@ -1,11 +1,11 @@
 #!/bin/bash
-echo "hexo generate"
+echo "$ hexo generate"
 hexo generate
-echo "git status"
+echo "$ git status"
 git status
-echo "git add ."
+echo "$ git add ."
 git add .
-echo """git commit -a -m "update""""
+echo """$ git commit -a -m "update""""
 git commit -a -m "update"
-echo "git push"
+echo "$ git push"
 git push
