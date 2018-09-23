@@ -13,7 +13,7 @@ BlueLake is used by this blog. We should install this themes manually.
 
 https://github.com/zfdang/hexo-theme-BlueLake
 
-`$ git clone https://github.com/zfdang/hexo-theme-BlueLake.git themes/BlueLake`
+`$ git clone git@github.com:zfdang/hexo-theme-BlueLake.git themes/BlueLake`
 
 `$ npm install hexo-renderer-jade@0.3.0 --save`
 
