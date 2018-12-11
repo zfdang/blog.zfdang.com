@@ -25,6 +25,9 @@ If you ResizeOptions, the converted one has a max size of 2048px, which makes wi
 
 > https://stackoverflow.com/questions/15313807/android-maximum-allowed-width-height-of-bitmap
 
+> https://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit
+
+
 解决方法就是把图片动态切成多个小图，显示成多个图片，然后拼接在一起。
 
 这里有一个例子：
