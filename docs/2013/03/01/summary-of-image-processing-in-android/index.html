@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Zhengfa's Personal Blog"><meta name="keywords" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华"><title>android处理图片的一些问题总结 | Zhengfa's Blog</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">android处理图片的一些问题总结</h1><a id="logo" href="/.">Zhengfa's Blog</a><p class="description">Why fit in when you can stand out</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">android处理图片的一些问题总结</h1><div class="post-meta"><a href="/2013/03/01/summary-of-image-processing-in-android/#comments" class="comment-count"><i data-disqus-identifier="2013/03/01/summary-of-image-processing-in-android/" class="disqus-comment-count"></i>留言</a><p><span class="date">Mar 01, 2013</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p><strong>第一个问题是out of memory</strong></p>
+<blockquote>
+<p>java.lang.OutOfMemoryError: bitmap size exceeds VM budget</p>
+</blockquote>
+<p>这个据说是VM对一个程序申请的所有的bitmap对象会有一个最大值的要求。解决这个问题有几个方法：</p>
+<ol>
+<li><p>从源文件生成图片时，直接将图片缩小，而不是加载原始大小的图片。如下代码：</p>
+<pre><code>BitmapFactory.Options o = null;
+
+Bitmap bitmap = null;
+// decode image size (decode metadata only, not the whole image)
+o = new BitmapFactory.Options();
+o.inJustDecodeBounds = true;
+stream = new FileInputStream(filename);
+BitmapFactory.decodeStream(stream, null, o);
+stream.close();
+
+// get original image size
+int inWidth =  o.outWidth;
+int inHeight = o.outHeight;
+clog(String.format(&quot;Original bitmap size: (%dx%d).&quot;, inWidth, inHeight));
+
+// get size for pre-resized image
+o = new BitmapFactory.Options();
+o.inSampleSize = Math.max(inWidth/targetWidth, inHeight/targetHeight);
+
+// decode pre-resized image
+stream = new FileInputStream(filename);
+// o.inPurgeable = true;
+bitmap = BitmapFactory.decodeStream(stream, null, o);
+stream.close();
+clog(String.format(&quot;Resized bitmap size: (%dx%d).&quot;, bitmap.getWidth(), bitmap.getHeight()));
+</code></pre></li>
+</ol>
+<p>这里有一个真实的例子：</p>
+<blockquote>
+<p><a href="https://github.com/zfdang/asm-android-client-for-newsmth/blob/master/src/com/koushikdutta/urlimageviewhelper/UrlImageViewHelper.java" target="_blank" rel="noopener">https://github.com/zfdang/asm-android-client-for-newsmth/blob/master/src/com/koushikdutta/urlimageviewhelper/UrlImageViewHelper.java</a></p>
+</blockquote>
+<ol start="2">
+<li><p>及时删除不需要使用的bitmap对象，不要将所有的对象都cache住</p>
+</li>
+<li><p>增加程序的heap size。从某个版本开始，android manifest文件里有一个新的属性了：</p>
+<pre><code>android:largeHeap=&quot;true&quot;
+</code></pre></li>
+</ol>
+<blockquote>
+<p>android:largeHeap</p>
+<p>Whether your application’s processes should be created with a large Dalvik heap. This applies to all processes created for the application. It only applies to the first application loaded into a process; if you’re using a shared user ID to allow multiple applications to use a process, they all must use this option consistently or they will have unpredictable results.<br>Most apps should not need this and should instead focus on reducing their overall memory usage for improved performance. Enabling this also does not guarantee a fixed increase in available memory, because some devices are constrained by their total available memory.<br>To query the available memory size at runtime, use the methods getMemoryClass() or getLargeMemoryClass().</p>
+</blockquote>
+<p><strong>第二个问题是</strong> Bitmap too large to be uploaded into a texture exception</p>
+<p>这个问题下面链接有详细描述：</p>
+<blockquote>
+<p><a href="http://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit" target="_blank" rel="noopener">http://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit</a></p>
+</blockquote>
+<p>简单说就是硬件加速的时候，对图片的大小有限制。不同设备可能有不同的最大值。这个问题悲催的地方是，程序貌似没有捕获到这个exception, 结果是程序也不报错，图片也显示不出来。只有看debug log才能发现这个error message.</p>
+<p>一个解决的方法是禁止硬件加速，简单粗暴：</p>
+<pre><code>android:hardwareAccelerated=&quot;false&quot;
+</code></pre><blockquote>
+<p>android:hardwareAccelerated<br>Whether or not hardware-accelerated rendering should be enabled for all activities and views in this application — “true” if it should be enabled, and “false” if not. The default value is “true” if you’ve set either minSdkVersion or targetSdkVersion to “14” or higher; otherwise, it’s “false”.<br>Starting from Android 3.0 (API level 11), a hardware-accelerated OpenGL renderer is available to applications, to improve performance for many common 2D graphics operations. When the hardware-accelerated renderer is enabled, most operations in Canvas, Paint, Xfermode, ColorFilter, Shader, and Camera are accelerated. This results in smoother animations, smoother scrolling, and improved responsiveness overall, even for applications that do not explicitly make use the framework’s OpenGL libraries.<br>Note that not all of the OpenGL 2D operations are accelerated. If you enable the hardware-accelerated renderer, test your application to ensure that it can make use of the renderer without errors.<br>For more information, read the Hardware Acceleration guide.</p>
+</blockquote>
+<p>比较好的解决方法是类似google map的实现：将图片分成不同的小块，每次只加载需要的块。android提供了一个方法：</p>
+<p><a href="http://developer.android.com/reference/android/graphics/BitmapRegionDecoder.html" target="_blank" rel="noopener">http://developer.android.com/reference/android/graphics/BitmapRegionDecoder.html</a></p>
+<blockquote>
+<p>public void drawBitmap (Bitmap bitmap, Rect src, RectF dst, Paint paint)</p>
+</blockquote>
+<blockquote>
+<p>public Bitmap decodeRegion (Rect rect, BitmapFactory.Options options)</p>
+</blockquote>
+<p>采取上述操作后，就可以加载很多图片，同时也可以显示超级大图了。</p>
+<p>也有一个例子，是使用Fresco这个库来显示超长图片的：</p>
+<blockquote>
+<p><a href="https://github.com/zfdang/zSMTH-Android/blob/master/app/src/main/java/com/zfdang/zsmth_android/fresco/WrapContentDraweeView.java" target="_blank" rel="noopener">https://github.com/zfdang/zSMTH-Android/blob/master/app/src/main/java/com/zfdang/zsmth_android/fresco/WrapContentDraweeView.java</a></p>
+</blockquote>
+<p>上面的例子里，图片如果过宽，先会被缩放到合适的宽度；然后根据高度和openGL支持的最大高度，把图片裁剪成多个符合要求的图，然后拼接在一起。</p>
+</div><div class="tags"></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/09/22/hello-world/" class="pre">Hello World</a></div><div id="comments"><div id="disqus_thread"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/fix-low-rendering-quality-issue-for-large-image-while-using-fresco/">使用Fresco库时，显示超大图片时效果差的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/24/monolithic-repository/">monorepo的讨论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/16/download-from-baidu-pan/">从百度云盘快速下载文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/08/great-wall-in-water/">黄花城水长城</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/23/anyconnect-ask-for-permission-in-macos/">MacOS下Cisco AnyConnect频繁要求管理员权限的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/23/Blog-based-on-Github-and-Hexo/">使用Github和Hexo来建立个人Blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/03/01/summary-of-image-processing-in-android/">android处理图片的一些问题总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.freewheel.tv/" title="FreeWheel" target="_blank">FreeWheel</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Zhengfa Dang.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script><script>var disqus_shortname = 'zhengfas-blog';
+var disqus_identifier = '2013/03/01/summary-of-image-processing-in-android/';
+var disqus_title = 'android处理图片的一些问题总结';
+var disqus_url = 'http://blog.zfdang.com/2013/03/01/summary-of-image-processing-in-android/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//zhengfas-blog.disqus.com/count.js" async></script><script type="text/javascript" src="//zhengfas-blog.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></body></html>
