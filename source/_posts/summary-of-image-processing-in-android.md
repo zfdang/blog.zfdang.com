@@ -12,32 +12,33 @@ tags:
 
 1. 从源文件生成图片时，直接将图片缩小，而不是加载原始大小的图片。如下代码：
 
+            BitmapFactory.Options o = null;
+
             Bitmap bitmap = null;
-            if (mUseZoomOut || mUseZoomIn) {
-                // decode image size (decode metadata only, not the whole image)
-                o = new BitmapFactory.Options();
-                o.inJustDecodeBounds = true;
-                stream = new FileInputStream(filename);
-                BitmapFactory.decodeStream(stream, null, o);
-                stream.close();
+            // decode image size (decode metadata only, not the whole image)
+            o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            stream = new FileInputStream(filename);
+            BitmapFactory.decodeStream(stream, null, o);
+            stream.close();
 
-                // get original image size
-                int inWidth =  o.outWidth;
-                int inHeight = o.outHeight;
-                clog(String.format("Original bitmap size: (%dx%d).", inWidth, inHeight));
+            // get original image size
+            int inWidth =  o.outWidth;
+            int inHeight = o.outHeight;
+            clog(String.format("Original bitmap size: (%dx%d).", inWidth, inHeight));
 
-                // get size for pre-resized image
-                o = new Options();
-                o.inSampleSize = Math.max(inWidth/targetWidth, inHeight/targetHeight);
-            }
+            // get size for pre-resized image
+            o = new BitmapFactory.Options();
+            o.inSampleSize = Math.max(inWidth/targetWidth, inHeight/targetHeight);
 
             // decode pre-resized image
             stream = new FileInputStream(filename);
             // o.inPurgeable = true;
             bitmap = BitmapFactory.decodeStream(stream, null, o);
             stream.close();
-            clog(String.format("Pre-sized bitmap size: (%dx%d).", bitmap.getWidth(), bitmap.getHeight()));
-
+            clog(String.format("Resized bitmap size: (%dx%d).", bitmap.getWidth(), bitmap.getHeight()));
+            
+            
 这里有一个真实的例子：
 > https://github.com/zfdang/asm-android-client-for-newsmth/blob/master/src/com/koushikdutta/urlimageviewhelper/UrlImageViewHelper.java
 
@@ -73,7 +74,7 @@ tags:
 > Note that not all of the OpenGL 2D operations are accelerated. If you enable the hardware-accelerated renderer, test your application to ensure that it can make use of the renderer without errors.
 > For more information, read the Hardware Acceleration guide.
 
-比较好的解决方法是类似google map的实现：将图片分成不同的块，每次加载需要的块。android提供了一个方法：
+比较好的解决方法是类似google map的实现：将图片分成不同的小块，每次只加载需要的块。android提供了一个方法：
 
 http://developer.android.com/reference/android/graphics/BitmapRegionDecoder.html
 
@@ -88,4 +89,4 @@ http://developer.android.com/reference/android/graphics/BitmapRegionDecoder.html
 > https://github.com/zfdang/zSMTH-Android/blob/master/app/src/main/java/com/zfdang/zsmth_android/fresco/WrapContentDraweeView.java
 > 
 
-上面的例子里，图片如果过宽，先会被缩放到合适的宽度；然后根据高度和openGL支持的最大高度，把图片裁剪成多个符合要求的图，然后绘制在一起。
+上面的例子里，图片如果过宽，先会被缩放到合适的宽度；然后根据高度和openGL支持的最大高度，把图片裁剪成多个符合要求的图，然后拼接在一起。
