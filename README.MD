@@ -19,6 +19,14 @@ https://github.com/zfdang/hexo-theme-BlueLake
 
 `$ npm install hexo-renderer-stylus --save`
 
+`$ npm install hexo-generator-sitemap --save`
+
+`$ npm install hexo-generator-feed --save`
+
+`$ npm install hexo-generator-baidu-sitemap --save`
+
+`$ npm install hexo-generator-json-content@2.2.0 --save`
+
 ### create new post
 
 `$ hexo new post "new post"`

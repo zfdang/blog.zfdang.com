@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Zhengfa&#39;s Blog</title>
+  
+  <subtitle>Why fit in when you can stand out</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.zfdang.com/"/>
+  <updated>2019-01-09T07:29:27.600Z</updated>
+  <id>http://blog.zfdang.com/</id>
+  
+  <author>
+    <name>Zhengfa Dang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>闲话架构</title>
+    <link href="http://blog.zfdang.com/2019/01/notes-about-architecture/"/>
+    <id>http://blog.zfdang.com/2019/01/notes-about-architecture/</id>
+    <published>2019-01-09T07:14:05.000Z</published>
+    <updated>2019-01-09T07:29:27.600Z</updated>
+    
+    <content type="html"><![CDATA[<p>到底什么是架构？软件架构到底是为了什么，要做什么？</p><p><img src="/img/2019/microservices-insight-diagram.png" alt="Architecture"></p><h2 id="架构为了业务"><a href="#架构为了业务" class="headerlink" title="架构为了业务"></a>架构为了业务</h2><p>抛开业务谈架构，是没有价值的，架构不能离开业务单独存在。</p><p>因为业务的不同，架构也是多种多样。</p><p>架构的最终目标，是为了支撑业务，不能满足业务发展的架构，不是一个好架构</p><h2 id="架构为了协作"><a href="#架构为了协作" class="headerlink" title="架构为了协作"></a>架构为了协作</h2><p>架构的目的，是为了使得团队规模变大时成员间的协作也能够顺利进行。<br>如果一个团队，就那么几个人，那么讨论不同架构的价值意义很小。这时候，可能一个单体应用，是最适合的方法。</p><p>当团队规模变大时，我们需要在架构上将不同成员的工作解耦，使得每个人可以相对独立的完成自己的工作，而不用相互之间有很强的依赖性。</p><p>所以架构的要求，要能做到解耦，从而使得协作变得容易。</p><h2 id="架构需要不断演化"><a href="#架构需要不断演化" class="headerlink" title="架构需要不断演化"></a>架构需要不断演化</h2><p>公司的业务和团队的规模总是在不断的变化。这种变化，使得架构要解决的问题也总是不一样的，所以架构要不断的演化。</p><p>不存在这么一个理想的架构，它在公司不同的发展阶段都是最好的。</p><p>架构要演化，就需要投入。</p><p>好的架构要能做到未雨绸缪，提前做好变化，从而能迎接团队、业务的变化。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;到底什么是架构？软件架构到底是为了什么，要做什么？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2019/microservices-insight-diagram.png&quot; alt=&quot;Architecture&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;架构为了业务&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用Fresco库时，显示超大图片时效果差的解决方法</title>
+    <link href="http://blog.zfdang.com/2018/12/fix-low-rendering-quality-issue-for-large-image-while-using-fresco/"/>
+    <id>http://blog.zfdang.com/2018/12/fix-low-rendering-quality-issue-for-large-image-while-using-fresco/</id>
+    <published>2018-12-11T09:37:34.000Z</published>
+    <updated>2018-12-11T09:53:52.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用Fresco来处理和显示图片很方便。可是最近遇到一个问题，Fresco显示大图片时，效果特别差，模糊感特别强烈。</p><p>后来终于找到了解决办法：</p><blockquote><p><a href="https://github.com/facebook/fresco/issues/916" target="_blank" rel="noopener">https://github.com/facebook/fresco/issues/916</a></p></blockquote><p>Fresco’s max supported width/height in resizing<br>If you ResizeOptions, the converted one has a max size of 2048px, which makes wide or long image’s quality low. If you can cut the source into smaller one, its quality will be better.</p><p>后来Fresco改进了ResizeOptions了，可以设置maxBitmapSize了。</p><blockquote><p><a href="https://frescolib.org/javadoc/reference/com/facebook/imagepipeline/common/ResizeOptions.html" target="_blank" rel="noopener">https://frescolib.org/javadoc/reference/com/facebook/imagepipeline/common/ResizeOptions.html</a></p></blockquote><p>如果不担心收到的图片过于大的话，下面这个方法就很简单粗暴了：</p><blockquote><p>ImageRequestBuilder.newBuilderWithSource(Uri.parse(uri)).setResizeOptions(new ResizeOptions(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE))`</p></blockquote><p>注意: 如果开启了硬件加速，android的OpenGL对图片的最大尺寸有要求。如果超过这个最大的size，图片直接显示空白，程序也不会报错。 参见： </p><blockquote><p><a href="https://stackoverflow.com/questions/15313807/android-maximum-allowed-width-height-of-bitmap" target="_blank" rel="noopener">https://stackoverflow.com/questions/15313807/android-maximum-allowed-width-height-of-bitmap</a></p></blockquote><blockquote><p><a href="https://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit" target="_blank" rel="noopener">https://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit</a></p></blockquote><p>解决方法就是把图片动态切成多个小图，显示成多个图片，然后拼接在一起。</p><p>这里有一个例子：</p><blockquote><p><a href="https://github.com/zfdang/zSMTH-Android/blob/master/app/src/main/java/com/zfdang/zsmth_android/fresco/WrapContentDraweeView.java" target="_blank" rel="noopener">https://github.com/zfdang/zSMTH-Android/blob/master/app/src/main/java/com/zfdang/zsmth_android/fresco/WrapContentDraweeView.java</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;使用Fresco来处理和显示图片很方便。可是最近遇到一个问题，Fresco显示大图片时，效果特别差，模糊感特别强烈。&lt;/p&gt;
+&lt;p&gt;后来终于找到了解决办法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/facebook/f
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>monorepo的讨论</title>
+    <link href="http://blog.zfdang.com/2018/10/monolithic-repository/"/>
+    <id>http://blog.zfdang.com/2018/10/monolithic-repository/</id>
+    <published>2018-10-24T07:42:23.000Z</published>
+    <updated>2018-10-24T07:50:03.341Z</updated>
+    
+    <content type="html"><![CDATA[<p>所谓“天下大事，分久必合合久必分”，如今在代码库的管理上，也出现了这种争论：到底是使用多个代码库呢，还是使用单个的代码库？</p><p>multiple repositories v.s. monolithic repository</p><p>monorepo的代表，有Google, Facebook等一众高大上的公司。</p><p>这里有几篇文章，供大家借鉴：</p><p><a href="https://danluu.com/monorepo/" target="_blank" rel="noopener">Advantages of monorepos</a></p><p><a href="https://gist.github.com/arschles/5d7ba90495eb50fa04fc" target="_blank" rel="noopener">Why We Should Use Monolithic Repositories</a></p><p><a href="https://gist.github.com/technosophos/9c706b1ef10f42014a06" target="_blank" rel="noopener">Why We Should Not Return to Monolithic Repositories</a></p><p>大家的意见呢？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;所谓“天下大事，分久必合合久必分”，如今在代码库的管理上，也出现了这种争论：到底是使用多个代码库呢，还是使用单个的代码库？&lt;/p&gt;
+&lt;p&gt;multiple repositories v.s. monolithic repository&lt;/p&gt;
+&lt;p&gt;monorepo的代表，
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>从百度云盘快速下载文件</title>
+    <link href="http://blog.zfdang.com/2018/10/download-from-baidu-pan/"/>
+    <id>http://blog.zfdang.com/2018/10/download-from-baidu-pan/</id>
+    <published>2018-10-16T08:50:58.000Z</published>
+    <updated>2018-10-16T09:01:49.967Z</updated>
+    
+    <content type="html"><![CDATA[<p>百度云盘在经历过免费期后，现在对非付费用户的下载限速非常狠，经常只有10k左右，还经常下载失败。</p><p>码农肯定不会付钱买服务的，呵呵，所以就有快速下载百度云盘的方法出来了：</p><h2 id="先安装Aria2-Gui-for-Mac"><a href="#先安装Aria2-Gui-for-Mac" class="headerlink" title="先安装Aria2 Gui for Mac"></a>先安装Aria2 Gui for Mac</h2><p><a href="">https://github.com/yangshun1029/aria2gui</a></p><h2 id="再在Chrome里安装百度Exporter"><a href="#再在Chrome里安装百度Exporter" class="headerlink" title="再在Chrome里安装百度Exporter"></a>再在Chrome里安装百度Exporter</h2><p><a href="">https://github.com/acgotaku/BaiduExporter</a></p><p>下载的时候，先创建公开的分享，然后在分享的页面，就会出现导出到Aria2的按钮了</p><p><img src="/img/2018/baidu-exporter.png" alt="百度云盘的下载链接"></p><p>回到Aria2就可以看到下载的状态了:</p><p><img src="/img/2018/aria2-download.png" alt="Aria2下载"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;百度云盘在经历过免费期后，现在对非付费用户的下载限速非常狠，经常只有10k左右，还经常下载失败。&lt;/p&gt;
+&lt;p&gt;码农肯定不会付钱买服务的，呵呵，所以就有快速下载百度云盘的方法出来了：&lt;/p&gt;
+&lt;h2 id=&quot;先安装Aria2-Gui-for-Mac&quot;&gt;&lt;a href=&quot;#先
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>黄花城水长城</title>
+    <link href="http://blog.zfdang.com/2018/10/great-wall-in-water/"/>
+    <id>http://blog.zfdang.com/2018/10/great-wall-in-water/</id>
+    <published>2018-10-08T05:24:01.000Z</published>
+    <updated>2018-10-08T05:33:09.189Z</updated>
+    
+    <content type="html"><![CDATA[<p>从长城俯瞰水库</p><p><img src="/img/2018/great-wall.jpeg" alt="从长城俯瞰水库"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从长城俯瞰水库&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018/great-wall.jpeg&quot; alt=&quot;从长城俯瞰水库&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MacOS下Cisco AnyConnect频繁要求管理员权限的解决方法</title>
+    <link href="http://blog.zfdang.com/2018/09/anyconnect-ask-for-permission-in-macos/"/>
+    <id>http://blog.zfdang.com/2018/09/anyconnect-ask-for-permission-in-macos/</id>
+    <published>2018-09-23T06:50:35.000Z</published>
+    <updated>2018-10-08T05:20:47.257Z</updated>
+    
+    <content type="html"><![CDATA[<p>MacOS下，Cisco AnyConnect客户端，经常要求输入管理员密码，并且没办法记住用户名或者密码，特别讨厌。</p><p>Mac OS wants to make changes. Type an administrator’s name and password to allow this:</p><p><img src="/img/cisco-any-connect.png" alt="MacOS wants to make changes"></p><p>后来终于找到了解决的方法：</p><p><strong><a href="https://discussions.apple.com/thread/6995022" target="_blank" rel="noopener">https://discussions.apple.com/thread/6995022</a></strong></p><blockquote><p>• Launch /Applications/Utilities/Keychain Access</p><p>• Select “System” from the Keychains menu in the upper left</p><p>• Select “Certificates” from the Category menu in the lower left</p><p>• Find the entry that corelates to your computer’s name in the list on the right, and click on the disclosure triangle.</p><p>• Secondary click on the “Private Key” entry that appears and select “Get Info” from the contextual menu that appears.</p><p>• Select the Access Control tab.</p><p>• You can then <em>either</em> add AnyConnect to the the list at the bottom of the screen (more secure, but you will need to repeat this process anytime the version of AnyConnect changes), <em>or</em> toggle the radio button to “Allow all applications to access this item”.</p></blockquote><p>如下图：</p><p><img src="/img/keychain.png" alt="Keychain"></p><p>完美解决！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;MacOS下，Cisco AnyConnect客户端，经常要求输入管理员密码，并且没办法记住用户名或者密码，特别讨厌。&lt;/p&gt;
+&lt;p&gt;Mac OS wants to make changes. Type an administrator’s name and passwor
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用Github和Hexo来建立个人Blog</title>
+    <link href="http://blog.zfdang.com/2018/09/Blog-based-on-Github-and-Hexo/"/>
+    <id>http://blog.zfdang.com/2018/09/Blog-based-on-Github-and-Hexo/</id>
+    <published>2018-09-23T06:22:23.000Z</published>
+    <updated>2018-10-08T05:20:47.257Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前的Blog服务器被干掉了，结果数据还没有备份，有点坑爹了~~~</p><p>重新开始!</p><p>现在github的repo, 支持使用repo中的/docs/目录作为项目主页，用Hexo来建立blog就非常方便了，如果想偷懒的话根本不需要deploy的步骤了。</p><h3 id="修改hexo的输出目录"><a href="#修改hexo的输出目录" class="headerlink" title="修改hexo的输出目录"></a>修改hexo的输出目录</h3><p>修改_config.yml中的输出目录:</p><p><code>public_dir: docs</code></p><p>然后 “/docs/“下面增加CNAME文件，指定blog的地址， 如 “blog.zfdang.com”</p><p><code>$ hexo g</code></p><p>把repo push到github上</p><h3 id="修改github-repo的设置"><a href="#修改github-repo的设置" class="headerlink" title="修改github repo的设置"></a>修改github repo的设置</h3><p><img src="/img/github-repo.png" alt="Github Repo Setting"></p><h3 id="收工！"><a href="#收工！" class="headerlink" title="收工！"></a>收工！</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前的Blog服务器被干掉了，结果数据还没有备份，有点坑爹了~~~&lt;/p&gt;
+&lt;p&gt;重新开始!&lt;/p&gt;
+&lt;p&gt;现在github的repo, 支持使用repo中的/docs/目录作为项目主页，用Hexo来建立blog就非常方便了，如果想偷懒的话根本不需要deploy的步骤了。&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://blog.zfdang.com/2018/09/hello-world/"/>
+    <id>http://blog.zfdang.com/2018/09/hello-world/</id>
+    <published>2018-09-22T06:00:00.000Z</published>
+    <updated>2018-10-08T05:20:47.258Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>android处理图片的一些问题总结</title>
+    <link href="http://blog.zfdang.com/2013/03/summary-of-image-processing-in-android/"/>
+    <id>http://blog.zfdang.com/2013/03/summary-of-image-processing-in-android/</id>
+    <published>2013-03-12T01:20:41.000Z</published>
+    <updated>2018-12-12T04:36:41.203Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>第一个问题是out of memory</strong></p><blockquote><p>java.lang.OutOfMemoryError: bitmap size exceeds VM budget</p></blockquote><p>这个据说是VM对一个程序申请的所有的bitmap对象会有一个最大值的要求。解决这个问题有几个方法：</p><ol><li><p>从源文件生成图片时，直接将图片缩小，而不是加载原始大小的图片。如下代码：</p><pre><code>BitmapFactory.Options o = null;Bitmap bitmap = null;// decode image size (decode metadata only, not the whole image)o = new BitmapFactory.Options();o.inJustDecodeBounds = true;stream = new FileInputStream(filename);BitmapFactory.decodeStream(stream, null, o);stream.close();// get original image sizeint inWidth =  o.outWidth;int inHeight = o.outHeight;clog(String.format(&quot;Original bitmap size: (%dx%d).&quot;, inWidth, inHeight));// get size for pre-resized imageo = new BitmapFactory.Options();o.inSampleSize = Math.max(inWidth/targetWidth, inHeight/targetHeight);// decode pre-resized imagestream = new FileInputStream(filename);// o.inPurgeable = true;bitmap = BitmapFactory.decodeStream(stream, null, o);stream.close();clog(String.format(&quot;Resized bitmap size: (%dx%d).&quot;, bitmap.getWidth(), bitmap.getHeight()));</code></pre></li></ol><p>这里有一个真实的例子：</p><blockquote><p><a href="https://github.com/zfdang/asm-android-client-for-newsmth/blob/master/src/com/koushikdutta/urlimageviewhelper/UrlImageViewHelper.java" target="_blank" rel="noopener">https://github.com/zfdang/asm-android-client-for-newsmth/blob/master/src/com/koushikdutta/urlimageviewhelper/UrlImageViewHelper.java</a></p></blockquote><ol start="2"><li><p>及时删除不需要使用的bitmap对象，不要将所有的对象都cache住</p></li><li><p>增加程序的heap size。从某个版本开始，android manifest文件里有一个新的属性了：</p><pre><code>android:largeHeap=&quot;true&quot;</code></pre></li></ol><blockquote><p>android:largeHeap</p><p>Whether your application’s processes should be created with a large Dalvik heap. This applies to all processes created for the application. It only applies to the first application loaded into a process; if you’re using a shared user ID to allow multiple applications to use a process, they all must use this option consistently or they will have unpredictable results.<br>Most apps should not need this and should instead focus on reducing their overall memory usage for improved performance. Enabling this also does not guarantee a fixed increase in available memory, because some devices are constrained by their total available memory.<br>To query the available memory size at runtime, use the methods getMemoryClass() or getLargeMemoryClass().</p></blockquote><p><strong>第二个问题是</strong> Bitmap too large to be uploaded into a texture exception</p><p>这个问题下面链接有详细描述：</p><blockquote><p><a href="http://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit" target="_blank" rel="noopener">http://stackoverflow.com/questions/7428996/hw-accelerated-activity-how-to-get-opengl-texture-size-limit</a></p></blockquote><p>简单说就是硬件加速的时候，对图片的大小有限制。不同设备可能有不同的最大值。这个问题悲催的地方是，程序貌似没有捕获到这个exception, 结果是程序也不报错，图片也显示不出来。只有看debug log才能发现这个error message.</p><p>一个解决的方法是禁止硬件加速，简单粗暴：</p><pre><code>android:hardwareAccelerated=&quot;false&quot;</code></pre><blockquote><p>android:hardwareAccelerated<br>Whether or not hardware-accelerated rendering should be enabled for all activities and views in this application — “true” if it should be enabled, and “false” if not. The default value is “true” if you’ve set either minSdkVersion or targetSdkVersion to “14” or higher; otherwise, it’s “false”.<br>Starting from Android 3.0 (API level 11), a hardware-accelerated OpenGL renderer is available to applications, to improve performance for many common 2D graphics operations. When the hardware-accelerated renderer is enabled, most operations in Canvas, Paint, Xfermode, ColorFilter, Shader, and Camera are accelerated. This results in smoother animations, smoother scrolling, and improved responsiveness overall, even for applications that do not explicitly make use the framework’s OpenGL libraries.<br>Note that not all of the OpenGL 2D operations are accelerated. If you enable the hardware-accelerated renderer, test your application to ensure that it can make use of the renderer without errors.<br>For more information, read the Hardware Acceleration guide.</p></blockquote><p>比较好的解决方法是类似google map的实现：将图片分成不同的小块，每次只加载需要的块。android提供了一个方法：</p><p><a href="http://developer.android.com/reference/android/graphics/BitmapRegionDecoder.html" target="_blank" rel="noopener">http://developer.android.com/reference/android/graphics/BitmapRegionDecoder.html</a></p><blockquote><p>public void drawBitmap (Bitmap bitmap, Rect src, RectF dst, Paint paint)</p></blockquote><blockquote><p>public Bitmap decodeRegion (Rect rect, BitmapFactory.Options options)</p></blockquote><p>采取上述操作后，就可以加载很多图片，同时也可以显示超级大图了。</p><p>也有一个例子，是使用Fresco这个库来显示超长图片的：</p><blockquote><p><a href="https://github.com/zfdang/zSMTH-Android/blob/master/app/src/main/java/com/zfdang/zsmth_android/fresco/WrapContentDraweeView.java" target="_blank" rel="noopener">https://github.com/zfdang/zSMTH-Android/blob/master/app/src/main/java/com/zfdang/zsmth_android/fresco/WrapContentDraweeView.java</a></p></blockquote><p>上面的例子里，图片如果过宽，先会被缩放到合适的宽度；然后根据高度和openGL支持的最大高度，把图片裁剪成多个符合要求的图，然后拼接在一起。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;第一个问题是out of memory&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;java.lang.OutOfMemoryError: bitmap size exceeds VM budget&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

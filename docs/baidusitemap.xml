@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://blog.zfdang.com/2019/01/notes-about-architecture/</loc>
+    <lastmod>2019-01-09</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2013/03/summary-of-image-processing-in-android/</loc>
+    <lastmod>2018-12-12</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2018/12/fix-low-rendering-quality-issue-for-large-image-while-using-fresco/</loc>
+    <lastmod>2018-12-11</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2018/10/monolithic-repository/</loc>
+    <lastmod>2018-10-24</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2018/10/download-from-baidu-pan/</loc>
+    <lastmod>2018-10-16</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2018/10/great-wall-in-water/</loc>
+    <lastmod>2018-10-08</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2018/09/hello-world/</loc>
+    <lastmod>2018-10-08</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2018/09/Blog-based-on-Github-and-Hexo/</loc>
+    <lastmod>2018-10-08</lastmod>
+  </url>  <url>
+    <loc>http://blog.zfdang.com/2018/09/anyconnect-ask-for-permission-in-macos/</loc>
+    <lastmod>2018-10-08</lastmod>
+  </url>
+</urlset>
