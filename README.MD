@@ -9,11 +9,7 @@
 
 ### install theme
 
-BlueLake is used by this blog. We should install this themes manually.
-
-https://github.com/zfdang/hexo-theme-BlueLake
-
-`$ git clone git@github.com:zfdang/hexo-theme-BlueLake.git themes/BlueLake`
+BlueLake is used by this blog. It has been merged into this repo.
 
 `$ npm install hexo-renderer-jade@0.3.0 --save`
 
