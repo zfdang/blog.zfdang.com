@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zfdang.com/"/>
-  <updated>2019-01-10T10:10:54.266Z</updated>
+  <updated>2019-03-02T08:55:35.380Z</updated>
   <id>http://blog.zfdang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>保持谦逊</title>
+    <link href="http://blog.zfdang.com/2019/03/stay-humble/"/>
+    <id>http://blog.zfdang.com/2019/03/stay-humble/</id>
+    <published>2019-03-02T08:49:51.000Z</published>
+    <updated>2019-03-02T08:55:35.380Z</updated>
+    
+    <content type="html"><![CDATA[<p>当面对一个新的团队时，一件重要的事情，是保持谦逊，因为你不清楚到底有多少坑…</p><p><img src="/img/2019/stay-humble.png" alt="Stay Humble"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;当面对一个新的团队时，一件重要的事情，是保持谦逊，因为你不清楚到底有多少坑…&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2019/stay-humble.png&quot; alt=&quot;Stay Humble&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>闲话架构</title>
