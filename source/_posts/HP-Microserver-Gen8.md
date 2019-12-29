@@ -13,6 +13,7 @@ HP Gen8服务器买回来之后，一直没怎么折腾。原因有两个，一�
 3. 升级了System ROM， HPIP (HP Intelligent Provisioning), 还有iLO
 
 
+
 升级所有的固件，有一个SSP包可以安装，不过支持GEN8的最后的一个SSP包，也是两年前的了
 
 P03093_001_spp-Gen8.1-SPPGen81.4.iso （可以在 https://www.chiphell.com/thread-1796234-1-1.html 下载）
@@ -20,16 +21,18 @@ P03093_001_spp-Gen8.1-SPPGen81.4.iso （可以在 https://www.chiphell.com/threa
 
 GEN8最大的坑，就是噪音问题。很多人已经总结的很好了，就是GEN8内置的raid卡，如果打开了，并且把硬盘设置成了raid0, 那么很多系统是没法读取硬盘的smart信息的，硬盘也没法休眠，一直处于raid卡的唤醒中。但是如果把raid卡禁用了，支持采用ACHI模式，风扇的转速又居高不下，噪音太大。
 
-我曾经把iLO升级到了最新版本2.7.2, 然后把system rom升级到2019.04.04， 然后硬盘采用ACHI模式。发现风扇的转速在15%左右。
+我曾经把iLO升级到了最新版本2.72, 然后把system rom升级到2019.04.04， 然后硬盘采用ACHI模式。发现风扇的转速在15%左右。
 
-想追求更低的噪音，就刷了破解版的1.32的iLO，发现风扇的转速只有8%， 比15%安静了不少。问题也很突出，iLO只有1.3.2版的，2.7.2支持了HTML5的remote console
+想追求更低的噪音，就刷了破解版的1.32的iLO，发现风扇的转速只有8%， 比15%安静了不少。问题也很突出，iLO只有1.3.2版的，2.7.2支持了HTML5的remote console。好在ilo也不太常用，还是安静一点更重要，就坚持使用这个1.32的ilo了
 
 见图：
+
 ![Firmware](/img//gen8/firmware.png)
 
 ![Storage](/img/gen8/storage.png)
 
 ![fan](/img/gen8/fan.png)
+
 
 附破解版1.32 ilo：
 
