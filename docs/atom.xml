@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zfdang.com/"/>
-  <updated>2019-12-29T12:26:46.308Z</updated>
+  <updated>2019-12-29T12:55:21.694Z</updated>
   <id>http://blog.zfdang.com/</id>
   
   <author>
@@ -21,18 +21,18 @@
     <link href="http://blog.zfdang.com/2019/12/HP-Microserver-Gen8/"/>
     <id>http://blog.zfdang.com/2019/12/HP-Microserver-Gen8/</id>
     <published>2019-12-29T12:04:01.000Z</published>
-    <updated>2019-12-29T12:26:46.308Z</updated>
+    <updated>2019-12-29T12:55:21.694Z</updated>
     
-    <content type="html"><![CDATA[<p>HP Gen8服务器买回来之后，一直没怎么折腾。原因有两个，一个是忙，一个是CPU啥的都太贵的。</p><p>这次趁周末，所有的CPU啥的都成了白菜价，就折腾了一把：</p><ol><li>CPU，GEN8的绝配是E3-1265l v2, 当初的售价在1800左右，现在便宜了，淘宝上388入手。之所以说是绝配，一来是因为这块U是低功耗的，45w, 跟原装的G1610T的30W只多了10w,散热应该不用担心。二来性能没有比这块更强的了</li><li>内存，闲鱼上买了一条原装的4G的，70块包邮</li><li>升级了System ROM， HPIP (HP Intelligent Provisioning), 还有iLO</li></ol><p>升级所有的固件，有一个SSP包可以安装，不过支持GEN8的最后的一个SSP包，也是两年前的了</p><p>P03093_001_spp-Gen8.1-SPPGen81.4.iso （可以在 <a href="https://www.chiphell.com/thread-1796234-1-1.html" target="_blank" rel="noopener">https://www.chiphell.com/thread-1796234-1-1.html</a> 下载）</p><p>GEN8最大的坑，就是噪音问题。很多人已经总结的很好了，就是GEN8内置的raid卡，如果打开了，并且把硬盘设置成了raid0, 那么很多系统是没法读取硬盘的smart信息的，硬盘也没法休眠，一直处于raid卡的唤醒中。但是如果把raid卡禁用了，支持采用ACHI模式，风扇的转速又居高不下，噪音太大。</p><p>我曾经把iLO升级到了最新版本2.72, 然后把system rom升级到2019.04.04， 然后硬盘采用ACHI模式。发现风扇的转速在15%左右。</p><p>想追求更低的噪音，就刷了破解版的1.32的iLO，发现风扇的转速只有8%， 比15%安静了不少。问题也很突出，iLO只有1.3.2版的，2.7.2支持了HTML5的remote console。好在ilo也不太常用，还是安静一点更重要，就坚持使用这个1.32的ilo了</p><p>见图：</p><p><img src="/img//gen8/firmware.png" alt="Firmware"></p><p><img src="/img/gen8/storage.png" alt="Storage"></p><p><img src="/img/gen8/fan.png" alt="fan"></p><p>附破解版1.32 ilo：</p><p><a href="/img/gen8/FW_ ilo4 firmware_1.32_hacked.zip">iLO-1.32-cracked</a></p>]]></content>
+    <content type="html"><![CDATA[<p>HP Gen8服务器买回来之后，一直没怎么折腾。原因有两个，一个是忙，一个是CPU啥的都太贵了。</p><p>如今CPU啥的都成了白菜价，这次趁周末，就折腾了一把：</p><ol><li>CPU。GEN8的绝配是E3-1265l v2, 当初的售价在1800左右，现在便宜了，淘宝上388入手。之所以说是绝配，一来是因为这块U是低功耗的，45w, 比原装的G1610T的30W只多了10w，散热应该不用担心。二来性能没有比这块更强的了</li><li>内存，闲鱼上买了一条原装的4G的，70块包邮</li><li>升级了System ROM， HPIP (HP Intelligent Provisioning), 还有iLO</li></ol><p>升级固件，有一个SSP包可以安装，不过支持GEN8的最后的一个SSP包，也是两年前的了</p><p>P03093_001_spp-Gen8.1-SPPGen81.4.iso （可以在 <a href="https://www.chiphell.com/thread-1796234-1-1.html" target="_blank" rel="noopener">https://www.chiphell.com/thread-1796234-1-1.html</a> 下载）</p><p>所以运行完这个之后，还需要去hpe.com上面下载最新的system rom和ilo，还有hpip, 单独再次安装。</p><p>(System ROM和ILO都可以在ilo的管理界面升级，虽然上面只说了上载ilo固件)</p><p>GEN8最大的坑，就是噪音问题。很多人已经总结的很好了，就是GEN8内置的raid卡，如果打开了，并且把硬盘设置成了raid0, 那么很多系统是没法读取硬盘的smart信息的，硬盘也没法休眠，一直处于raid卡的唤醒中。但是如果把raid卡禁用了，支持采用ACHI模式，风扇的转速又居高不下，噪音太大。</p><p>把iLO升级到了最新版本2.72, 然后把system rom升级到2019.04.04， 然后硬盘采用ACHI模式。发现风扇的转速在15%左右。</p><p>想追求更低的噪音，就刷了破解版的1.32的iLO，发现风扇的转速只有8%， 比15%安静了不少。问题也很突出，iLO只有1.3.2版的，2.7.2支持了HTML5的remote console。好在ilo也不太常用，还是安静一点更重要，就坚持使用这个1.32的ilo了</p><p>见图：</p><p><img src="/img//gen8/firmware.png" alt="Firmware"></p><p><img src="/img/gen8/storage.png" alt="Storage"></p><p><img src="/img/gen8/fan.png" alt="fan"></p><p>附破解版1.32 ilo：</p><p><a href="/img/gen8/FW_ ilo4 firmware_1.32_hacked.zip">iLO-1.32-cracked</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;HP Gen8服务器买回来之后，一直没怎么折腾。原因有两个，一个是忙，一个是CPU啥的都太贵的。&lt;/p&gt;
-&lt;p&gt;这次趁周末，所有的CPU啥的都成了白菜价，就折腾了一把：&lt;/p&gt;
+        &lt;p&gt;HP Gen8服务器买回来之后，一直没怎么折腾。原因有两个，一个是忙，一个是CPU啥的都太贵了。&lt;/p&gt;
+&lt;p&gt;如今CPU啥的都成了白菜价，这次趁周末，就折腾了一把：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;CPU，GEN8的绝配是E3-1265l v2, 当初的售价在1800左右，现
+&lt;li&gt;CPU。GEN8的绝配是E3-1265l v2, 当初的售价在1800左右，现在
       
     
     </summary>
