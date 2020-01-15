@@ -23,7 +23,8 @@ https://www.cpubenchmark.net/CPU_mega_page.html
 
 # 内存
 
-内存选择了协德的DDR3 1600 8G * 2.
+内存选择了协德的DDR3 1600 8G * 2。
+内存插槽在硬盘架下面，安装的时候需要把硬盘架取下来。
 
 ![内存](/img/2020/m93p-ram.jpg)
 
@@ -35,8 +36,8 @@ SATA3的SSD硬盘
 
 # 整体效果
 
-机器内部 （未装硬盘）
-黄色的纯铜散热器下面是CPU, 右侧的硬盘架下面是内存插槽
+机器内部
+黄色的纯铜散热器下面是CPU, 硬盘架下面是内存插槽
 
 ![内部](/img/2020/m93p-inner.jpg)
 
@@ -44,7 +45,7 @@ SATA3的SSD硬盘
 
 ![后面的接口](/img/2020/m93p-rear.jpg)
 
-前面板，两个USB口，黄色的可关机充电
+前面板，两个USB口，黄色的可关机充电。可以看到Wifi和蓝牙的指示灯，还挺好看。
 
 ![前面板](/img/2020/m93p-front.jpg)
 
@@ -57,6 +58,23 @@ SATA3的SSD硬盘
 ![跟三星S10+的大小对比图](/img/2020/m93p-s10plus.jpg)
 
 CPU过去几年发展速度一般， 这块志强的CPU凑活着还能用；大内存和SSD的硬盘对速度的提升更明显。
+
+# 鲁大师
+
+最后上几张鲁大师，纯供娱乐。
+
+![](/img/2020/ludashi-overview.jpg)
+
+![](/img/2020/ludashi-board.jpg)
+
+![](/img/2020/ludashi-cpu.jpg)
+
+![](/img/2020/ludashi-ram.jpg)
+
+![](/img/2020/ludashi-ssd.jpg)
+
+![](/img/2020/ludashi-score.jpg)
+
 
 
 
