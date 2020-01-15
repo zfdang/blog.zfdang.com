@@ -28,6 +28,8 @@ https://www.cpubenchmark.net/CPU_mega_page.html
 
 ![内存](/img/2020/m93p-ram.jpg)
 
+![内存](/img/2020/m93p-ram-2.jpg)
+
 # 硬盘
 
 东芝的TR200 - 240G
@@ -44,6 +46,8 @@ SATA3的SSD硬盘
 后面的接口, 有三个蓝色的USB口，一个DP口, 一个HDMI口，还要一个VGA口, 一个网口, 和黄色的电源口
 
 ![后面的接口](/img/2020/m93p-rear.jpg)
+
+![后面的接口](/img/2020/m93p-rear-2.jpg)
 
 前面板，两个USB口，黄色的可关机充电。可以看到Wifi和蓝牙的指示灯，还挺好看。
 
