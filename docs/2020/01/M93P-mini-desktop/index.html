@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="记录一下打造联想M93P 1L迷你PC主机的过程 M93P使用的主板是Q87, 支持4代LGA1150的CPU和DDR3 1600的内存(非DDR3L内存)，SATA的2.5寸硬盘。 CPU在CPU的选择上纠结了好久，最后在intel cpu性能天阶图里，选择了性能几乎最好的志强E3-1265L v3, TDP是45W的，4核8线程，价格500多一点，配M93P正好合适。  附PassMark的C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="联想M93P迷你主机">
+<meta property="og:url" content="https://blog.zfdang.com/2020/01/M93P-mini-desktop/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="记录一下打造联想M93P 1L迷你PC主机的过程 M93P使用的主板是Q87, 支持4代LGA1150的CPU和DDR3 1600的内存(非DDR3L内存)，SATA的2.5寸硬盘。 CPU在CPU的选择上纠结了好久，最后在intel cpu性能天阶图里，选择了性能几乎最好的志强E3-1265L v3, TDP是45W的，4核8线程，价格500多一点，配M93P正好合适。  附PassMark的C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-cpu.png">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-cpu-2.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-ram.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-ram-2.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-inner.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-rear.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-rear-2.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-front.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-power.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/m93p-s10plus.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/ludashi-overview.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/ludashi-board.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/ludashi-cpu.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/ludashi-ram.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/ludashi-ssd.jpg">
+<meta property="og:image" content="https://blog.zfdang.com/img/2020/ludashi-score.jpg">
+<meta property="article:published_time" content="2020-01-13T06:02:59.000Z">
+<meta property="article:modified_time" content="2020-07-07T10:15:51.410Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.zfdang.com/img/2020/m93p-cpu.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>联想M93P迷你主机</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/07/how-to-use-sx-installer-in-sx-os/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/12/HP-Microserver-Gen8/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2020/01/M93P-mini-desktop/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&text=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&is_video=false&description=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=联想M93P迷你主机&body=Check out this article: https://blog.zfdang.com/2020/01/M93P-mini-desktop/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&name=联想M93P迷你主机&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&t=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU"><span class="toc-number">1.</span> <span class="toc-text">CPU</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存"><span class="toc-number">2.</span> <span class="toc-text">内存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#硬盘"><span class="toc-number">3.</span> <span class="toc-text">硬盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#整体效果"><span class="toc-number">4.</span> <span class="toc-text">整体效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鲁大师"><span class="toc-number">5.</span> <span class="toc-text">鲁大师</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        联想M93P迷你主机
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-13T06:02:59.000Z" itemprop="datePublished">2020-01-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>记录一下打造联想M93P 1L迷你PC主机的过程</p>
+<p>M93P使用的主板是Q87, 支持4代LGA1150的CPU和DDR3 1600的内存(非DDR3L内存)，SATA的2.5寸硬盘。</p>
+<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><p>在CPU的选择上纠结了好久，最后在intel cpu性能天阶图里，选择了性能几乎最好的志强E3-1265L v3, TDP是45W的，4核8线程，价格500多一点，配M93P正好合适。</p>
+<p><img src="/img/2020/m93p-cpu.png" alt="4代低功耗CPU的选择"></p>
+<p>附PassMark的CPU天阶图:</p>
+<p><a href="https://www.cpubenchmark.net/CPU_mega_page.html" target="_blank" rel="noopener">https://www.cpubenchmark.net/CPU_mega_page.html</a></p>
+<p>装上去的效果：</p>
+<p><img src="/img/2020/m93p-cpu-2.jpg" alt="E3-1265l V3"></p>
+<h1 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h1><p>内存选择了协德的DDR3 1600 8G * 2。<br>内存插槽在硬盘架下面，安装的时候需要把硬盘架取下来。</p>
+<p><img src="/img/2020/m93p-ram.jpg" alt="内存"></p>
+<p><img src="/img/2020/m93p-ram-2.jpg" alt="内存"></p>
+<h1 id="硬盘"><a href="#硬盘" class="headerlink" title="硬盘"></a>硬盘</h1><p>东芝的TR200 - 240G</p>
+<p>SATA3的SSD硬盘</p>
+<h1 id="整体效果"><a href="#整体效果" class="headerlink" title="整体效果"></a>整体效果</h1><p>机器内部<br>黄色的纯铜散热器下面是CPU, 硬盘架下面是内存插槽</p>
+<p><img src="/img/2020/m93p-inner.jpg" alt="内部"></p>
+<p>后面的接口, 有三个蓝色的USB口，一个DP口, 一个HDMI口，还要一个VGA口, 一个网口, 和黄色的电源口</p>
+<p><img src="/img/2020/m93p-rear.jpg" alt="后面的接口"></p>
+<p><img src="/img/2020/m93p-rear-2.jpg" alt="后面的接口"></p>
+<p>前面板，两个USB口，黄色的可关机充电。可以看到Wifi和蓝牙的指示灯，还挺好看。</p>
+<p><img src="/img/2020/m93p-front.jpg" alt="前面板"></p>
+<p>外置电源适配器, 使用的是65W的thinkpad的方口充电器</p>
+<p><img src="/img/2020/m93p-power.jpg" alt="外置电源适配器"></p>
+<p>跟三星S10+的大小对比图:</p>
+<p><img src="/img/2020/m93p-s10plus.jpg" alt="跟三星S10+的大小对比图"></p>
+<p>CPU过去几年发展速度一般， 这块志强的CPU凑活着还能用；大内存和SSD的硬盘对速度的提升更明显。</p>
+<h1 id="鲁大师"><a href="#鲁大师" class="headerlink" title="鲁大师"></a>鲁大师</h1><p>最后上几张鲁大师，纯供娱乐。</p>
+<p><img src="/img/2020/ludashi-overview.jpg" alt=""></p>
+<p><img src="/img/2020/ludashi-board.jpg" alt=""></p>
+<p><img src="/img/2020/ludashi-cpu.jpg" alt=""></p>
+<p><img src="/img/2020/ludashi-ram.jpg" alt=""></p>
+<p><img src="/img/2020/ludashi-ssd.jpg" alt=""></p>
+<p><img src="/img/2020/ludashi-score.jpg" alt=""></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU"><span class="toc-number">1.</span> <span class="toc-text">CPU</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存"><span class="toc-number">2.</span> <span class="toc-text">内存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#硬盘"><span class="toc-number">3.</span> <span class="toc-text">硬盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#整体效果"><span class="toc-number">4.</span> <span class="toc-text">整体效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鲁大师"><span class="toc-number">5.</span> <span class="toc-text">鲁大师</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2020/01/M93P-mini-desktop/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&text=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&is_video=false&description=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=联想M93P迷你主机&body=Check out this article: https://blog.zfdang.com/2020/01/M93P-mini-desktop/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&title=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&name=联想M93P迷你主机&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2020/01/M93P-mini-desktop/&t=联想M93P迷你主机" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="百度云盘在经历过免费期后，现在对非付费用户的下载限速非常狠，经常只有10k左右，还经常下载失败。 码农肯定不会付钱买服务的，呵呵，所以就有快速下载百度云盘的方法出来了： 先安装Aria2 Gui for Machttps:&#x2F;&#x2F;github.com&#x2F;yangshun1029&#x2F;aria2gui 再在Chrome里安装百度Exporterhttps:&#x2F;&#x2F;github.com&#x2F;acgotaku&#x2F;Baidu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从百度云盘快速下载文件">
+<meta property="og:url" content="https://blog.zfdang.com/2018/10/download-from-baidu-pan/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="百度云盘在经历过免费期后，现在对非付费用户的下载限速非常狠，经常只有10k左右，还经常下载失败。 码农肯定不会付钱买服务的，呵呵，所以就有快速下载百度云盘的方法出来了： 先安装Aria2 Gui for Machttps:&#x2F;&#x2F;github.com&#x2F;yangshun1029&#x2F;aria2gui 再在Chrome里安装百度Exporterhttps:&#x2F;&#x2F;github.com&#x2F;acgotaku&#x2F;Baidu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zfdang.com/img/2018/baidu-exporter.png">
+<meta property="og:image" content="https://blog.zfdang.com/img/2018/aria2-download.png">
+<meta property="article:published_time" content="2018-10-16T08:50:58.000Z">
+<meta property="article:modified_time" content="2020-07-07T10:15:51.411Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.zfdang.com/img/2018/baidu-exporter.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>从百度云盘快速下载文件</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/monolithic-repository/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/10/great-wall-in-water/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2018/10/download-from-baidu-pan/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&text=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&is_video=false&description=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从百度云盘快速下载文件&body=Check out this article: https://blog.zfdang.com/2018/10/download-from-baidu-pan/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&name=从百度云盘快速下载文件&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&t=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先安装Aria2-Gui-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">先安装Aria2 Gui for Mac</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再在Chrome里安装百度Exporter"><span class="toc-number">2.</span> <span class="toc-text">再在Chrome里安装百度Exporter</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        从百度云盘快速下载文件
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-10-16T08:50:58.000Z" itemprop="datePublished">2018-10-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>百度云盘在经历过免费期后，现在对非付费用户的下载限速非常狠，经常只有10k左右，还经常下载失败。</p>
+<p>码农肯定不会付钱买服务的，呵呵，所以就有快速下载百度云盘的方法出来了：</p>
+<h2 id="先安装Aria2-Gui-for-Mac"><a href="#先安装Aria2-Gui-for-Mac" class="headerlink" title="先安装Aria2 Gui for Mac"></a>先安装Aria2 Gui for Mac</h2><p><a href="">https://github.com/yangshun1029/aria2gui</a></p>
+<h2 id="再在Chrome里安装百度Exporter"><a href="#再在Chrome里安装百度Exporter" class="headerlink" title="再在Chrome里安装百度Exporter"></a>再在Chrome里安装百度Exporter</h2><p><a href="">https://github.com/acgotaku/BaiduExporter</a></p>
+<p>下载的时候，先创建公开的分享，然后在分享的页面，就会出现导出到Aria2的按钮了</p>
+<p><img src="/img/2018/baidu-exporter.png" alt="百度云盘的下载链接"></p>
+<p>回到Aria2就可以看到下载的状态了:</p>
+<p><img src="/img/2018/aria2-download.png" alt="Aria2下载"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先安装Aria2-Gui-for-Mac"><span class="toc-number">1.</span> <span class="toc-text">先安装Aria2 Gui for Mac</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再在Chrome里安装百度Exporter"><span class="toc-number">2.</span> <span class="toc-text">再在Chrome里安装百度Exporter</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2018/10/download-from-baidu-pan/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&text=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&is_video=false&description=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从百度云盘快速下载文件&body=Check out this article: https://blog.zfdang.com/2018/10/download-from-baidu-pan/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&title=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&name=从百度云盘快速下载文件&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2018/10/download-from-baidu-pan/&t=从百度云盘快速下载文件" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
