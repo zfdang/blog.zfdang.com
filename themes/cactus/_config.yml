@@ -5,7 +5,7 @@
 # Link to a page that gives an overview of all your projects.
 # This can be an external link (e.g., to you GitHub profile) or to another
 # page within your website.
-projects_url: http://github.com/probberechts
+projects_url: http://github.com/zfdang/
 
 # Set the page direction to RTL or LTR. default is LTR. (if you set it 'rtl', the 'vazir' font will be loaded.)
 direction: ltr
@@ -16,7 +16,8 @@ direction: ltr
 nav:
   home: /
   articles: /archives/
-  about: /about/
+  projects: https://github.com/zfdang/
+  about: https://zfdang.com
 
 
 # Links to your social media accounts.
@@ -38,8 +39,8 @@ tags_overview: false
 #   - post_count: whether to show only the x most recent posts.
 #   - sort_updated: sort posts by last modification date instead of creation date.
 posts_overview:
-  show_all_posts: false
-  post_count: 5
+  show_all_posts: true
+  post_count: 10
   sort_updated: false
 
 # Customize the archive view.
@@ -143,9 +144,9 @@ google_analytics:
   id: UA-6920954-2
 
 # Fill in your Baidu Analytics tracking ID to enable Baidu Analytics.
-# baidu_analytics:
-#   enabled: false
-#   id: 2e6da3c375c8a87f5b664cea6d4cb29c
+baidu_analytics:
+  enabled: false
+  id: 2e6da3c375c8a87f5b664cea6d4cb29c
 
 # Fill in you Gravatar user id / email if you want to use your gravatar as the
 # logo and/or favicons of you website.

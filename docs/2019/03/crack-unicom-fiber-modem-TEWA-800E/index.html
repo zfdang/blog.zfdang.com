@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊 以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin&#x2F;CUAdmin模式登录了。破解主要集中在两点：  页面不显示用户名, 只有输入密码的地方，因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="破解北京联通的光猫TEWA-800E">
+<meta property="og:url" content="https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊 以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin&#x2F;CUAdmin模式登录了。破解主要集中在两点：  页面不显示用户名, 只有输入密码的地方，因">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zfdang.com/img/2019/fiber-modem.jpg">
+<meta property="article:published_time" content="2019-03-02T08:59:16.000Z">
+<meta property="article:modified_time" content="2020-07-07T10:15:51.411Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.zfdang.com/img/2019/fiber-modem.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>破解北京联通的光猫TEWA-800E</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/zfdang/" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="https://zfdang.com" target="_blank" rel="noopener">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/07/hong-kong-window-and-honeypot/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/03/stay-humble/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&text=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&is_video=false&description=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=破解北京联通的光猫TEWA-800E&body=Check out this article: https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&name=破解北京联通的光猫TEWA-800E&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&t=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        破解北京联通的光猫TEWA-800E
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-03-02T08:59:16.000Z" itemprop="datePublished">2019-03-02</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊</p>
+<p>以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin/CUAdmin模式登录了。破解主要集中在两点：</p>
+<ol>
+<li>页面不显示用户名, 只有输入密码的地方，因为“user_name”这个field已经被固定设置为”user”. 第一步就是要把这个field value给改成CUAdmin了 （F12找到”user_name”，将value修改为CUAdmin）</li>
+<li>页面有javascript, 当提交登录时，如果用户名不是user, 就提示错误并且禁止提交 （F12在Sources中找到一段限制非user用户不能登录的function定义，拷贝到Console中，删掉有关用户名限制的if判断，重新定义这个function）</li>
+</ol>
+<p>上面这两个都可以通过dev tools直接修改。具体可以参考：</p>
+<p><a href="https://guanggai.org/thread-563-1-1.html" target="_blank" rel="noopener">https://guanggai.org/thread-563-1-1.html</a></p>
+<p>以管理员登录后，改变Internet的设置，改成桥接模式就可以了。注意光猫里面的设置会有很多不同的连接，需要首先在“连接名称”里，选择了”2_INTERNET_xxx”这个选项，然后再改设置。如下图：</p>
+<p><img src="/img/2019/fiber-modem.jpg" alt="光猫设置"></p>
+<p>DHCP也可以关闭</p>
+<p>然后重启，就可以在自己的路由器上进行PPPoE拨号了</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/zfdang/" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="https://zfdang.com" target="_blank" rel="noopener">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&text=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&is_video=false&description=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=破解北京联通的光猫TEWA-800E&body=Check out this article: https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&title=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&name=破解北京联通的光猫TEWA-800E&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/&t=破解北京联通的光猫TEWA-800E" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/zfdang/" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="https://zfdang.com" target="_blank" rel="noopener">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-6920954-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
