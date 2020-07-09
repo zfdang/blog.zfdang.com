@@ -78,7 +78,7 @@ logo:
   enabled: true
   width: 50
   height: 50
-  url: /images/logo.jpg
+  url: /logo.jpg
   gravatar: false
 
 # Customize the favicons.
@@ -92,7 +92,7 @@ logo:
 #   - gravatar: whether to create a favicon from your Gravatar
 favicon:
   desktop:
-    url: /images/favicon.ico
+    url: /favicon.ico
     gravatar: false
   # android:
   #   url: /images/favicon-192x192.png
