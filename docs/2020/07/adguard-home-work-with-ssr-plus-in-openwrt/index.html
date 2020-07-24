@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="在OpenWRT下，使用AdGuardHome来简单去广告，同时使用SSR Plus的GFW模式 总结了最佳的搭配模式为：  SSR Plus，_运行模式_为”GFW列表模式”；_DNS解析方式_为 “使用PDNSD TCP查询并缓存” AdGuardHome，运行在1053端口。_重定向模式_为： “重定向53端口到AdGuardHome” AdGuardHome, 上游DNS服务器设置为: 1">
+    <meta name="description" content="在OpenWRT下，使用AdGuard Home来简单去广告，同时使用SSR Plus+的GFW模式 总结了最佳的搭配模式为：  SSR Plus+，_运行模式_为”GFW列表模式”；_DNS解析方式_为 “使用PDNSD TCP查询并缓存” AdGuard Home，运行在1053端口。_重定向模式_为： “重定向53端口到AdGuardHome” AdGuard Home, 上游DNS服务器设">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenWrt下AdGuardHome如何和SSR Plus公共工作">
+<meta property="og:title" content="OpenWrt下AdGuard Home如何和SSR Plus+公共工作">
 <meta property="og:url" content="https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/index.html">
 <meta property="og:site_name" content="Zhengfa&#39;s Blog">
-<meta property="og:description" content="在OpenWRT下，使用AdGuardHome来简单去广告，同时使用SSR Plus的GFW模式 总结了最佳的搭配模式为：  SSR Plus，_运行模式_为”GFW列表模式”；_DNS解析方式_为 “使用PDNSD TCP查询并缓存” AdGuardHome，运行在1053端口。_重定向模式_为： “重定向53端口到AdGuardHome” AdGuardHome, 上游DNS服务器设置为: 1">
+<meta property="og:description" content="在OpenWRT下，使用AdGuard Home来简单去广告，同时使用SSR Plus+的GFW模式 总结了最佳的搭配模式为：  SSR Plus+，_运行模式_为”GFW列表模式”；_DNS解析方式_为 “使用PDNSD TCP查询并缓存” AdGuard Home，运行在1053端口。_重定向模式_为： “重定向53端口到AdGuardHome” AdGuard Home, 上游DNS服务器设">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.zfdang.com/img/2020/ad_ssr.png">
 <meta property="article:published_time" content="2020-07-24T16:06:21.000Z">
-<meta property="article:modified_time" content="2020-07-24T16:19:17.030Z">
+<meta property="article:modified_time" content="2020-07-24T16:24:11.754Z">
 <meta property="article:author" content="Zhengfa Dang">
 <meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
 <meta name="twitter:card" content="summary">
@@ -31,7 +31,7 @@
         
     
     <!-- title -->
-    <title>OpenWrt下AdGuardHome如何和SSR Plus公共工作</title>
+    <title>OpenWrt下AdGuard Home如何和SSR Plus+公共工作</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -86,16 +86,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&text=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&is_video=false&description=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=OpenWrt下AdGuardHome如何和SSR Plus公共工作&body=Check out this article: https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&name=OpenWrt下AdGuardHome如何和SSR Plus公共工作&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&t=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&text=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&is_video=false&description=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=OpenWrt下AdGuard Home如何和SSR Plus+公共工作&body=Check out this article: https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&name=OpenWrt下AdGuard Home如何和SSR Plus+公共工作&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&t=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -112,7 +112,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        OpenWrt下AdGuardHome如何和SSR Plus公共工作
+        OpenWrt下AdGuard Home如何和SSR Plus+公共工作
     </h1>
 
 
@@ -139,12 +139,12 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>在OpenWRT下，使用AdGuardHome来简单去广告，同时使用SSR Plus的GFW模式</p>
+    <p>在OpenWRT下，使用AdGuard Home来简单去广告，同时使用SSR Plus+的GFW模式</p>
 <p>总结了最佳的搭配模式为：</p>
 <ol>
-<li>SSR Plus，_运行模式_为”GFW列表模式”；_DNS解析方式_为 “使用PDNSD TCP查询并缓存”</li>
-<li>AdGuardHome，运行在1053端口。_重定向模式_为： “重定向53端口到AdGuardHome”</li>
-<li>AdGuardHome, 上游DNS服务器设置为: 127.0.0.1:53</li>
+<li>SSR Plus+，_运行模式_为”GFW列表模式”；_DNS解析方式_为 “使用PDNSD TCP查询并缓存”</li>
+<li>AdGuard Home，运行在1053端口。_重定向模式_为： “重定向53端口到AdGuardHome”</li>
+<li>AdGuard Home, 上游DNS服务器设置为: 127.0.0.1:53</li>
 <li>DNSMasq, 上游DNS服务器设置为: 223.5.5.5, 180.76.76.76</li>
 </ol>
 <p>优点： 希望被block的地址，会第一时间被干掉；在AdGuard Home里，也能看到客户端的IP地址。</p>
@@ -187,16 +187,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&text=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&is_video=false&description=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=OpenWrt下AdGuardHome如何和SSR Plus公共工作&body=Check out this article: https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&name=OpenWrt下AdGuardHome如何和SSR Plus公共工作&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&t=OpenWrt下AdGuardHome如何和SSR Plus公共工作" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&text=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&is_video=false&description=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=OpenWrt下AdGuard Home如何和SSR Plus+公共工作&body=Check out this article: https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&title=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&name=OpenWrt下AdGuard Home如何和SSR Plus+公共工作&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2020/07/adguard-home-work-with-ssr-plus-in-openwrt/&t=OpenWrt下AdGuard Home如何和SSR Plus+公共工作" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
