@@ -1,7 +1,7 @@
 ---
 title: 在2021年校招新员工欢迎会上的致辞
 date: 2020-12-04 11:10:30
-tags: FreeWheel 校招 欢迎 支持
+tags: FreeWheel 致辞
 ---
 
 首先，我代表FreeWheel的Leadership Team，欢迎各位的加入！
