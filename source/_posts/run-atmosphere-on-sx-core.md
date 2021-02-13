@@ -48,7 +48,7 @@ SX CORE芯片：
 
 ## 在硬破解的Switch上运行Atmoshpere大气层系统
 
-SX Team被反盗版端了。但是Atmosphere系统，采取了打法律擦边球的方式，不能直接被启动，也不直接支持玩盗版游戏，所以目前还比较活跃，没被取缔。最新版0.18已经支持11.0.1的系统了
+SX Team被反盗版端了。但是Atmosphere系统，采取了打法律擦边球的方式，不能直接被启动，也不直接支持玩盗版游戏，所以目前还比较活跃，没被取缔。最新版0.18.0已经支持Mariko版本的主机，和11.0.1的OS版本了。
 
 Atmosphere大气层系统： https://github.com/Atmosphere-NX/Atmosphere
 
@@ -66,11 +66,11 @@ SX CORE芯片在开机后，会去加载TF卡上boot.dat的文件，这个文件
 --> 加载 SX Gear (/boot.dat)：缺省加载payload.bin, 可以在boot.ini(/boot.ini)里配置自动加载Hekate(/hekate_ctcaer_5.5.4.bin)
 --> 加载Hekate(/hekate_ctcaer_5.5.4.bin)，可以在配置(/bootloader/hekate_ipl.ini)里配置Atmosphere系统，或者其他整合好的系统
 --> 加载fusee-primary.bin
---> 加载Atmoshpere系统
+--> 加载Atmoshpere系统或者其他整合好的三方系统
 
 经过这么一个长链之后，Atmosphere大气层系统就被启动起来了。
 
-上述的一些配置，可以参考下面的样本(注意：不是完整的系统，只涉及了SX Gear及其配置, Hekate及其配置)：
+上述的一些配置，可以参考下面的文件(注意：不是完整的系统，只涉及了SX Gear及其配置, Hekate及其配置，fusee-primary.bin)：
 
 https://blog.zfdang.com/img/2021/TF.zip
 
