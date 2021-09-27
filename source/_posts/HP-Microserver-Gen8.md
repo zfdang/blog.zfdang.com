@@ -2,6 +2,7 @@
 title: HP Microserver Gen8
 date: 2019-12-29 20:04:01
 tags:
+- NAS
 ---
 
 HP Gen8服务器买回来之后，一直没怎么折腾。原因有两个，一个是忙，一个是CPU啥的都太贵了。

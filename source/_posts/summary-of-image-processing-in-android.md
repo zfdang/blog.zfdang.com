@@ -2,6 +2,8 @@
 title: android处理图片的一些问题总结
 date: 2013-03-12 09:20:41
 tags:
+- Android
+- Fresco
 ---
 
 **第一个问题是out of memory**

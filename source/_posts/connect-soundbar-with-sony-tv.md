@@ -2,6 +2,9 @@
 title: 在SONY电视上正确使用Kodi和回音壁
 date: 2021-05-28 14:21:35
 tags:
+- Sony
+- Kodi
+- YAS-109
 ---
 
 配置：

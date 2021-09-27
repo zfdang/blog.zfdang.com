@@ -2,6 +2,7 @@
 title: MacOS下Cisco AnyConnect频繁要求管理员权限的解决方法
 date: 2018-09-23 14:50:35
 tags:
+- MacOS
 ---
 
 MacOS下，Cisco AnyConnect客户端，经常要求输入管理员密码，并且没办法记住用户名或者密码，特别讨厌。

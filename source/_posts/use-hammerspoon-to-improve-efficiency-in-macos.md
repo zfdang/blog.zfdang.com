@@ -1,7 +1,9 @@
 ---
 title: MacOS下使用HammerSpoon来提高效率
 date: 2021-09-27 11:55:50
-tags: HammerSpoon MacOS
+tags:
+- HammerSpoon
+- MacOS
 ---
 ## 从BTT到HammerSpoon
 

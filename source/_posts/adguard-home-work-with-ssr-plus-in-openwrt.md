@@ -2,6 +2,8 @@
 title: OpenWrt下AdGuard Home如何和SSR Plus+共同工作
 date: 2020-07-25 00:06:21
 tags:
+- OpenWRT
+- AdGuardHome
 ---
 
 在OpenWRT下，使用AdGuard Home来简单去广告，同时使用SSR Plus+的GFW模式
