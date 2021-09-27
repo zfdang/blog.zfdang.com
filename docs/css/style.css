@@ -599,8 +599,6 @@ body {
   border-radius: 5px;
   background-size: 50px 50px;
   background-repeat: no-repeat;
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
 }
 #header #nav {
   color: #d44375;
@@ -744,7 +742,7 @@ body {
   color: #d44375;
 }
 #header-post #menu {
-  display: none;
+  visibility: hidden;
   margin-right: 2rem;
 }
 #header-post #nav {
@@ -1138,7 +1136,7 @@ article .content blockquote:before {
 article .content blockquote footer {
   margin: line-height 0;
   color: #666;
-  font-size: 12px;
+  font-size: 11px;
 }
 article .content blockquote footer a {
   background-image: linear-gradient(transparent, transparent 5px, #666 5px, #666);
@@ -1203,9 +1201,6 @@ article .content .caption {
     content: "|";
   }
 }
-#archive .post-year {
-  list-style-type: none;
-}
 #archive .post-list {
   padding: 0;
 }
@@ -1242,7 +1237,7 @@ article .content .caption {
   color: #666;
   vertical-align: top;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
 }
 #footer ul {
   margin: 0;
@@ -1598,7 +1593,7 @@ code {
   margin: -5px 0 5px;
   color: #757575;
   font-size: 0.9em;
-  transform: scale(1);
+  zoom: 1;
 }
 .highlight figcaption a {
   float: right;
