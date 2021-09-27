@@ -78,9 +78,11 @@ https://blog.zfdang.com/img/2021/TF.zip
 
 SX Gear: https://sx.xecuter.com/download/SX_Gear_v1.1.zip
 SX Gear本地备份：https://blog.zfdang.com/img/2021/SX_Gear_v1.1.zip
-Hekate: https://github.com/CTCaer/hekate 
+Hekate: https://github.com/CTCaer/hekate
 Atmosphere: https://github.com/Atmosphere-NX/Atmosphere
-Deapsea, 一个整合了Atmosphere、玩破解游戏补丁、各种Homebrew App的集成包: https://github.com/Team-Neptune/DeepSea
+Signature Patches: https://github.com/ITotalJustice/patches
+ShallowSea, 一个整合了Atmosphere、玩破解游戏补丁、各种Homebrew App的集成包: https://github.com/carcaschoi/ShallowSea
+
 
 ### NOTE
 
