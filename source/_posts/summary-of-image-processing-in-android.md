@@ -14,31 +14,35 @@ tags:
 
 1. 从源文件生成图片时，直接将图片缩小，而不是加载原始大小的图片。如下代码：
 
-            BitmapFactory.Options o = null;
+{% code lang:java %}
 
-            Bitmap bitmap = null;
-            // decode image size (decode metadata only, not the whole image)
-            o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            stream = new FileInputStream(filename);
-            BitmapFactory.decodeStream(stream, null, o);
-            stream.close();
+BitmapFactory.Options o = null;
 
-            // get original image size
-            int inWidth =  o.outWidth;
-            int inHeight = o.outHeight;
-            clog(String.format("Original bitmap size: (%dx%d).", inWidth, inHeight));
+Bitmap bitmap = null;
+// decode image size (decode metadata only, not the whole image)
+o = new BitmapFactory.Options();
+o.inJustDecodeBounds = true;
+stream = new FileInputStream(filename);
+BitmapFactory.decodeStream(stream, null, o);
+stream.close();
 
-            // get size for pre-resized image
-            o = new BitmapFactory.Options();
-            o.inSampleSize = Math.max(inWidth/targetWidth, inHeight/targetHeight);
+// get original image size
+int inWidth =  o.outWidth;
+int inHeight = o.outHeight;
+clog(String.format("Original bitmap size: (%dx%d).", inWidth, inHeight));
 
-            // decode pre-resized image
-            stream = new FileInputStream(filename);
-            // o.inPurgeable = true;
-            bitmap = BitmapFactory.decodeStream(stream, null, o);
-            stream.close();
-            clog(String.format("Resized bitmap size: (%dx%d).", bitmap.getWidth(), bitmap.getHeight()));
+// get size for pre-resized image
+o = new BitmapFactory.Options();
+o.inSampleSize = Math.max(inWidth/targetWidth, inHeight/targetHeight);
+
+// decode pre-resized image
+stream = new FileInputStream(filename);
+// o.inPurgeable = true;
+bitmap = BitmapFactory.decodeStream(stream, null, o);
+stream.close();
+clog(String.format("Resized bitmap size: (%dx%d).", bitmap.getWidth(), bitmap.getHeight()));
+            
+{% endcode %}
             
             
 这里有一个真实的例子：

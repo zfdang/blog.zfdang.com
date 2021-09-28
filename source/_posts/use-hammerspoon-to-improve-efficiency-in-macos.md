@@ -21,11 +21,10 @@ https://github.com/zfdang/hammerspoon-config
 
 使用起来也比较简单：
 
-```
+{% code lang:bash %}
 rm -rf ~/.hammerspoon
-	
 git clone https://github.com/zfdang/hammerspoon-config.git ~/.hammerspoon
-```
+{% endcode %}
 	
 然后在HammerSpoon里reload config即可
 

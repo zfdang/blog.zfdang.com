@@ -21,7 +21,9 @@ If you ResizeOptions, the converted one has a max size of 2048px, which makes wi
 
 如果不担心收到的图片过于大的话，下面这个方法就很简单粗暴了：
 
-> ImageRequestBuilder.newBuilderWithSource(Uri.parse(uri)).setResizeOptions(new ResizeOptions(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE))`
+{% code lang:java %}
+ImageRequestBuilder.newBuilderWithSource(Uri.parse(uri)).setResizeOptions(new ResizeOptions(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE))`
+{% endcode %}
 
 注意: 如果开启了硬件加速，android的OpenGL对图片的最大尺寸有要求。如果超过这个最大的size，图片直接显示空白，程序也不会报错。 参见： 
 
