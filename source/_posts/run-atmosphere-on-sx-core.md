@@ -3,7 +3,7 @@ title: 在续航版硬破解Switch上运行Atmosphere大气层系统
 date: 2021-02-13 11:03:14
 tags: 
 - Switch
-- Atmoshpere
+- Atmosphere
 ---
 
 ## SWITCH破解的现状
