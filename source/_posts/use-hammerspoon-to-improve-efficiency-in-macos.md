@@ -21,9 +21,11 @@ https://github.com/zfdang/hammerspoon-config
 
 使用起来也比较简单：
 
-	rm -rf ~/.hammerspoon
+```
+rm -rf ~/.hammerspoon
 	
-	git clone https://github.com/zfdang/hammerspoon-config.git ~/.hammerspoon
+git clone https://github.com/zfdang/hammerspoon-config.git ~/.hammerspoon
+```
 	
 然后在HammerSpoon里reload config即可
 
@@ -32,6 +34,7 @@ https://github.com/zfdang/hammerspoon-config
 
 HyperKey: {"cmd", "alt", "ctrl", "shift"}  -- 定义超级快捷键
 
+```
 HyperKey + l: lock screen; 锁屏
 
 HyperKey + b: show battery status on screen；在屏幕上显示电量
@@ -55,5 +58,6 @@ HyperKey + x: launch application by x (see key2App in key-bindings.lua, you can 
 {"CMD","Ctrl"} + up: volume up
 
 {"CMD","Ctrl"} + down: volume down
+```
 
 可以根据自己的需要，来定制功能。
