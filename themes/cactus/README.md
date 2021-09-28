@@ -76,6 +76,10 @@ Alternatively, you can configure it from your site's primary configuration
 file. Therefore, define your custom settings under the `theme_config` variable.
 For example:
 
+```
+hello world
+```
+
 ```yml
 # _config.yml
 theme_config:
