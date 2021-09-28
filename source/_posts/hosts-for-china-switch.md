@@ -10,7 +10,7 @@ tags:
 
 https://rentry.org/AvoidSwitchBan
 
-不过检测WIFI的网络连接时，国行固件使用的是不同的域名，所以直接使用上面的hosts, 会导致系统检测到网络不可用。
+不过在连接WIFI网络时，国行固件使用的是不同的域名来检测网络可用性，所以直接使用上面的hosts, 会导致系统认为网络不可用。
 
 这是一个国行可用的hosts文件
 
@@ -22,6 +22,6 @@ https://rentry.org/AvoidSwitchBan
 127.0.0.1 *nintendoswitch.*
 95.216.149.205 *conntest.nintendowifi.net
 95.216.149.205 *ctest.cdn.nintendo.net
-# connection test destination for china version
+# connection check destination for china version
 221.194.155.207 *ctest.cdn.n.nintendoswitch.cn
 ```
