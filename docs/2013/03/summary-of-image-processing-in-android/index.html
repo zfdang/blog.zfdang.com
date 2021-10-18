@@ -158,8 +158,6 @@
 <li>从源文件生成图片时，直接将图片缩小，而不是加载原始大小的图片。如下代码：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">BitmapFactory.Options o = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">Bitmap bitmap = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">// decode image size (decode metadata only, not the whole image)</span></span><br><span class="line">o = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">o.inJustDecodeBounds = <span class="keyword">true</span>;</span><br><span class="line">stream = <span class="keyword">new</span> FileInputStream(filename);</span><br><span class="line">BitmapFactory.decodeStream(stream, <span class="keyword">null</span>, o);</span><br><span class="line">stream.close();</span><br><span class="line"></span><br><span class="line"><span class="comment">// get original image size</span></span><br><span class="line"><span class="keyword">int</span> inWidth =  o.outWidth;</span><br><span class="line"><span class="keyword">int</span> inHeight = o.outHeight;</span><br><span class="line">clog(String.format(<span class="string">&quot;Original bitmap size: (%dx%d).&quot;</span>, inWidth, inHeight));</span><br><span class="line"></span><br><span class="line"><span class="comment">// get size for pre-resized image</span></span><br><span class="line">o = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">o.inSampleSize = Math.max(inWidth/targetWidth, inHeight/targetHeight);</span><br><span class="line"></span><br><span class="line"><span class="comment">// decode pre-resized image</span></span><br><span class="line">stream = <span class="keyword">new</span> FileInputStream(filename);</span><br><span class="line"><span class="comment">// o.inPurgeable = true;</span></span><br><span class="line">bitmap = BitmapFactory.decodeStream(stream, <span class="keyword">null</span>, o);</span><br><span class="line">stream.close();</span><br><span class="line">clog(String.format(<span class="string">&quot;Resized bitmap size: (%dx%d).&quot;</span>, bitmap.getWidth(), bitmap.getHeight()));</span><br><span class="line">            </span><br></pre></td></tr></table></figure>
-
-
 <p>这里有一个真实的例子：</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/zfdang/asm-android-client-for-newsmth/blob/master/src/com/koushikdutta/urlimageviewhelper/UrlImageViewHelper.java">https://github.com/zfdang/asm-android-client-for-newsmth/blob/master/src/com/koushikdutta/urlimageviewhelper/UrlImageViewHelper.java</a></p>
@@ -168,7 +166,9 @@
 <li><p>及时删除不需要使用的bitmap对象，不要将所有的对象都cache住</p>
 </li>
 <li><p>增加程序的heap size。从某个版本开始，android manifest文件里有一个新的属性了：</p>
-<pre><code>android:largeHeap=&quot;true&quot;</code></pre></li>
+<pre><code> android:largeHeap=&quot;true&quot;
+</code></pre>
+</li>
 </ol>
 <blockquote>
 <p>android:largeHeap</p>
@@ -181,7 +181,9 @@
 </blockquote>
 <p>简单说就是硬件加速的时候，对图片的大小有限制。不同设备可能有不同的最大值。这个问题悲催的地方是，程序貌似没有捕获到这个exception, 结果是程序也不报错，图片也显示不出来。只有看debug log才能发现这个error message.</p>
 <p>一个解决的方法是禁止硬件加速，简单粗暴：</p>
-<pre><code>android:hardwareAccelerated=&quot;false&quot;</code></pre><blockquote>
+<pre><code>android:hardwareAccelerated=&quot;false&quot;
+</code></pre>
+<blockquote>
 <p>android:hardwareAccelerated<br>Whether or not hardware-accelerated rendering should be enabled for all activities and views in this application — “true” if it should be enabled, and “false” if not. The default value is “true” if you’ve set either minSdkVersion or targetSdkVersion to “14” or higher; otherwise, it’s “false”.<br>Starting from Android 3.0 (API level 11), a hardware-accelerated OpenGL renderer is available to applications, to improve performance for many common 2D graphics operations. When the hardware-accelerated renderer is enabled, most operations in Canvas, Paint, Xfermode, ColorFilter, Shader, and Camera are accelerated. This results in smoother animations, smoother scrolling, and improved responsiveness overall, even for applications that do not explicitly make use the framework’s OpenGL libraries.<br>Note that not all of the OpenGL 2D operations are accelerated. If you enable the hardware-accelerated renderer, test your application to ensure that it can make use of the renderer without errors.<br>For more information, read the Hardware Acceleration guide.</p>
 </blockquote>
 <p>比较好的解决方法是类似google map的实现：将图片分成不同的小块，每次只加载需要的块。android提供了一个方法：</p>
