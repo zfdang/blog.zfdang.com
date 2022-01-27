@@ -44,11 +44,15 @@ HPE Integrated Lights-Out 4 (iLO 4)
 
 **当前版本2019.04.04， 2019-06-12发布**
 
-## SSP
+## Service Pack for ProLiant (SPP)
+
+官方地址为：
+
+[ Service Pack for ProLiant (SPP)](https://techlibrary.hpe.com/us/en/enterprise/servers/products/service_pack/spp/index.aspx)
+
+但是GEN8的文件需要登录，可以从下面的地址下载：
 
 **The 2017.04.0 SPP is the last production SPP to contain components for the G7 and Gen8 server platforms**
-
-有两个可用的下载地址：
 
 [SPPGen81.4.iso](http://repos.storage37.net/hpsum/iso/P03093_001_spp-Gen8.1-SPPGen81.4.iso)
 
@@ -56,27 +60,9 @@ HPE Integrated Lights-Out 4 (iLO 4)
 
 --------
 
-[ Service Pack for ProLiant (SPP)](https://techlibrary.hpe.com/us/en/enterprise/servers/products/service_pack/spp/index.aspx)
-
-但是GEN8的文件需要登录，可以从下面的地址下载：
+下面两个页面也有下载链接：
 
 http://www.kaixinit.com/server/gen8/1750.html
 
-2020年9月SPP更新版本：
-
-http://dl1.technet24.ir/Downloads/HP/ServicePack/P35935_001_spp-2020.09.0-SPP2020090.2020_0901.114.iso
-
-2019年9月SPP更新版本：
-
-http://dl1.technet24.ir/Downloads/HP/ServicePack/P19473_001_spp-2019.09.0-SPP2019090.2019-0905.39.iso
-
-2019年3月SPP更新版本：
-
-http://dl.technet24.ir/Downloads/HP/ServicePack/P14481_001_spp-2019.03.0-SPP2019030.2019_0206.85.iso
-
-2018年11月SPP更新版本：
-
-http://dl2.technet24.ir/Downloads/HP/ServicePack/P11740_001_spp-2018.11.0_SPP2018110.2018_1114.38.iso
-
-
+https://technet24.ir/%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%AF-%D8%B3%D8%B1%D9%88%DB%8C%D8%B3-%D9%BE%DA%A9-hpe-service-pack-for-proliant-9872
 
