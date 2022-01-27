@@ -50,13 +50,15 @@ HPE Integrated Lights-Out 4 (iLO 4)
 
 [ Service Pack for ProLiant (SPP)](https://techlibrary.hpe.com/us/en/enterprise/servers/products/service_pack/spp/index.aspx)
 
-但是GEN8的文件需要登录，可以从下面的地址下载：
-
 **The 2017.04.0 SPP is the last production SPP to contain components for the G7 and Gen8 server platforms**
+
+但是GEN8的文件需要登录，可以从下面的地址下载：
 
 [SPPGen81.4.iso](http://repos.storage37.net/hpsum/iso/P03093_001_spp-Gen8.1-SPPGen81.4.iso)
 
 [SPPGen81.4.iso](https://soft.silinet.net/hp/P03093_001_spp-Gen8.1-SPPGen81.4.iso)
+
+[SPPGen81.4.iso](http://dl1.technet24.ir/Downloads/HP/ServicePack/P03093_001_spp-Gen8.1-SPPGen81.4.iso)
 
 --------
 
