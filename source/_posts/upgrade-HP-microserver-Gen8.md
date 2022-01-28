@@ -24,6 +24,14 @@ HPE Integrated Lights-Out 4 (iLO 4)
 
 升级之后，需要找一个license, 这样很多高级的功能才能使用。
 
+如果喜欢中文，可以下载语言包，安装之后就可以选择中文或者英文了。
+
+[中文包](https://support.hpe.com/hpesc/public/swd/detail?swItemId=MTX_ef8ef35ff693492382a995827f)
+
+https://support.hpe.com/connect/s/search?language=en_US#q=Integrated%20Lights-Out%204%20Language%20Pack&t=All&sort=relevancy&numberOfResults=25
+
+最新的中文包是2.70版的，之后的版本也可以安装。
+
 ## Intelligent Provisioning
 
 [https://support.hpe.com/connect/s/product?language=en_US&cc=us&kmpmoid=1008862660&tab=driversAndSoftware&lang=en#t=DriversandSoftware](https://support.hpe.com/connect/s/product?language=en_US&cc=us&kmpmoid=1008862660&tab=driversAndSoftware&lang=en#t=DriversandSoftware)
