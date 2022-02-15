@@ -10,12 +10,18 @@ tags:
 Men's 1000m - Final Results - Olympic Short Track Speed Skating @ Beijing 2022
 
 People have disagreements about the results of Men's 1000m Olympic Short Track Speed Skating at Beijing 2022. This short clip shows some rules and key moments for the decision.
-Another video for Korean athlete HWANG Daeheon : https://youtu.be/mhT-6M8uZl8
 
 Chief Referee is Peter Worth from The Great Britain. This is the third Olympics game he has served as a referee.
 
+click here to see the video:
+[Rules & Key Moments](/img/2022/Men-1000m-Final-Results.mp4)
+
+---
+
+
 有些人对北京2022冬奥会男子1000米短道速滑决赛的成绩有不同的意见。这个短视频尝试解释相关规则和还原关键场景，让大家看看判罚是否真有问题。
 
+点击链接观看视频：
 [相关规则和关键时刻](/img/2022/Men-1000m-Final-Results.mp4)
 
 
