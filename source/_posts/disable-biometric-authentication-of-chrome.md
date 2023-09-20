@@ -17,5 +17,5 @@ tags:
 ![禁止指纹认证](/img/2023/biometric-chrome.jpg)
 
 
-将**#biometric-authentication-for-filling**禁止了，然后重启Chrome。之后填充密码时，就不会要求指纹认证了...
+将 **biometric-authentication-for-filling** 禁止了，然后重启Chrome。之后填充密码时，就不会要求指纹认证了...
 
