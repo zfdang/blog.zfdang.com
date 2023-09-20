@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.zfdang.com/img/2021/sx-core.png">
 <meta property="article:published_time" content="2021-02-13T03:03:14.000Z">
-<meta property="article:modified_time" content="2021-09-28T12:12:47.798Z">
+<meta property="article:modified_time" content="2023-09-20T00:54:53.972Z">
 <meta property="article:author" content="Zhengfa Dang">
 <meta property="article:tag" content="Switch">
 <meta property="article:tag" content="Atmosphere">
@@ -54,7 +54,7 @@
 	
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9955845731356398"
      crossorigin="anonymous"></script>  
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -191,7 +191,7 @@
 <p>但是非常不幸，SX OS系统在某次更新后禁止加载Atmosphere的payload了！但是依然可以加载其他的payload, 比如Hekate；Hekate作为一个switch的bootloader，可以加载Atmosphere!</p>
 <p>另外，SX team除了提供SX OS外，还提供了一个SX Gear的简单系统，这个系统唯一的功能就是在启动后，加载另外的一个payload，并且不需要License. </p>
 <p>所以最后的解决方法就是:</p>
-<p>–&gt; SX CORE芯片<br>–&gt; 加载 SX Gear (/boot.dat)：缺省加载payload.bin, 可以在boot.ini(/boot.ini)里配置自动加载Hekate(/hekate_ctcaer_5.5.4.bin)<br>–&gt; 加载Hekate(/hekate_ctcaer_5.5.4.bin)，可以在配置(/bootloader/hekate_ipl.ini)里配置Atmosphere系统，或者其他整合好的系统<br>–&gt; 加载fusee-primary.bin<br>–&gt; 加载Atmoshpere系统或者其他整合好的三方系统</p>
+<p>–&gt; SX CORE芯片<br>–&gt; 加载 SX Gear (&#x2F;boot.dat)：缺省加载payload.bin, 可以在boot.ini(&#x2F;boot.ini)里配置自动加载Hekate(&#x2F;hekate_ctcaer_5.5.4.bin)<br>–&gt; 加载Hekate(&#x2F;hekate_ctcaer_5.5.4.bin)，可以在配置(&#x2F;bootloader&#x2F;hekate_ipl.ini)里配置Atmosphere系统，或者其他整合好的系统<br>–&gt; 加载fusee-primary.bin<br>–&gt; 加载Atmoshpere系统或者其他整合好的三方系统</p>
 <p>经过这么一个长链之后，Atmosphere大气层系统就被启动起来了。</p>
 <p>上述的一些配置，可以参考下面的文件(注意：不是完整的系统，只涉及了SX Gear及其配置, Hekate及其配置，fusee-primary.bin)：</p>
 <p><a href="https://blog.zfdang.com/img/2021/TF.zip">https://blog.zfdang.com/img/2021/TF.zip</a></p>
@@ -201,7 +201,7 @@
 <p>这时候，替换虚拟系统里的BOOT0, BOOT1就可以了。11.0.0的系统，可以使用这两个文件替换：</p>
 <p>11.0.0的BOOT文件备份：<a href="https://blog.zfdang.com/img/2021/boot-backup.zip">https://blog.zfdang.com/img/2021/boot-backup.zip</a></p>
 <p>然后替换TF卡里的这两个文件：</p>
-<p>emuMMC/SD00/eMMC/BOOT0<br>emuMMC/SD00/eMMC/BOOT1</p>
+<p>emuMMC&#x2F;SD00&#x2F;eMMC&#x2F;BOOT0<br>emuMMC&#x2F;SD00&#x2F;eMMC&#x2F;BOOT1</p>
 <h2 id="支持Switch国行版"><a href="#支持Switch国行版" class="headerlink" title="支持Switch国行版"></a>支持Switch国行版</h2><p>Switch国行版的出现，让国内玩switch游戏，变得更容易，虽然游戏的数量很有限，但是国外的游戏卡都可以直接玩，问题也不大。</p>
 <p>所以还是要支持正版！</p>
 

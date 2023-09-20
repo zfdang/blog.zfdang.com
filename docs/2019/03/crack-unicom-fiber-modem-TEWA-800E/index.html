@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊 以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin&#x2F;CUAdmin模式登录了。破解主要集中在两点：  页面不显示用户名, 只有输入密码的地方，因">
+    <meta name="description" content="最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊 以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin&#x2F;CUAdmin模式登录了。破解主要集中在两点：  页面不显示用户名, 只有输入密码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="破解北京联通的光猫TEWA-800E">
 <meta property="og:url" content="https://blog.zfdang.com/2019/03/crack-unicom-fiber-modem-TEWA-800E/index.html">
 <meta property="og:site_name" content="Zhengfa&#39;s Blog">
-<meta property="og:description" content="最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊 以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin&#x2F;CUAdmin模式登录了。破解主要集中在两点：  页面不显示用户名, 只有输入密码的地方，因">
+<meta property="og:description" content="最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊 以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin&#x2F;CUAdmin模式登录了。破解主要集中在两点：  页面不显示用户名, 只有输入密码">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.zfdang.com/img/2019/fiber-modem.jpg">
 <meta property="article:published_time" content="2019-03-02T08:59:16.000Z">
-<meta property="article:modified_time" content="2021-02-13T02:58:33.033Z">
+<meta property="article:modified_time" content="2023-09-20T00:54:53.971Z">
 <meta property="article:author" content="Zhengfa Dang">
 <meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
 <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
 	
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9955845731356398"
      crossorigin="anonymous"></script>  
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -150,7 +150,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>最近更换了联通的光猫，型号是TEWA-800E, 结果发现联通小哥给装好以后，PPPoE的连接直接在光猫上进行了，自己的路由器只能拿到内部192.168.1.x的内部IP。这个没法接受啊</p>
-<p>以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin/CUAdmin模式登录了。破解主要集中在两点：</p>
+<p>以路由器上标注的账号登录，只能是普通用户模式，很多设置的选项都不存在。搜了一下，发现现在已经有办法可以以CUAdmin&#x2F;CUAdmin模式登录了。破解主要集中在两点：</p>
 <ol>
 <li>页面不显示用户名, 只有输入密码的地方，因为“user_name”这个field已经被固定设置为”user”. 第一步就是要把这个field value给改成CUAdmin了 （F12找到”user_name”，将value修改为CUAdmin）</li>
 <li>页面有javascript, 当提交登录时，如果用户名不是user, 就提示错误并且禁止提交 （F12在Sources中找到一段限制非user用户不能登录的function定义，拷贝到Console中，删掉有关用户名限制的if判断，重新定义这个function）</li>

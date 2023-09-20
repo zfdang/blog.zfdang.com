@@ -14,7 +14,7 @@
 <meta property="og:description" content="从BTT到HammerSpoon之前一直都用BetterTouchTool来做一些快捷的操作。但是这玩意是收费的，之前买的一个license, 现在居然失效了… 就想尝试着看看有没有类似的软件可以替代，于是找到了HammerSpoon! HammerSpoon安装完之后，什么也干不了，需要自己来写配置文件，从而实现各种快捷操作，这个导致了它比较高的使用门槛！ HammerSpoon的配置这个是我的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-27T03:55:50.000Z">
-<meta property="article:modified_time" content="2021-09-28T13:09:56.852Z">
+<meta property="article:modified_time" content="2023-09-20T00:54:53.973Z">
 <meta property="article:author" content="Zhengfa Dang">
 <meta property="article:tag" content="MacOS">
 <meta property="article:tag" content="HammerSpoon">
@@ -52,7 +52,7 @@
 	
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9955845731356398"
      crossorigin="anonymous"></script>  
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -159,7 +159,7 @@
 <h2 id="HammerSpoon的配置"><a href="#HammerSpoon的配置" class="headerlink" title="HammerSpoon的配置"></a>HammerSpoon的配置</h2><p>这个是我的HammerSpoon配置：</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/zfdang/hammerspoon-config">https://github.com/zfdang/hammerspoon-config</a></p>
 <p>使用起来也比较简单：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/.hammerspoon</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zfdang/hammerspoon-config.git ~/.hammerspoon</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf ~/.hammerspoon</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zfdang/hammerspoon-config.git ~/.hammerspoon</span><br></pre></td></tr></table></figure>
 <p>然后在HammerSpoon里reload config即可</p>
 <h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><p>HyperKey: {“cmd”, “alt”, “ctrl”, “shift”}  – 定义超级快捷键</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">HyperKey + l: lock screen; 锁屏</span><br><span class="line"></span><br><span class="line">HyperKey + b: show battery status on screen；在屏幕上显示电量</span><br><span class="line"></span><br><span class="line">HyperKey + [: move app to left screen；把App移动到下一个屏幕</span><br><span class="line"></span><br><span class="line">HyperKey + ]: move app to right screen；把App移动到上一个屏幕</span><br><span class="line"></span><br><span class="line">HyperKey + return: maximize current window</span><br><span class="line"></span><br><span class="line">HyperKey + left: resize current window to the left half of the screen</span><br><span class="line"></span><br><span class="line">HyperKey + right: resize current window to the right half of the screen</span><br><span class="line"></span><br><span class="line">HyperKey + up: resize current window to the top half of the screen</span><br><span class="line"></span><br><span class="line">HyperKey + down: resize current window to the bottom half of the screen</span><br><span class="line"></span><br><span class="line">HyperKey + x: launch application by x (see key2App in key-bindings.lua, you can customize it in your own way)</span><br><span class="line"></span><br><span class="line">&#123;&quot;CMD&quot;,&quot;Ctrl&quot;&#125; + up: volume up</span><br><span class="line"></span><br><span class="line">&#123;&quot;CMD&quot;,&quot;Ctrl&quot;&#125; + down: volume down</span><br></pre></td></tr></table></figure>
