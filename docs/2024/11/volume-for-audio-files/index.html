@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="参考： https:&#x2F;&#x2F;fireattack.wordpress.com&#x2F;2017&#x2F;02&#x2F;06&#x2F;replaygain-loudness-normalization-and-applications&#x2F;  问题不同音轨之间的平均响度差别很大，用户播放时需要不停地调整音量来获得一个相对舒适的响度。 通俗的说，就是由的文件音量太大，由的文件音量太低。 回放增益 Replay Gain进行回放增益处理的步骤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音频文件的音量处理">
+<meta property="og:url" content="https://blog.zfdang.com/2024/11/volume-for-audio-files/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="参考： https:&#x2F;&#x2F;fireattack.wordpress.com&#x2F;2017&#x2F;02&#x2F;06&#x2F;replaygain-loudness-normalization-and-applications&#x2F;  问题不同音轨之间的平均响度差别很大，用户播放时需要不停地调整音量来获得一个相对舒适的响度。 通俗的说，就是由的文件音量太大，由的文件音量太低。 回放增益 Replay Gain进行回放增益处理的步骤">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-03T01:06:31.000Z">
+<meta property="article:modified_time" content="2024-11-04T01:21:24.409Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="音频">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>音频文件的音量处理</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9955845731356398"
+     crossorigin="anonymous"></script>  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇 " href="/2024/11/board-move-encoding-for-chinese-chess/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2024/11/CalledFromWrongThreadException/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2024/11/volume-for-audio-files/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&text=音频文件的音量处理"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&is_video=false&description=音频文件的音量处理"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=音频文件的音量处理&body=Check out this article: https://blog.zfdang.com/2024/11/volume-for-audio-files/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&name=音频文件的音量处理&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2024/11/volume-for-audio-files/&t=音频文件的音量处理"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%94%BE%E5%A2%9E%E7%9B%8A-Replay-Gain"><span class="toc-number">2.</span> <span class="toc-text">回放增益 Replay Gain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EBU-R128"><span class="toc-number">3.</span> <span class="toc-text">EBU R128</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">4.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rsgain"><span class="toc-number">4.1.</span> <span class="toc-text">rsgain</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        音频文件的音量处理
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-11-03T01:06:31.000Z" itemprop="datePublished">2024-11-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E9%9F%B3%E9%A2%91/" rel="tag">音频</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>参考：</p>
+<pre><code>https://fireattack.wordpress.com/2017/02/06/replaygain-loudness-normalization-and-applications/
+</code></pre>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>不同音轨之间的平均响度差别很大，用户播放时需要不停地调整音量来获得一个相对舒适的响度。</p>
+<p>通俗的说，就是由的文件音量太大，由的文件音量太低。</p>
+<h2 id="回放增益-Replay-Gain"><a href="#回放增益-Replay-Gain" class="headerlink" title="回放增益 Replay Gain"></a>回放增益 Replay Gain</h2><p>进行回放增益处理的步骤是：首先对整个音频文件进行心理声学分析扫描，以量度它的感知响度和峰值电平。音频文件的原始响度与目标响度（通常定为89分贝的声压值）的差别被计算出来，这个差别称为增益值。</p>
+<p>典型的做法是，将该音频文件的增益值和峰值电平值存储于文件的元数据中，以使支持回放增益的音频播放器能够自动衰减（或在一些情形下放大）输出，从而在回放不同的音频文件时得到相似的输出响度。这样就可以避免因制作时制定的标准不同而造成在播放不同专辑的音频文件时需要不断手动调整音量的问题。进行回放增益处理的另一个优势在于，音频文件的峰值电平信息也可用于避免响度较高的歌曲产生削波。</p>
+<p>回放增益的的实现通常也包括向音频文件内加入元数据而不改变原始音频数据的过程。在回放增益标准指定了一个8字节文件头域的同时，许多流行的音频格式利用文件标记(tag)来记录回放增益信息。如Flac和Ogg Vorbis格式的文件利用 REPLAYGAIN_* 注释域；而MP3文件通常使用ID3v2或APEv2格式的文件标记来记录。</p>
+<p>一些传统音频播放器不支持回放增益元数据。使用这些播放器实现增益值校正的变通方法是直接按照回放增益扫描值进行音量调整，或创建一个经过音量修正的音频文件副本。不过在后者的情形下，所进行的处理可能不是无损可逆的。</p>
+<p>回放增益英文名称的标准写法是：“Replay Gain”，但通常也有“ReplayGain”或“replaygain”的写法。</p>
+<h2 id="EBU-R128"><a href="#EBU-R128" class="headerlink" title="EBU R128"></a>EBU R128</h2><p>在2011年，欧洲广播联盟（EBU）提出了一个新规范，EBU R128（解读），其中对响度规格化进行了规范。</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="rsgain"><a href="#rsgain" class="headerlink" title="rsgain"></a>rsgain</h3><pre><code>https://github.com/complexlogic/rsgain
+</code></pre>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%94%BE%E5%A2%9E%E7%9B%8A-Replay-Gain"><span class="toc-number">2.</span> <span class="toc-text">回放增益 Replay Gain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EBU-R128"><span class="toc-number">3.</span> <span class="toc-text">EBU R128</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">4.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rsgain"><span class="toc-number">4.1.</span> <span class="toc-text">rsgain</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2024/11/volume-for-audio-files/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&text=音频文件的音量处理"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&is_video=false&description=音频文件的音量处理"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=音频文件的音量处理&body=Check out this article: https://blog.zfdang.com/2024/11/volume-for-audio-files/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&title=音频文件的音量处理"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2024/11/volume-for-audio-files/&name=音频文件的音量处理&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2024/11/volume-for-audio-files/&t=音频文件的音量处理"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

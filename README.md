@@ -1,5 +1,7 @@
 # blog.zfdang.com
+
 Blog based on Hexo
+
 
 # How to
 
@@ -14,3 +16,13 @@ page	source
 draft	source/_drafts
 
 sh update.sh  
+
+# Install & Upgrade 
+
+```
+npm install hexo-cli -g
+
+npm update
+
+```
+
