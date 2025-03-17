@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="在安卓程序里运行二进制代码在安卓应用里运行可执行程序 run binary file in android app 这里以《象棋鱼》程序运行pikafish引擎为例子 相关的文件： 1234567https:&#x2F;&#x2F;github.com&#x2F;zfdang&#x2F;chinese-chess-fish-android&#x2F;tree&#x2F;master&#x2F;app&#x2F;src&#x2F;main&#x2F;pikafish&#x2F;https:&#x2F;&#x2F;github.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在安卓程序里运行二进制代码">
+<meta property="og:url" content="https://blog.zfdang.com/2025/03/run-binary-in-android-app/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="在安卓程序里运行二进制代码在安卓应用里运行可执行程序 run binary file in android app 这里以《象棋鱼》程序运行pikafish引擎为例子 相关的文件： 1234567https:&#x2F;&#x2F;github.com&#x2F;zfdang&#x2F;chinese-chess-fish-android&#x2F;tree&#x2F;master&#x2F;app&#x2F;src&#x2F;main&#x2F;pikafish&#x2F;https:&#x2F;&#x2F;github.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-17T00:06:50.000Z">
+<meta property="article:modified_time" content="2025-03-17T00:17:37.450Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>在安卓程序里运行二进制代码</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9955845731356398"
+     crossorigin="anonymous"></script>  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2024/11/draw-arrow-shape-in-java/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2025/03/run-binary-in-android-app/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&text=在安卓程序里运行二进制代码"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&is_video=false&description=在安卓程序里运行二进制代码"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在安卓程序里运行二进制代码&body=Check out this article: https://blog.zfdang.com/2025/03/run-binary-in-android-app/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&name=在安卓程序里运行二进制代码&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&t=在安卓程序里运行二进制代码"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8%E5%AE%89%E5%8D%93%E7%A8%8B%E5%BA%8F%E9%87%8C%E8%BF%90%E8%A1%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">在安卓程序里运行二进制代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pikafish%E5%BC%95%E6%93%8E%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">pikafish引擎运行的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-Q%E4%B9%8B%E5%90%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">Android Q之后的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#app-build-gradle-kts"><span class="toc-number">1.2.1.</span> <span class="toc-text">app&#x2F;build.gradle.kts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src-main-pikafish-%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">src&#x2F;main&#x2F;pikafish&#x2F;的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">调用代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E8%BF%B0%E6%96%B9%E6%B3%95%E5%9C%A8debug-release%E7%89%88%E6%9C%AC%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">1.3.</span> <span class="toc-text">上述方法在debug&#x2F;release版本的差异</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        在安卓程序里运行二进制代码
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-03-17T00:06:50.000Z" itemprop="datePublished">2025-03-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="在安卓程序里运行二进制代码"><a href="#在安卓程序里运行二进制代码" class="headerlink" title="在安卓程序里运行二进制代码"></a>在安卓程序里运行二进制代码</h1><p>在安卓应用里运行可执行程序</p>
+<p>run binary file in android app</p>
+<p>这里以《象棋鱼》程序运行pikafish引擎为例子</p>
+<p>相关的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/zfdang/chinese-chess-fish-android/tree/master/app/src/main/pikafish/</span><br><span class="line"></span><br><span class="line">https://github.com/zfdang/chinese-chess-fish-android/blob/master/app/build.gradle.kts</span><br><span class="line"></span><br><span class="line">https://github.com/zfdang/chinese-chess-fish-android/blob/master/app/src/main/java/org/petero/droidfish/engine/PikafishExternalEngine.java</span><br><span class="line"></span><br><span class="line">https://github.com/zfdang/chinese-chess-fish-android/blob/master/app/src/main/java/org/petero/droidfish/engine/ExternalEngine.java</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="pikafish引擎运行的问题"><a href="#pikafish引擎运行的问题" class="headerlink" title="pikafish引擎运行的问题"></a>pikafish引擎运行的问题</h2><p>《象棋鱼》程序会在程序里启动pikafish进程，并通过uci协议和pikafish进程进行通讯。</p>
+<p>在Android Q之前，安卓程序可以将pikafish从assets里复制到data目录，然后运行data目录里的二进制文件。</p>
+<p>但是Android Q之后，为了安全，程序就不允许运行data目录里的文件了。</p>
+<pre><code>error=13, Permission denied
+</code></pre>
+<p>From Android Q onwards, you cannot execute binaries in your app’s private data directory</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/60370424/permission-is-denied-using-android-q-ffmpeg-error-13-permission-denied">https://stackoverflow.com/questions/60370424/permission-is-denied-using-android-q-ffmpeg-error-13-permission-denied</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">The change to block exec() on application data files for targetAPI &gt;= Q is working-as-intended.</span><br><span class="line">Please see https://android-review.googlesource.com/c/platform/system/sepolicy/+/804149 for background on this change.</span><br><span class="line"> Calling exec() on writable application files is a W^X (https://en.wikipedia.org/wiki/W%5EX) violation</span><br><span class="line"> and represents an unsafe application practice.</span><br><span class="line">Executable code should always be loaded from the application APK.</span><br><span class="line"></span><br><span class="line">While exec() no longer works on files within the application home directory, it continues</span><br><span class="line">to be supported for files within the read-only /data/app directory. In particular, it</span><br><span class="line">should be possible to package the binaries into your application&#x27;s native libs directory</span><br><span class="line">and enable android:extractNativeLibs=true, and then call exec() on the /data/app artifacts.</span><br><span class="line"> A similar approach is done with the wrap.sh functionality,</span><br><span class="line">documented at https://developer.android.com/ndk/guides/wrap-script#packaging_wrapsh .</span><br><span class="line"></span><br><span class="line">Additionally, please be aware that executables executed via exec() are not managed according</span><br><span class="line"> to the Android process lifecycle, and generally speaking, exec() is discouraged from Android</span><br><span class="line">applications. While not Android documentation, Using &quot;exec()&quot; with NDK covers this in some</span><br><span class="line">detail. Relying on exec() may be problematic in future Android versions.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Android-Q之后的解决方法"><a href="#Android-Q之后的解决方法" class="headerlink" title="Android Q之后的解决方法"></a>Android Q之后的解决方法</h2><pre><code>https://withme.skullzbones.com/blog/programming/execute-native-binaries-android-q-no-root/
+</code></pre>
+<p>这篇文章里，介绍了一种方法，将pikafish文件作为jniLibs，复制到程序的lib目录里运行，这种方法是Android新版本也允许的。</p>
+<p>《象棋鱼》里的具体代码为：</p>
+<h3 id="app-build-gradle-kts"><a href="#app-build-gradle-kts" class="headerlink" title="app&#x2F;build.gradle.kts"></a>app&#x2F;build.gradle.kts</h3><p>创建一个task, 将src&#x2F;main&#x2F;pikafish&#x2F;里的所有文件都打包成native-libs.jar</p>
+<p>这个task将作为preBuild的依赖存在。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">tasks.register&lt;Jar&gt;(&quot;nativeLibsToJar&quot;) &#123;</span><br><span class="line">    description = &quot;create a jar archive of the native libs&quot;</span><br><span class="line">    destinationDirectory.set(layout.buildDirectory.dir(&quot;native-libs&quot;))</span><br><span class="line">    archiveBaseName.set(&quot;native-libs&quot;)</span><br><span class="line">    from(fileTree(&quot;src/main/pikafish/&quot;) &#123;</span><br><span class="line">        include(&quot;**/*&quot;)</span><br><span class="line">    &#125;)</span><br><span class="line">    into(&quot;lib/&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tasks.named(&quot;preBuild&quot;) &#123;</span><br><span class="line">    dependsOn(tasks.named(&quot;nativeLibsToJar&quot;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在《象棋鱼》的依赖里，添加生成的native-libs.jar</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation(files(&quot;$buildDir/native-libs/native-libs.jar&quot;))</span><br></pre></td></tr></table></figure>
+
+<h3 id="src-main-pikafish-的内容"><a href="#src-main-pikafish-的内容" class="headerlink" title="src&#x2F;main&#x2F;pikafish&#x2F;的内容"></a>src&#x2F;main&#x2F;pikafish&#x2F;的内容</h3><p>按照架构，将要运行的二进制程序放到对应的目录里。这里只支持arm64-v8a, 所以其他目录都为空。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯ pwd</span><br><span class="line">app/src/main/pikafish</span><br><span class="line">❯ tree</span><br><span class="line">.</span><br><span class="line">└── arm64-v8a</span><br><span class="line">    ├── libpikafish-armv8-dotprod.so</span><br><span class="line">    ├── libpikafish-armv8.so</span><br><span class="line">    ├── libpikafish.ini.so</span><br><span class="line">    └── libpikafish.nnue.so</span><br><span class="line"></span><br><span class="line">2 directories, 4 files</span><br></pre></td></tr></table></figure>
+
+<h3 id="调用代码"><a href="#调用代码" class="headerlink" title="调用代码"></a>调用代码</h3><p>app&#x2F;src&#x2F;main&#x2F;java&#x2F;org&#x2F;petero&#x2F;droidfish&#x2F;engine&#x2F;ExternalEngine.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   String nativeLibraryDir = ChessApp.getContext().getApplicationInfo().nativeLibraryDir;</span><br><span class="line">String PikafishEngineFile = &quot;libpikafish-armv8-dotprod.so&quot;;</span><br><span class="line">   File binFile = new File(nativeLibraryDir, PikafishEngineFile);</span><br><span class="line"></span><br><span class="line">   String exePath = binFile.getAbsolutePath();</span><br><span class="line">   Log.d(&quot;ExternalEngine&quot;, &quot;Starting engine: &quot; + exePath);</span><br><span class="line"></span><br><span class="line">   String engineWorkDir = new File(exePath).getParentFile();</span><br><span class="line"></span><br><span class="line">   ProcessBuilder pb = new ProcessBuilder(exePath);</span><br><span class="line">   pb.directory(engineWorkDir);</span><br><span class="line">   synchronized (EngineUtil.nativeLock) &#123;</span><br><span class="line">       engineProc = pb.start();</span><br><span class="line">   &#125;</span><br><span class="line">   reNice();</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="上述方法在debug-release版本的差异"><a href="#上述方法在debug-release版本的差异" class="headerlink" title="上述方法在debug&#x2F;release版本的差异"></a>上述方法在debug&#x2F;release版本的差异</h2><p>上面的方法，确实可以把目录里的任意文件都打包进apk里去，debug版本也可以正常的安装到lib里去</p>
+<p>但是，release版本，会过滤非libxxx.so格式的文件！！！只有符合这个格式的，才会被复制到lib里去</p>
+<p>所以如果你的可执行程序不符合这个规则，目前的解决方法是只能改名字了</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8%E5%AE%89%E5%8D%93%E7%A8%8B%E5%BA%8F%E9%87%8C%E8%BF%90%E8%A1%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">在安卓程序里运行二进制代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pikafish%E5%BC%95%E6%93%8E%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">pikafish引擎运行的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-Q%E4%B9%8B%E5%90%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">Android Q之后的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#app-build-gradle-kts"><span class="toc-number">1.2.1.</span> <span class="toc-text">app&#x2F;build.gradle.kts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src-main-pikafish-%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">src&#x2F;main&#x2F;pikafish&#x2F;的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">调用代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E8%BF%B0%E6%96%B9%E6%B3%95%E5%9C%A8debug-release%E7%89%88%E6%9C%AC%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">1.3.</span> <span class="toc-text">上述方法在debug&#x2F;release版本的差异</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2025/03/run-binary-in-android-app/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&text=在安卓程序里运行二进制代码"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&is_video=false&description=在安卓程序里运行二进制代码"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在安卓程序里运行二进制代码&body=Check out this article: https://blog.zfdang.com/2025/03/run-binary-in-android-app/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&title=在安卓程序里运行二进制代码"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&name=在安卓程序里运行二进制代码&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2025/03/run-binary-in-android-app/&t=在安卓程序里运行二进制代码"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
