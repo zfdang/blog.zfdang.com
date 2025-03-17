@@ -107,13 +107,19 @@ tasks.named("preBuild") {
 app/src/main/pikafish
 ❯ tree
 .
-└── arm64-v8a
-    ├── libpikafish-armv8-dotprod.so
-    ├── libpikafish-armv8.so
-    ├── libpikafish.ini.so
-    └── libpikafish.nnue.so
+├── arm64-v8a
+│   ├── libpikafish-armv8-dotprod.so
+│   ├── libpikafish-armv8.so
+│   ├── libpikafish.ini.so
+│   └── libpikafish.nnue.so
+├── armeabi-v7a
+│   └── arm32.txt
+├── x86
+│   └── X86.txt
+└── x86_64
+    └── x86_64.txt
 
-2 directories, 4 files
+5 directories, 7 files
 ```
 
 ### 调用代码
