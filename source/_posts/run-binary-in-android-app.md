@@ -152,3 +152,11 @@ app/src/main/java/org/petero/droidfish/engine/ExternalEngine.java
 但是，release版本，会过滤非libxxx.so格式的文件！！！只有符合这个格式的，才会被复制到lib里去
 
 所以如果你的可执行程序不符合这个规则，目前的解决方法是只能改名字了
+
+## 最终的二进制文件目录
+
+```
+Starting engine: /data/app/~~PJhGbsOzqIChNCREMdzKoQ==/com.zfdang.chess-6oDqfHyzJXlrztkqRcwi-Q==/lib/arm64/libpikafish-armv8.so
+setOption: evalfile /data/app/~~PJhGbsOzqIChNCREMdzKoQ==/com.zfdang.chess-6oDqfHyzJXlrztkqRcwi-Q==/lib/arm64/libpikafish.nnue.so
+
+```
