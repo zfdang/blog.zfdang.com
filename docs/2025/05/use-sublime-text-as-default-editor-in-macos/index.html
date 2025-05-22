@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="安装了Xcode之后，这厮会把很多文件的缺省打开方式设置为它自己，但是它又是那么的臃肿… https:&#x2F;&#x2F;www.darraghoriordan.com&#x2F;2021&#x2F;09&#x2F;15&#x2F;vscode-default-text-files-mac  找到你希望使用的编辑器的名字osascript -e &#39;id of app &quot;Sublime Text&quot;&#39;  com.subl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在MacOS里使用sublime text作为缺省的编辑器">
+<meta property="og:url" content="https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="安装了Xcode之后，这厮会把很多文件的缺省打开方式设置为它自己，但是它又是那么的臃肿… https:&#x2F;&#x2F;www.darraghoriordan.com&#x2F;2021&#x2F;09&#x2F;15&#x2F;vscode-default-text-files-mac  找到你希望使用的编辑器的名字osascript -e &#39;id of app &quot;Sublime Text&quot;&#39;  com.subl">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-22T02:25:00.000Z">
+<meta property="article:modified_time" content="2025-05-22T02:29:03.243Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>在MacOS里使用sublime text作为缺省的编辑器</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2025/03/run-binary-in-android-app/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&text=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&is_video=false&description=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在MacOS里使用sublime text作为缺省的编辑器&body=Check out this article: https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&name=在MacOS里使用sublime text作为缺省的编辑器&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&t=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E4%BD%A0%E5%B8%8C%E6%9C%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E5%90%8D%E5%AD%97"><span class="toc-number">1.</span> <span class="toc-text">找到你希望使用的编辑器的名字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">安装小工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E7%BC%BA%E7%9C%81%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">更改缺省的打开方式</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        在MacOS里使用sublime text作为缺省的编辑器
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-05-22T02:25:00.000Z" itemprop="datePublished">2025-05-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>安装了Xcode之后，这厮会把很多文件的缺省打开方式设置为它自己，但是它又是那么的臃肿…</p>
+<pre><code>https://www.darraghoriordan.com/2021/09/15/vscode-default-text-files-mac
+</code></pre>
+<h2 id="找到你希望使用的编辑器的名字"><a href="#找到你希望使用的编辑器的名字" class="headerlink" title="找到你希望使用的编辑器的名字"></a>找到你希望使用的编辑器的名字</h2><pre><code>osascript -e &#39;id of app &quot;Sublime Text&quot;&#39;
+</code></pre>
+<p>com.sublimetext.4</p>
+<h2 id="安装小工具"><a href="#安装小工具" class="headerlink" title="安装小工具"></a>安装小工具</h2><pre><code>brew install duti
+</code></pre>
+<h2 id="更改缺省的打开方式"><a href="#更改缺省的打开方式" class="headerlink" title="更改缺省的打开方式"></a>更改缺省的打开方式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">duti -s com.sublimetext.4 public.json all</span><br><span class="line">duti -s com.sublimetext.4 public.plain-text all</span><br><span class="line">duti -s com.sublimetext.4 public.python-script all</span><br><span class="line">duti -s com.sublimetext.4 public.shell-script all</span><br><span class="line">duti -s com.sublimetext.4 public.source-code all</span><br><span class="line">duti -s com.sublimetext.4 public.text all</span><br><span class="line">duti -s com.sublimetext.4 public.unix-executable all</span><br><span class="line"># this works for files without a filename extension</span><br><span class="line">duti -s com.sublimetext.4 public.data all</span><br><span class="line"></span><br><span class="line">duti -s com.sublimetext.4 .c all</span><br><span class="line">duti -s com.sublimetext.4 .cpp all</span><br><span class="line">duti -s com.sublimetext.4 .cs all</span><br><span class="line">duti -s com.sublimetext.4 .css all</span><br><span class="line">duti -s com.sublimetext.4 .go all</span><br><span class="line">duti -s com.sublimetext.4 .java all</span><br><span class="line">duti -s com.sublimetext.4 .js all</span><br><span class="line">duti -s com.sublimetext.4 .sass all</span><br><span class="line">duti -s com.sublimetext.4 .scss all</span><br><span class="line">duti -s com.sublimetext.4 .less all</span><br><span class="line">duti -s com.sublimetext.4 .vue all</span><br><span class="line">duti -s com.sublimetext.4 .cfg all</span><br><span class="line">duti -s com.sublimetext.4 .json all</span><br><span class="line">duti -s com.sublimetext.4 .jsx all</span><br><span class="line">duti -s com.sublimetext.4 .log all</span><br><span class="line">duti -s com.sublimetext.4 .lua all</span><br><span class="line">duti -s com.sublimetext.4 .md all</span><br><span class="line">duti -s com.sublimetext.4 .php all</span><br><span class="line">duti -s com.sublimetext.4 .pl all</span><br><span class="line">duti -s com.sublimetext.4 .py all</span><br><span class="line">duti -s com.sublimetext.4 .rb all</span><br><span class="line">duti -s com.sublimetext.4 .ts all</span><br><span class="line">duti -s com.sublimetext.4 .tsx all</span><br><span class="line">duti -s com.sublimetext.4 .txt all</span><br><span class="line">duti -s com.sublimetext.4 .conf all</span><br><span class="line">duti -s com.sublimetext.4 .yaml all</span><br><span class="line">duti -s com.sublimetext.4 .yml all</span><br><span class="line">duti -s com.sublimetext.4 .toml all</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E4%BD%A0%E5%B8%8C%E6%9C%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E5%90%8D%E5%AD%97"><span class="toc-number">1.</span> <span class="toc-text">找到你希望使用的编辑器的名字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">安装小工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E7%BC%BA%E7%9C%81%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">更改缺省的打开方式</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&text=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&is_video=false&description=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在MacOS里使用sublime text作为缺省的编辑器&body=Check out this article: https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&title=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&name=在MacOS里使用sublime text作为缺省的编辑器&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2025/05/use-sublime-text-as-default-editor-in-macos/&t=在MacOS里使用sublime text作为缺省的编辑器"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
