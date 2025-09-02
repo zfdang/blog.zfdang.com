@@ -15,9 +15,6 @@ tags:
 ```
 ----------------------------------------------------------------------
 北京电信
-NextTrace v1.4.2 2025-07-26T12:51:04Z cefed2a
-[NextTrace API] preferred API IP - 45.88.193.28 - 118.79ms - 🐠 (Relay) → Misaka.LAX
-IP Geo Data Provider: LeoMoeAPI
 traceroute to 219.141.147.210, 30 hops max, 52 bytes payload, ICMP mode
 1   140.204.226.141 AS31898  [OC-195]         美国 亚利桑那州 凤凰城  cloud.oracle.com
                                               0.31 ms / 0.31 ms / 0.26 ms
@@ -40,9 +37,6 @@ traceroute to 219.141.147.210, 30 hops max, 52 bytes payload, ICMP mode
                                               186.38 ms / 188.04 ms / 188.87 ms
 ----------------------------------------------------------------------
 北京联通
-NextTrace v1.4.2 2025-07-26T12:51:04Z cefed2a
-[NextTrace API] preferred API IP - 203.10.96.163 - 172.41ms - 🐠 (Relay) → Misaka.LAX
-IP Geo Data Provider: LeoMoeAPI
 traceroute to 202.106.50.1, 30 hops max, 52 bytes payload, ICMP mode
 1   140.204.226.175 AS31898  [OC-195]         美国    cloud.oracle.com
                                               0.24 ms / 0.31 ms / 0.25 ms
@@ -79,9 +73,6 @@ traceroute to 202.106.50.1, 30 hops max, 52 bytes payload, ICMP mode
                                               247.81 ms / 247.85 ms / 247.94 ms
 ----------------------------------------------------------------------
 北京移动
-NextTrace v1.4.2 2025-07-26T12:51:04Z cefed2a
-[NextTrace API] preferred API IP - 45.88.193.28 - 118.43ms - 🐠 (Relay) → Misaka.LAX
-IP Geo Data Provider: LeoMoeAPI
 traceroute to 221.179.155.161, 30 hops max, 52 bytes payload, ICMP mode
 1   140.91.194.140  AS31898  [ORACLE-CLOUD]   美国 亚利桑那州 凤凰城  cloud.oracle.com
                                               0.29 ms / 0.30 ms / 0.26 ms
@@ -123,9 +114,6 @@ traceroute to 221.179.155.161, 30 hops max, 52 bytes payload, ICMP mode
 ```
 ----------------------------------------------------------------------
 北京电信
-NextTrace v1.4.2 2025-07-26T12:51:04Z cefed2a
-[NextTrace API] preferred API IP - 103.62.49.83 - 206.75ms - 🐠 (Relay) → Misaka.LAX
-IP Geo Data Provider: LeoMoeAPI
 traceroute to 219.141.147.210, 30 hops max, 52 bytes payload, ICMP mode
 1   140.91.214.3    AS31898  [ORACLE-CLOUD]   韩国 首尔特别市 首尔  cloud.oracle.com
                                               0.19 ms / 0.31 ms / 0.23 ms
@@ -149,9 +137,6 @@ traceroute to 219.141.147.210, 30 hops max, 52 bytes payload, ICMP mode
 
 ----------------------------------------------------------------------
 北京联通
-NextTrace v1.4.2 2025-07-26T12:51:04Z cefed2a
-[NextTrace API] preferred API IP - 103.62.49.83 - 205.53ms - 🐠 (Relay) → Misaka.LAX
-IP Geo Data Provider: LeoMoeAPI
 traceroute to 202.106.50.1, 30 hops max, 52 bytes payload, ICMP mode
 1   140.91.214.2    AS31898  [ORACLE-CLOUD]   韩国 首尔特别市 首尔  cloud.oracle.com
                                               0.25 ms / 0.27 ms / 0.26 ms
@@ -175,9 +160,6 @@ traceroute to 202.106.50.1, 30 hops max, 52 bytes payload, ICMP mode
 
 ----------------------------------------------------------------------
 北京移动
-NextTrace v1.4.2 2025-07-26T12:51:04Z cefed2a
-[NextTrace API] preferred API IP - 103.62.49.83 - 206.06ms - 🐠 (Relay) → Misaka.LAX
-IP Geo Data Provider: LeoMoeAPI
 traceroute to 221.179.155.161, 30 hops max, 52 bytes payload, ICMP mode
 1   140.91.214.30   AS31898  [ORACLE-CLOUD]   韩国 首尔特别市 首尔  cloud.oracle.com
                                               0.23 ms / 0.26 ms / 0.23 ms
