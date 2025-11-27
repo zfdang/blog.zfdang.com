@@ -16,9 +16,9 @@ tags:
 
 ## 尺标相机
 
-趁着Antigravity免费，就用google的免费工具，搓了这么一个安卓程序：
+趁着Antigravity免费，就用google的免费工具，搓了这么一个安卓程序
 
-![尺标相机](/img/2025/dimcam.png)
+**"尺标相机” -- “尺寸标注相机”  -- "Dimension Marking Camera"**
 
 
 我试用了一下，感觉还行，有装修需要的同学可以拿走，开源无广告，安全放心。
