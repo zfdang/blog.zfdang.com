@@ -98,3 +98,13 @@ Android 16 上的 LPA（Local Profile Assistant）/ Telephony Service 占用 eUI
 | profile 未激活 | ✔ 空闲         | ✘ 未使用              | ✔ 可以识别    |
 | profile 激活  | ✘ 锁定，不开放给第三方 | ✔ 被系统占用            | ✘ 无法识别    |
 
+
+# 解决方法
+
+| 操作                       | Android 是否释放 eUICC 通道？ | EasyEUICC 是否可访问 |
+| ------------------------ | ---------------------- | --------------- |
+| 禁用 SIM（subscription off） | ❌ 不释放                  | ❌ 不能访问          |
+| 飞行模式                     | ❌ 不释放                  | ❌ 不能访问          |
+| 禁用 profile               | ✔ 释放                   | ✔ 可以访问          |
+| 删除 profile               | ✔ 完全释放                 | ✔ 可以访问          |
+
