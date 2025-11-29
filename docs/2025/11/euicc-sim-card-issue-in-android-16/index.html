@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="问题“写入 profile 后，EasyEUICC 无法再识别实体 eUICC 卡，但禁用 profile 后又能识别”  ——这种现象在 EUICC 体系里其实是有明确原因的。 核心原因Android 16 上的 LPA（Local Profile Assistant）&#x2F; Telephony Service 占用 eUICC 通道，导致第三方工具无法再访问 你现在观察到的现象符合一种典">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实体EUICC esim卡在android 16下面的问题">
+<meta property="og:url" content="https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="问题“写入 profile 后，EasyEUICC 无法再识别实体 eUICC 卡，但禁用 profile 后又能识别”  ——这种现象在 EUICC 体系里其实是有明确原因的。 核心原因Android 16 上的 LPA（Local Profile Assistant）&#x2F; Telephony Service 占用 eUICC 通道，导致第三方工具无法再访问 你现在观察到的现象符合一种典">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-29T13:51:55.000Z">
+<meta property="article:modified_time" content="2025-11-29T14:03:43.731Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>实体EUICC esim卡在android 16下面的问题</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2025/11/dimension-marking-camera/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&text=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&is_video=false&description=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=实体EUICC esim卡在android 16下面的问题&body=Check out this article: https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&name=实体EUICC esim卡在android 16下面的问题&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&t=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.</span> <span class="toc-text">核心原因</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A%E5%A6%82%E4%B8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">详细解释如下</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">技术原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%81%E7%94%A8-profile-%E5%90%8E%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">禁用 profile 后：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-16%EF%BC%88%E5%9F%BA%E4%BA%8E-Android-U%EF%BC%89%E5%AF%B9-eSIM-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E6%9B%B4%E5%8A%A0%E4%B8%A5%E6%A0%BC%E4%BA%86"><span class="toc-number">2.1.3.</span> <span class="toc-text">Android 16（基于 Android U）对 eSIM 访问权限更加严格了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%BF%80%E6%B4%BB%E7%9A%84-profile-%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%EF%BC%8C%E4%BD%86-EasyEUICC-%E5%8D%B4%E8%AE%A4%E4%B8%BA%E5%AE%9E%E4%BD%93%E5%8D%A1%E2%80%9C%E6%B6%88%E5%A4%B1%E2%80%9D%EF%BC%9F"><span class="toc-number">2.1.4.</span> <span class="toc-text">为什么激活的 profile 能正常工作，但 EasyEUICC 却认为实体卡“消失”？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">3.</span> <span class="toc-text">结论</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        实体EUICC esim卡在android 16下面的问题
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-11-29T13:51:55.000Z" itemprop="datePublished">2025-11-29</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><strong>“写入 profile 后，EasyEUICC 无法再识别实体 eUICC 卡，但禁用 profile 后又能识别”</strong></p>
+<p> ——这种现象在 EUICC 体系里其实是有明确原因的。</p>
+<h1 id="核心原因"><a href="#核心原因" class="headerlink" title="核心原因"></a>核心原因</h1><p>Android 16 上的 LPA（Local Profile Assistant）&#x2F; Telephony Service 占用 eUICC 通道，导致第三方工具无法再访问</p>
+<p>你现在观察到的现象符合一种典型情况：</p>
+<blockquote>
+<p>当某个 eSIM Profile 被激活后，手机系统会独占 eUICC 的通信通道，阻止外部软件（如 EasyEUICC）再次进入 EUICC 的管理通道（ISD-R）</p>
+</blockquote>
+<h2 id="详细解释如下"><a href="#详细解释如下" class="headerlink" title="详细解释如下"></a>详细解释如下</h2><h3 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h3><ol>
+<li>EUICC 有两个不同的安全域</li>
+</ol>
+<ul>
+<li>ISD-R（Root &#x2F; 管理安全域）<ul>
+<li>   外部写 profile、管理卡的入口</li>
+<li>   EasyEUICC 就是通过 ISD-R 通道与 eUICC 通信。</li>
+</ul>
+</li>
+<li>ISD-P（Profile 的安全域）<ul>
+<li>已激活的运营商 profile 工作时占用它。</li>
+</ul>
+</li>
+</ul>
+<p>当 profile 被激活时：</p>
+<p>➜ Android 系统的 LPA 和 modem 会自动锁定到 ISD-P 的通道</p>
+<p>这是为了保证以下事情：</p>
+<ul>
+<li>基带稳定性</li>
+<li>profile 的安全性</li>
+<li>防止外部应用篡改活跃 profile</li>
+</ul>
+<p>因此：</p>
+<ul>
+<li>👉 系统不允许外部工具再访问 ISD-R（管理安全域）</li>
+<li>👉 EasyEUICC 就检测不到实体卡了（其实卡还在，只是无法进入管理模式）</li>
+</ul>
+<p>当你禁用 profile 时，Android 释放了 ISD-P，并重新开放 ISD-R</p>
+<h3 id="禁用-profile-后："><a href="#禁用-profile-后：" class="headerlink" title="禁用 profile 后："></a>禁用 profile 后：</h3><ul>
+<li>Android telephony 切回 “无激活 profile” 状态</li>
+<li>modem 释放占用的 ISD-P</li>
+<li>LPA 不再锁定 eUICC</li>
+<li>所以外部应用（EasyEUICC）又可以访问 ISD-R 了</li>
+</ul>
+<p>于是你看到：</p>
+<ul>
+<li>禁用 profile → EasyEUICC 又可以识别 eUICC</li>
+<li>激活 profile → EasyEUICC 再次无法识别</li>
+</ul>
+<h3 id="Android-16（基于-Android-U）对-eSIM-访问权限更加严格了"><a href="#Android-16（基于-Android-U）对-eSIM-访问权限更加严格了" class="headerlink" title="Android 16（基于 Android U）对 eSIM 访问权限更加严格了"></a>Android 16（基于 Android U）对 eSIM 访问权限更加严格了</h3><p>从 Android 14&#x2F;15&#x2F;16 开始，Google 加强了以下限制：</p>
+<ul>
+<li>第三方 app 无权访问 EuiccManager 的管理级 API</li>
+<li>运营商 profile 激活期间锁定外部通道（APDU 通道）</li>
+<li>多 profile 并发的时候更严格阻断外部工具访问 eUICC</li>
+</ul>
+<p>许多非系统 LPA（如 EasyEUICC）都会受影响。</p>
+<p>你看到的行为正是 Android 16 的新策略导致的。</p>
+<h3 id="为什么激活的-profile-能正常工作，但-EasyEUICC-却认为实体卡“消失”？"><a href="#为什么激活的-profile-能正常工作，但-EasyEUICC-却认为实体卡“消失”？" class="headerlink" title="为什么激活的 profile 能正常工作，但 EasyEUICC 却认为实体卡“消失”？"></a>为什么激活的 profile 能正常工作，但 EasyEUICC 却认为实体卡“消失”？</h3><p>因为：</p>
+<ul>
+<li>profile 工作走的是 modem + ISD-P 支持的普通通信（正常注册网络）</li>
+<li>EasyEUICC 需要访问 ISD-R（管理通道）</li>
+</ul>
+<p>当 ISD-P 被占用，ISD-R 不允许并发访问，因此：</p>
+<ul>
+<li>✔ profile 仍能正常注册网络</li>
+<li>✘ EasyEUICC 无法进入管理通道 → “无法识别 eUICC”</li>
+</ul>
+<p>这是完全正常的、安全策略。</p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>你遇到的不是 bug，也不是 eSIM 写坏了，而是 Android 16 的正常安全机制。</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>ISD-R（管理）</th>
+<th>ISD-P（运营商 profile）</th>
+<th>EasyEUICC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>profile 未激活</td>
+<td>✔ 空闲</td>
+<td>✘ 未使用</td>
+<td>✔ 可以识别</td>
+</tr>
+<tr>
+<td>profile 激活</td>
+<td>✘ 锁定，不开放给第三方</td>
+<td>✔ 被系统占用</td>
+<td>✘ 无法识别</td>
+</tr>
+</tbody></table>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.</span> <span class="toc-text">核心原因</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A%E5%A6%82%E4%B8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">详细解释如下</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">技术原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%81%E7%94%A8-profile-%E5%90%8E%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">禁用 profile 后：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-16%EF%BC%88%E5%9F%BA%E4%BA%8E-Android-U%EF%BC%89%E5%AF%B9-eSIM-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E6%9B%B4%E5%8A%A0%E4%B8%A5%E6%A0%BC%E4%BA%86"><span class="toc-number">2.1.3.</span> <span class="toc-text">Android 16（基于 Android U）对 eSIM 访问权限更加严格了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%BF%80%E6%B4%BB%E7%9A%84-profile-%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%EF%BC%8C%E4%BD%86-EasyEUICC-%E5%8D%B4%E8%AE%A4%E4%B8%BA%E5%AE%9E%E4%BD%93%E5%8D%A1%E2%80%9C%E6%B6%88%E5%A4%B1%E2%80%9D%EF%BC%9F"><span class="toc-number">2.1.4.</span> <span class="toc-text">为什么激活的 profile 能正常工作，但 EasyEUICC 却认为实体卡“消失”？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">3.</span> <span class="toc-text">结论</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&text=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&is_video=false&description=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=实体EUICC esim卡在android 16下面的问题&body=Check out this article: https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&title=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&name=实体EUICC esim卡在android 16下面的问题&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2025/11/euicc-sim-card-issue-in-android-16/&t=实体EUICC esim卡在android 16下面的问题"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
