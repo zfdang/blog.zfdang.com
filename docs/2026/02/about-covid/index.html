@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="尽管新冠已经过去了几年了，但是对于新冠的起源、传播等，还有各种各样的传言。我自己不是专家，但是对这些事情，也有点好奇，就去跟AI讨论了一下。 主要问了几个问题：从病毒的基因来看，传播链是什么样的？美国之前的电子烟肺炎，是怎么回事？美国和意大利发现的在武汉疫情之前的新冠抗体，是怎么回事？新冠病毒的时间，不可能比2019年底更早么？ 了解这几个问题，也就基本上明白了新冠疫情的科学事实，对一些谣言也就能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于2019年底的新冠疫情">
+<meta property="og:url" content="https://blog.zfdang.com/2026/02/about-covid/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="尽管新冠已经过去了几年了，但是对于新冠的起源、传播等，还有各种各样的传言。我自己不是专家，但是对这些事情，也有点好奇，就去跟AI讨论了一下。 主要问了几个问题：从病毒的基因来看，传播链是什么样的？美国之前的电子烟肺炎，是怎么回事？美国和意大利发现的在武汉疫情之前的新冠抗体，是怎么回事？新冠病毒的时间，不可能比2019年底更早么？ 了解这几个问题，也就基本上明白了新冠疫情的科学事实，对一些谣言也就能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-021-00267-w/MediaObjects/41598_2021_267_Fig1_HTML.png">
+<meta property="og:image" content="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41579-022-00708-x/MediaObjects/41579_2022_708_Fig1_HTML.png">
+<meta property="og:image" content="https://www.rsna.org/-/media/images/rsna/news-articles/2022/march/kligerman-1.jpg?h=312&hash=52258BB6365272B8FD2DB3DD074693A3&iar=0&rev=4815e84c877941f59cdb3ba0103d02f9&w=500">
+<meta property="og:image" content="https://npr.brightspotcdn.com/dims4/default/2c6bc25/2147483647/strip/true/crop/2671x2000%2B0%2B0/resize/880x659%21/quality/90/?url=https://media.npr.org/assets/img/2019/09/27/ap_19270708738931-ab6e5dbe600c69bf5def80ec6c0e5469fba4ed55.jpg">
+<meta property="og:image" content="https://m.media-amazon.com/images/I/61dv6YdpB4L.jpg">
+<meta property="og:image" content="https://m.media-amazon.com/images/I/71U3BIiQE4L._AC_UF894%2C1000_QL80_.jpg">
+<meta property="og:image" content="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-021-00267-w/MediaObjects/41598_2021_267_Fig1_HTML.png">
+<meta property="og:image" content="https://www.mdpi.com/viruses/viruses-15-01394/article_deploy/html/images/viruses-15-01394-g001-550.jpg">
+<meta property="og:image" content="https://beast.community/images/clocks/strictClock.png">
+<meta property="og:image" content="https://fiveable.me/_next/image?q=75&url=https://storage.googleapis.com/static.prod.fiveable.me/search-images%252F%2522Molecular_clock_virology_phylogenetic_analysis_evolutionary_divergence_viral_strains_applications_concept_and_insights%2522-default.jpg&w=3840">
+<meta property="article:published_time" content="2026-02-21T01:45:15.000Z">
+<meta property="article:modified_time" content="2026-02-21T02:04:00.838Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-021-00267-w/MediaObjects/41598_2021_267_Fig1_HTML.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>关于2019年底的新冠疫情</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2026/01/return-of-PRC-to-the-united-nations/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/02/about-covid/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/02/about-covid/&text=关于2019年底的新冠疫情"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/02/about-covid/&is_video=false&description=关于2019年底的新冠疫情"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=关于2019年底的新冠疫情&body=Check out this article: https://blog.zfdang.com/2026/02/about-covid/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/02/about-covid/&name=关于2019年底的新冠疫情&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/02/about-covid/&t=关于2019年底的新冠疫情"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Q1-%E7%97%85%E6%AF%92%E7%9A%84%E4%BC%A0%E6%92%AD%E9%93%BE"><span class="toc-number">1.</span> <span class="toc-text">Q1:  病毒的传播链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E2019%E5%B9%B4%E5%BA%95%E7%88%86%E5%8F%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%96%AB%E6%83%85%EF%BC%8C%E4%BB%8E%E7%9B%AE%E5%89%8D%E7%9F%A5%E9%81%93%E7%9A%84%E8%AF%81%E6%8D%AE%E6%9D%A5%E7%9C%8B%EF%BC%8C%E5%B0%A4%E5%85%B6%E6%98%AF%E7%97%85%E6%AF%92%E5%9F%BA%E5%9B%A0%E7%9A%84%E5%8F%98%E5%BC%82%E9%93%BE%E6%9D%A5%E7%9C%8B%EF%BC%8C%E7%97%85%E6%AF%92%E7%9A%84%E5%88%9B%E6%92%AD%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E5%AD%90%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">对于2019年底爆发的新冠疫情，从目前知道的证据来看，尤其是病毒基因的变异链来看，病毒的创播链是什么样子的呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E7%AD%94%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">回答：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%80%E6%97%A9%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%AD%A6%E6%B1%89%E7%9A%84%E6%97%A9%E6%9C%9F%E4%BC%A0%E6%92%AD%EF%BC%882019%E5%B9%B411%E2%80%9312%E6%9C%88%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">一、最早阶段：武汉的早期传播（2019年11–12月）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E8%B5%B7%E6%BA%90%E6%97%B6%E9%97%B4"><span class="toc-number">1.3.1.</span> <span class="toc-text">1️⃣ 起源时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E5%9F%BA%E5%9B%A0%E8%B0%B1%E7%B3%BB%EF%BC%9AA-%E5%9E%8B%E4%B8%8E-B-%E5%9E%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">2️⃣ 基因谱系：A 型与 B 型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%AD%A6%E6%B1%89-%E2%86%92-%E4%B8%AD%E5%9B%BD%E5%85%B6%E4%BB%96%E5%9C%B0%E5%8C%BA-%E2%86%92-%E5%85%A8%E7%90%83%EF%BC%882020%E5%B9%B41%E2%80%933%E6%9C%88%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">二、武汉 → 中国其他地区 → 全球（2020年1–3月）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E6%92%AD%E9%93%BE%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">传播链模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%97%A9%E6%9C%9F%E5%85%B3%E9%94%AE%E7%AA%81%E5%8F%98%EF%BC%9AD614G%EF%BC%882020%E5%B9%B42%E2%80%934%E6%9C%88%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">三、早期关键突变：D614G（2020年2–4月）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%90%8E%E7%BB%AD%E4%B8%BB%E8%A6%81%E5%8F%98%E5%BC%82%E6%A0%AA%E7%9A%84%E5%88%86%E6%94%AF%E5%85%B3%E7%B3%BB"><span class="toc-number">1.6.</span> <span class="toc-text">四、后续主要变异株的分支关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B3%E4%BA%8E%E2%80%9C%E5%88%9B%E6%92%AD%E9%93%BE%E2%80%9D%E7%9A%84%E7%A7%91%E5%AD%A6%E5%85%B1%E8%AF%86"><span class="toc-number">1.7.</span> <span class="toc-text">五、关于“创播链”的科学共识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%AE%80%E5%8C%96%E7%89%88%E4%BC%A0%E6%92%AD%E9%93%BE%E6%97%B6%E9%97%B4%E8%BD%B4"><span class="toc-number">1.8.</span> <span class="toc-text">六、简化版传播链时间轴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%9B%AE%E5%89%8D%E4%BB%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="toc-number">1.9.</span> <span class="toc-text">七、目前仍存在的不确定性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q2-%E7%BE%8E%E5%9B%BD%E7%9A%84%E7%94%B5%E5%AD%90%E7%83%9F%E7%99%BD%E8%82%BA%E4%BA%8B%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">Q2: 美国的电子烟白肺事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-number">2.1.</span> <span class="toc-text">答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E8%83%8C%E6%99%AF%EF%BC%882019%E5%B9%B4%E5%A4%8F%E2%80%93%E7%A7%8B%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">一、事件背景（2019年夏–秋）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9C%80%E7%BB%88%E7%A1%AE%E8%AE%A4%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.3.</span> <span class="toc-text">二、最终确认的主要原因</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%87%B4%E7%97%85%E5%9B%A0%E7%B4%A0%EF%BC%9A%E7%BB%B4%E7%94%9F%E7%B4%A0E%E9%86%8B%E9%85%B8%E9%85%AF%EF%BC%88Vitamin-E-acetate%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">核心致病因素：维生素E醋酸酯（Vitamin E acetate）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%83%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9C%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%83%8F%E6%96%B0%E5%86%A0%E2%80%9D%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">三、它为什么“看起来像新冠”？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E5%BD%B1%E5%83%8F%E5%AD%A6%E7%9B%B8%E4%BC%BC"><span class="toc-number">2.4.1.</span> <span class="toc-text">1️⃣ 影像学相似</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E4%B8%B4%E5%BA%8A%E7%97%87%E7%8A%B6%E9%87%8D%E5%8F%A0"><span class="toc-number">2.4.2.</span> <span class="toc-text">2️⃣ 临床症状重叠</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%97%B6%E9%97%B4%E4%B8%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9C%E9%87%8D%E5%8F%A0%E2%80%9D%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">四、时间上为什么“重叠”？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%97%85%E7%90%86%E6%9C%BA%E5%88%B6%E5%AF%B9%E6%AF%94"><span class="toc-number">2.6.</span> <span class="toc-text">五、病理机制对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%AA-EVALI%EF%BC%9A%E8%84%82%E8%B4%A8%E6%80%A7-%E5%8C%96%E5%AD%A6%E6%80%A7%E8%82%BA%E6%8D%9F%E4%BC%A4"><span class="toc-number">2.6.1.</span> <span class="toc-text">🧪 EVALI：脂质性&#x2F;化学性肺损伤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A6%A0-COVID-19%EF%BC%9A%E7%97%85%E6%AF%92%E6%84%9F%E6%9F%93"><span class="toc-number">2.6.2.</span> <span class="toc-text">🦠 COVID-19：病毒感染</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%98%B4%E8%B0%8B%E8%AE%BA%E4%BC%9A%E5%87%BA%E7%8E%B0%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">六、为什么阴谋论会出现？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%AE%80%E6%B4%81%E7%BB%93%E8%AE%BA"><span class="toc-number">2.8.</span> <span class="toc-text">七、简洁结论</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q3-%E7%BE%8E%E5%9B%BD%E5%92%8C%E6%84%8F%E5%A4%A7%E5%88%A9%E5%9C%A8%E6%AD%A4%E4%B9%8B%E5%89%8D%E6%9C%89%E6%96%B0%E5%86%A0%E6%8A%97%E4%BD%93%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">Q3: 美国和意大利在此之前有新冠抗体么?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-1"><span class="toc-number">3.1.</span> <span class="toc-text">答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%84%8F%E5%A4%A7%E5%88%A9%E7%9A%84%E2%80%9C2019%E5%B9%B4%E6%8A%97%E4%BD%93%E2%80%9D%E7%A0%94%E7%A9%B6"><span class="toc-number">3.2.</span> <span class="toc-text">一、意大利的“2019年抗体”研究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%86%E9%97%AE%E9%A2%98%E5%9C%A8%E4%BA%8E%EF%BC%9A"><span class="toc-number">3.2.1.</span> <span class="toc-text">但问题在于：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BE%8E%E5%9B%BD%E7%9A%84%E2%80%9C2019%E5%B9%B4%E6%8A%97%E4%BD%93%E2%80%9D%E6%8A%A5%E5%91%8A"><span class="toc-number">3.3.</span> <span class="toc-text">二、美国的“2019年抗体”报告</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%97%E4%BD%93%E6%A3%80%E6%B5%8B%E5%AE%B9%E6%98%93%E2%80%9C%E8%AF%AF%E6%8A%A5%E2%80%9D%EF%BC%9F"><span class="toc-number">3.4.</span> <span class="toc-text">三、为什么抗体检测容易“误报”？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E4%BA%A4%E5%8F%89%E5%8F%8D%E5%BA%94"><span class="toc-number">3.4.1.</span> <span class="toc-text">1️⃣ 交叉反应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E4%BD%8E%E6%B5%81%E8%A1%8C%E7%8E%87%E4%B8%8B%E7%9A%84%E5%81%87%E9%98%B3%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">3.4.2.</span> <span class="toc-text">2️⃣ 低流行率下的假阳性问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%9F%BA%E5%9B%A0%E8%BF%9B%E5%8C%96%E8%AF%81%E6%8D%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%BC%BA%EF%BC%9F"><span class="toc-number">3.5.</span> <span class="toc-text">四、基因进化证据为什么更强？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E9%87%8D%E8%A6%81%E9%80%BB%E8%BE%91%E9%97%AE%E9%A2%98"><span class="toc-number">3.6.</span> <span class="toc-text">五、还有一个重要逻辑问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%A7%91%E5%AD%A6%E7%95%8C%E7%9B%AE%E5%89%8D%E7%9A%84%E5%85%B1%E8%AF%86"><span class="toc-number">3.7.</span> <span class="toc-text">六、科学界目前的共识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%AE%80%E6%B4%81%E6%80%BB%E7%BB%93"><span class="toc-number">3.8.</span> <span class="toc-text">七、简洁总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q4-%E7%97%85%E6%AF%92%E7%9A%84%E5%87%BA%E7%8E%B0%E5%9C%A819%E5%B9%B4%E5%BA%95%EF%BC%8C%E8%80%8C%E9%9D%9E%E6%9B%B4%E6%97%A9%E4%B9%88%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">Q4: 病毒的出现在19年底，而非更早么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-2"><span class="toc-number">4.1.</span> <span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%AD%90%E9%92%9F%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">一、什么是分子钟？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E7%94%A8%E5%AE%83%E6%8E%A8%E5%9B%9E%E2%80%9C%E6%9C%80%E6%97%A9%E6%97%B6%E9%97%B4%E2%80%9D%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">二、如何用它推回“最早时间”？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E6%9E%9C%E7%9C%9F%E7%9A%84%E2%80%9C%E6%97%A9%E5%8D%8A%E5%B9%B4%E4%BC%A0%E6%92%AD%E2%80%9D%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">三、如果真的“早半年传播”，会发生什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E6%A0%91%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="toc-number">8.</span> <span class="toc-text">四、系统发育树长什么样？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E5%AD%90%E9%92%9F%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F%EF%BC%88%E7%AE%80%E5%8C%96%E7%89%88%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">五、分子钟的计算方式（简化版）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%82%A3%E6%9C%89%E6%B2%A1%E6%9C%89%E5%8F%AF%E8%83%BD%E2%80%9C%E4%BD%8E%E6%B0%B4%E5%B9%B3%E4%BC%A0%E6%92%AD%E2%80%9D%E6%B2%A1%E8%A2%AB%E5%8F%91%E7%8E%B0%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">六、那有没有可能“低水平传播”没被发现？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%88%86%E5%AD%90%E9%92%9F%E6%AF%94%E6%8A%97%E4%BD%93%E7%A0%94%E7%A9%B6%E6%9B%B4%E5%8F%AF%E9%9D%A0%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">七、为什么分子钟比抗体研究更可靠？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E6%80%BB%E7%BB%93"><span class="toc-number">12.</span> <span class="toc-text">八、核心逻辑总结</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        关于2019年底的新冠疫情
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-02-21T01:45:15.000Z" itemprop="datePublished">2026-02-21</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>尽管新冠已经过去了几年了，但是对于新冠的起源、传播等，还有各种各样的传言。我自己不是专家，但是对这些事情，也有点好奇，就去跟AI讨论了一下。</p>
+<p>主要问了几个问题：从病毒的基因来看，传播链是什么样的？美国之前的电子烟肺炎，是怎么回事？美国和意大利发现的在武汉疫情之前的新冠抗体，是怎么回事？新冠病毒的时间，不可能比2019年底更早么？</p>
+<p>了解这几个问题，也就基本上明白了新冠疫情的科学事实，对一些谣言也就能免疫了。</p>
+<p>总结如下：</p>
+<h1 id="Q1-病毒的传播链"><a href="#Q1-病毒的传播链" class="headerlink" title="Q1:  病毒的传播链"></a>Q1:  病毒的传播链</h1><h2 id="对于2019年底爆发的新冠疫情，从目前知道的证据来看，尤其是病毒基因的变异链来看，病毒的创播链是什么样子的呢？"><a href="#对于2019年底爆发的新冠疫情，从目前知道的证据来看，尤其是病毒基因的变异链来看，病毒的创播链是什么样子的呢？" class="headerlink" title="对于2019年底爆发的新冠疫情，从目前知道的证据来看，尤其是病毒基因的变异链来看，病毒的创播链是什么样子的呢？"></a>对于2019年底爆发的新冠疫情，从目前知道的证据来看，尤其是病毒基因的变异链来看，病毒的创播链是什么样子的呢？</h2><h2 id="回答："><a href="#回答：" class="headerlink" title="回答："></a>回答：</h2><p>关于 2019 年底在中国武汉报告的 COVID-19 疫情，基于截至目前（包括系统发育分析、早期病例回溯、环境样本与全球基因序列数据库）的主流科学证据，可以比较清晰地勾勒出<strong>病毒传播链（传播路径）的大致轮廓</strong>。下面按时间与基因变异链来说明。</p>
+<hr>
+<h2 id="一、最早阶段：武汉的早期传播（2019年11–12月）"><a href="#一、最早阶段：武汉的早期传播（2019年11–12月）" class="headerlink" title="一、最早阶段：武汉的早期传播（2019年11–12月）"></a>一、最早阶段：武汉的早期传播（2019年11–12月）</h2><p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-021-00267-w/MediaObjects/41598_2021_267_Fig1_HTML.png" alt="Image"></p>
+<h3 id="1️⃣-起源时间"><a href="#1️⃣-起源时间" class="headerlink" title="1️⃣ 起源时间"></a>1️⃣ 起源时间</h3><ul>
+<li><p>基因“分子钟”分析（molecular clock）推算：</p>
+<ul>
+<li>最早的人类感染时间大约在 <strong>2019年10月下旬至11月中旬之间</strong></li>
+</ul>
+</li>
+<li><p>最早确诊病例在 <strong>2019年12月上旬</strong></p>
+</li>
+</ul>
+<h3 id="2️⃣-基因谱系：A-型与-B-型"><a href="#2️⃣-基因谱系：A-型与-B-型" class="headerlink" title="2️⃣ 基因谱系：A 型与 B 型"></a>2️⃣ 基因谱系：A 型与 B 型</h3><p>对最早病毒样本的系统发育分析显示：</p>
+<ul>
+<li><p>早期存在两个非常接近的谱系：</p>
+<ul>
+<li><strong>Lineage A</strong></li>
+<li><strong>Lineage B</strong></li>
+</ul>
+</li>
+</ul>
+<p>两者差异仅 2–3 个核苷酸突变，但在系统树上呈现出“近乎同时出现”的状态。</p>
+<p>当前主流研究认为：</p>
+<ul>
+<li>这两条谱系<strong>可能源于两个非常接近的动物 → 人的溢出事件</strong></li>
+<li>也可能是一次溢出后，迅速在早期传播中分化</li>
+</ul>
+<p>但没有证据表明是长期在人群中隐秘传播后才被发现。</p>
+<hr>
+<h2 id="二、武汉-→-中国其他地区-→-全球（2020年1–3月）"><a href="#二、武汉-→-中国其他地区-→-全球（2020年1–3月）" class="headerlink" title="二、武汉 → 中国其他地区 → 全球（2020年1–3月）"></a>二、武汉 → 中国其他地区 → 全球（2020年1–3月）</h2><h3 id="传播链模式"><a href="#传播链模式" class="headerlink" title="传播链模式"></a>传播链模式</h3><p>基因变异链显示的传播逻辑非常清晰：</p>
+<ol>
+<li><p>武汉形成早期传播网络</p>
+</li>
+<li><p>2020年1月春运期间扩散至中国其他城市</p>
+</li>
+<li><p>同期经国际旅行输出至：</p>
+<ul>
+<li>东亚</li>
+<li>欧洲</li>
+<li>北美</li>
+<li>东南亚</li>
+</ul>
+</li>
+</ol>
+<p>系统发育树上可以看到：</p>
+<ul>
+<li>不同国家的早期病毒株都“嵌套”在武汉早期分支之中</li>
+<li>各国疫情并非各自独立起源</li>
+<li>而是从武汉传播出去后，在当地继续积累突变</li>
+</ul>
+<hr>
+<h2 id="三、早期关键突变：D614G（2020年2–4月）"><a href="#三、早期关键突变：D614G（2020年2–4月）" class="headerlink" title="三、早期关键突变：D614G（2020年2–4月）"></a>三、早期关键突变：D614G（2020年2–4月）</h2><ul>
+<li>2020年2月在欧洲出现一个带有 <strong>D614G 突变</strong>的亚型</li>
+<li>该突变提高传播效率</li>
+<li>随后迅速取代全球原始毒株</li>
+</ul>
+<p>从基因链上看：</p>
+<blockquote>
+<p>原始武汉株 → 欧洲分支 → 带 D614G → 全球主流毒株</p>
+</blockquote>
+<p>这说明全球大流行的“主干”来自一个传播效率更高的分支。</p>
+<hr>
+<h2 id="四、后续主要变异株的分支关系"><a href="#四、后续主要变异株的分支关系" class="headerlink" title="四、后续主要变异株的分支关系"></a>四、后续主要变异株的分支关系</h2><p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41579-022-00708-x/MediaObjects/41579_2022_708_Fig1_HTML.png" alt="Image"></p>
+<p>在之后的传播中，不同地区出现新分支：</p>
+<table>
+<thead>
+<tr>
+<th>变异株</th>
+<th>首次发现</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alpha</td>
+<td>英国 2020</td>
+<td>传播力增强</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>南非 2020</td>
+<td>免疫逃逸</td>
+</tr>
+<tr>
+<td>Delta</td>
+<td>印度 2021</td>
+<td>高致病+高传播</td>
+</tr>
+<tr>
+<td>Omicron</td>
+<td>南部非洲 2021</td>
+<td>大量突变，强免疫逃逸</td>
+</tr>
+</tbody></table>
+<p>特别是 Omicron：</p>
+<ul>
+<li>在系统树上呈现出“长枝”现象</li>
+<li>说明它可能在某个隐匿人群或免疫受损个体中长期演化</li>
+</ul>
+<hr>
+<h2 id="五、关于“创播链”的科学共识"><a href="#五、关于“创播链”的科学共识" class="headerlink" title="五、关于“创播链”的科学共识"></a>五、关于“创播链”的科学共识</h2><p>基于目前公开数据（数百万条基因序列）：</p>
+<ol>
+<li>所有已知人类 SARS-CoV-2 病毒都有一个<strong>共同祖先</strong></li>
+<li>该祖先出现时间大约在 2019 年秋季</li>
+<li>早期传播中心在武汉</li>
+<li>没有证据支持 2019 年前已广泛人传人</li>
+<li>病毒基因结构符合自然进化特征</li>
+</ol>
+<hr>
+<h2 id="六、简化版传播链时间轴"><a href="#六、简化版传播链时间轴" class="headerlink" title="六、简化版传播链时间轴"></a>六、简化版传播链时间轴</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">动物宿主</span><br><span class="line">   ↓</span><br><span class="line">2019.10–11  初次人类感染</span><br><span class="line">   ↓</span><br><span class="line">2019.12  武汉聚集性传播</span><br><span class="line">   ↓</span><br><span class="line">2020.01  中国多地 + 国际输出</span><br><span class="line">   ↓</span><br><span class="line">2020.02  欧洲扩散（D614G）</span><br><span class="line">   ↓</span><br><span class="line">2020–2022  多次地区性变异株出现</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="七、目前仍存在的不确定性"><a href="#七、目前仍存在的不确定性" class="headerlink" title="七、目前仍存在的不确定性"></a>七、目前仍存在的不确定性</h2><p>科学界仍未完全确定：</p>
+<ul>
+<li>具体的中间宿主是什么（蝙蝠 → ? → 人）</li>
+<li>是否存在一次还是两次早期溢出</li>
+<li>早期最早的感染个体是谁</li>
+</ul>
+<p>但在<strong>基因传播链层面</strong>：</p>
+<blockquote>
+<p>全球疫情起源于一个非常窄的时间窗口和地理区域<br>随后通过国际交通扩散<br>再在各地独立产生新分支</p>
+</blockquote>
+<p>这一点在系统发育分析上是高度一致的。</p>
+<h1 id="Q2-美国的电子烟白肺事件"><a href="#Q2-美国的电子烟白肺事件" class="headerlink" title="Q2: 美国的电子烟白肺事件"></a>Q2: 美国的电子烟白肺事件</h1><p>那在2019年底之前，美国发生的电子烟白肺事件，到底是什么造成的呢？为什么它的症状和新冠病毒类似？</p>
+<h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><p>你问的是 2019 年美国所谓“电子烟白肺”（当时媒体常这么叫）到底是什么，以及为什么症状看起来和新冠类似。</p>
+<p>这个事件在医学上叫：</p>
+<blockquote>
+<p><strong>EVALI</strong><br>全称：E-cigarette or Vaping Product Use–Associated Lung Injury</p>
+</blockquote>
+<hr>
+<h2 id="一、事件背景（2019年夏–秋）"><a href="#一、事件背景（2019年夏–秋）" class="headerlink" title="一、事件背景（2019年夏–秋）"></a>一、事件背景（2019年夏–秋）</h2><p><img src="https://www.rsna.org/-/media/images/rsna/news-articles/2022/march/kligerman-1.jpg?h=312&hash=52258BB6365272B8FD2DB3DD074693A3&iar=0&rev=4815e84c877941f59cdb3ba0103d02f9&w=500" alt="Image"></p>
+<p><img src="https://npr.brightspotcdn.com/dims4/default/2c6bc25/2147483647/strip/true/crop/2671x2000%2B0%2B0/resize/880x659%21/quality/90/?url=https://media.npr.org/assets/img/2019/09/27/ap_19270708738931-ab6e5dbe600c69bf5def80ec6c0e5469fba4ed55.jpg" alt="Image"></p>
+<p><img src="https://m.media-amazon.com/images/I/61dv6YdpB4L.jpg" alt="Image"></p>
+<p><img src="https://m.media-amazon.com/images/I/71U3BIiQE4L._AC_UF894%2C1000_QL80_.jpg" alt="Image"></p>
+<ul>
+<li>时间：2019年6月开始迅速上升，8–9月达到高峰</li>
+<li>地点：美国为主</li>
+<li>病例：约 2800+ 住院病例</li>
+<li>死亡：约 60+ 人</li>
+</ul>
+<p>患者多为青少年或年轻人。</p>
+<hr>
+<h2 id="二、最终确认的主要原因"><a href="#二、最终确认的主要原因" class="headerlink" title="二、最终确认的主要原因"></a>二、最终确认的主要原因</h2><p>美国 CDC 和多州实验室调查后发现：</p>
+<h3 id="核心致病因素：维生素E醋酸酯（Vitamin-E-acetate）"><a href="#核心致病因素：维生素E醋酸酯（Vitamin-E-acetate）" class="headerlink" title="核心致病因素：维生素E醋酸酯（Vitamin E acetate）"></a>核心致病因素：<strong>维生素E醋酸酯（Vitamin E acetate）</strong></h3><ul>
+<li>常被加入 <strong>非法 THC（大麻）电子烟油</strong> 作为“增稠剂”</li>
+<li>吸入后进入肺泡</li>
+<li>干扰肺表面活性物质</li>
+<li>导致严重炎症反应和化学性肺损伤</li>
+</ul>
+<p>在绝大多数患者的肺泡灌洗液中检测到：</p>
+<blockquote>
+<p>✔ Vitamin E acetate<br>✔ 非法 THC 成分<br>✘ 未检测到病毒</p>
+</blockquote>
+<p>重要的是：</p>
+<blockquote>
+<p>该病不是传染病<br>是吸入性化学性肺损伤</p>
+</blockquote>
+<hr>
+<h2 id="三、它为什么“看起来像新冠”？"><a href="#三、它为什么“看起来像新冠”？" class="headerlink" title="三、它为什么“看起来像新冠”？"></a>三、它为什么“看起来像新冠”？</h2><h3 id="1️⃣-影像学相似"><a href="#1️⃣-影像学相似" class="headerlink" title="1️⃣ 影像学相似"></a>1️⃣ 影像学相似</h3><p>两者都可能出现：</p>
+<ul>
+<li>CT“磨玻璃样”阴影（ground glass opacity）</li>
+<li>双肺弥漫性炎症</li>
+</ul>
+<p>这是因为：</p>
+<blockquote>
+<p>不同原因的肺泡炎症，在影像上可能非常相似</p>
+</blockquote>
+<hr>
+<h3 id="2️⃣-临床症状重叠"><a href="#2️⃣-临床症状重叠" class="headerlink" title="2️⃣ 临床症状重叠"></a>2️⃣ 临床症状重叠</h3><p>两者都可能出现：</p>
+<ul>
+<li>咳嗽</li>
+<li>呼吸困难</li>
+<li>发烧</li>
+<li>胸痛</li>
+<li>低氧血症</li>
+</ul>
+<p>但本质不同：</p>
+<table>
+<thead>
+<tr>
+<th>EVALI</th>
+<th>COVID-19</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>化学性损伤</td>
+<td>病毒感染</td>
+</tr>
+<tr>
+<td>不会人传人</td>
+<td>高度人传人</td>
+</tr>
+<tr>
+<td>多有电子烟史</td>
+<td>无需电子烟史</td>
+</tr>
+<tr>
+<td>类固醇治疗效果明显</td>
+<td>抗病毒+免疫调节</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、时间上为什么“重叠”？"><a href="#四、时间上为什么“重叠”？" class="headerlink" title="四、时间上为什么“重叠”？"></a>四、时间上为什么“重叠”？</h2><ul>
+<li>EVALI 高峰：2019年8–9月</li>
+<li>武汉新冠最早病例：2019年11–12月</li>
+</ul>
+<p>两者时间非常接近，因此在2020年初出现一些猜测：</p>
+<blockquote>
+<p>“美国是不是早有新冠？”</p>
+</blockquote>
+<p>但后来基因测序和血清学研究显示：</p>
+<ul>
+<li>2019年美国 EVALI 患者中未发现 SARS-CoV-2</li>
+<li>病毒分子钟也不支持 2019 年春夏已有广泛传播</li>
+</ul>
+<p>主流医学共识认为：</p>
+<blockquote>
+<p>两者是独立事件<br>没有证据表明 EVALI 是早期新冠</p>
+</blockquote>
+<hr>
+<h2 id="五、病理机制对比"><a href="#五、病理机制对比" class="headerlink" title="五、病理机制对比"></a>五、病理机制对比</h2><h3 id="🧪-EVALI：脂质性-化学性肺损伤"><a href="#🧪-EVALI：脂质性-化学性肺损伤" class="headerlink" title="🧪 EVALI：脂质性&#x2F;化学性肺损伤"></a>🧪 EVALI：脂质性&#x2F;化学性肺损伤</h3><ul>
+<li>油脂沉积</li>
+<li>巨噬细胞吞噬脂质</li>
+<li>肺泡结构破坏</li>
+</ul>
+<h3 id="🦠-COVID-19：病毒感染"><a href="#🦠-COVID-19：病毒感染" class="headerlink" title="🦠 COVID-19：病毒感染"></a>🦠 COVID-19：病毒感染</h3><ul>
+<li>病毒进入 ACE2 受体</li>
+<li>复制</li>
+<li>免疫过度反应</li>
+<li>微血栓形成</li>
+</ul>
+<p>机制完全不同。</p>
+<hr>
+<h2 id="六、为什么阴谋论会出现？"><a href="#六、为什么阴谋论会出现？" class="headerlink" title="六、为什么阴谋论会出现？"></a>六、为什么阴谋论会出现？</h2><p>因为：</p>
+<ol>
+<li>时间接近</li>
+<li>症状相似</li>
+<li>2019年美国流感季异常严重</li>
+<li>早期对新冠认识有限</li>
+</ol>
+<p>但基因进化链是非常强的证据：</p>
+<blockquote>
+<p>如果2019年美国已有新冠大规模传播<br>那么后续病毒谱系不会全部指向一个2019年底的共同祖先</p>
+</blockquote>
+<p>目前全球数百万条基因序列没有支持这种说法。</p>
+<hr>
+<h2 id="七、简洁结论"><a href="#七、简洁结论" class="headerlink" title="七、简洁结论"></a>七、简洁结论</h2><ul>
+<li>美国“电子烟白肺”主要由 <strong>非法 THC 烟油中的 Vitamin E acetate</strong> 引起</li>
+<li>属于吸入性化学性肺损伤</li>
+<li>不是病毒</li>
+<li>与新冠没有已知因果关联</li>
+<li>症状相似是因为肺炎表现本来就高度相似</li>
+</ul>
+<h1 id="Q3-美国和意大利在此之前有新冠抗体么"><a href="#Q3-美国和意大利在此之前有新冠抗体么" class="headerlink" title="Q3: 美国和意大利在此之前有新冠抗体么?"></a>Q3: 美国和意大利在此之前有新冠抗体么?</h1><p>但是有新闻报道说，美国和意大利，在武汉之前，也有新冠抗体的出现了，有这回事儿呢？</p>
+<h2 id="答案-1"><a href="#答案-1" class="headerlink" title="答案"></a>答案</h2><p>这个问题确实在 2020–2022 年间引发过不少讨论。结论先说在前面：</p>
+<blockquote>
+<p>确实有个别研究报告在 2019 年的美国或意大利血样中检测到“疑似新冠抗体”，<br>但这些结果存在明显方法学问题，后来大多数未被独立重复验证，<br>主流科学共识认为目前<strong>没有可靠证据</strong>证明 2019 年春夏欧美已存在广泛的新冠传播。</p>
+</blockquote>
+<p>下面把事情拆开讲清楚。</p>
+<hr>
+<h2 id="一、意大利的“2019年抗体”研究"><a href="#一、意大利的“2019年抗体”研究" class="headerlink" title="一、意大利的“2019年抗体”研究"></a>一、意大利的“2019年抗体”研究</h2><p>2020 年，意大利研究团队报告：</p>
+<ul>
+<li>在 2019 年 9–10 月的血样中检测到 SARS-CoV-2 抗体</li>
+<li>个别样本甚至报告 2019 年 9 月有阳性</li>
+</ul>
+<p>这项研究当时引发轰动。</p>
+<h3 id="但问题在于："><a href="#但问题在于：" class="headerlink" title="但问题在于："></a>但问题在于：</h3><p>1️⃣ 使用的是早期抗体检测试剂（特异性不足）<br>2️⃣ 没有做充分的中和抗体确认<br>3️⃣ 后续其他实验室复检，阳性率显著下降<br>4️⃣ 可能存在与其他人类冠状病毒（如普通感冒冠状病毒）的<strong>交叉反应</strong></p>
+<p>后来更严格的复核研究发现：</p>
+<ul>
+<li>若用高特异性中和实验</li>
+<li>绝大多数所谓“早期阳性”消失</li>
+</ul>
+<hr>
+<h2 id="二、美国的“2019年抗体”报告"><a href="#二、美国的“2019年抗体”报告" class="headerlink" title="二、美国的“2019年抗体”报告"></a>二、美国的“2019年抗体”报告</h2><p>美国也有研究称：</p>
+<ul>
+<li>2019 年 12 月的血样中有少量抗体阳性</li>
+</ul>
+<p>但要注意：</p>
+<ul>
+<li>时间多在 12 月下旬</li>
+<li>这已经非常接近武汉公开报告时间</li>
+<li>在全球旅行高度频繁背景下，零星输入并非不可能</li>
+</ul>
+<p>更关键的是：</p>
+<blockquote>
+<p>没有发现 2019 年夏季或更早的明确、可重复的中和抗体证据</p>
+</blockquote>
+<hr>
+<h2 id="三、为什么抗体检测容易“误报”？"><a href="#三、为什么抗体检测容易“误报”？" class="headerlink" title="三、为什么抗体检测容易“误报”？"></a>三、为什么抗体检测容易“误报”？</h2><p>抗体检测常见问题：</p>
+<h3 id="1️⃣-交叉反应"><a href="#1️⃣-交叉反应" class="headerlink" title="1️⃣ 交叉反应"></a>1️⃣ 交叉反应</h3><p>人体常见感冒冠状病毒：</p>
+<ul>
+<li>OC43</li>
+<li>229E</li>
+<li>NL63</li>
+<li>HKU1</li>
+</ul>
+<p>它们与 SARS-CoV-2 有部分相似结构。</p>
+<p>在低特异性 ELISA 检测中：</p>
+<blockquote>
+<p>可能误判为“新冠抗体阳性”</p>
+</blockquote>
+<hr>
+<h3 id="2️⃣-低流行率下的假阳性问题"><a href="#2️⃣-低流行率下的假阳性问题" class="headerlink" title="2️⃣ 低流行率下的假阳性问题"></a>2️⃣ 低流行率下的假阳性问题</h3><p>当真实感染率极低时：</p>
+<ul>
+<li>即便检测试剂 98–99% 特异性</li>
+<li>也会产生较多假阳性</li>
+</ul>
+<p>统计学上称为：</p>
+<blockquote>
+<p>低基线流行率下的阳性预测值问题</p>
+</blockquote>
+<hr>
+<h2 id="四、基因进化证据为什么更强？"><a href="#四、基因进化证据为什么更强？" class="headerlink" title="四、基因进化证据为什么更强？"></a>四、基因进化证据为什么更强？</h2><p>相比抗体检测，病毒基因系统发育树的证据更有力。</p>
+<p>全球数百万条病毒序列显示：</p>
+<ul>
+<li>所有 SARS-CoV-2 样本</li>
+<li>都能回溯到一个 2019 年秋季的共同祖先</li>
+<li>不存在“2019年春夏已有大量隐秘分支”的遗迹</li>
+</ul>
+<p>如果 2019 年夏天欧美已有广泛传播：</p>
+<ul>
+<li>现在的系统树应当更“发散”</li>
+<li>会看到更深的分支</li>
+<li>会存在更早的基因多样性</li>
+</ul>
+<p>但没有。</p>
+<hr>
+<h2 id="五、还有一个重要逻辑问题"><a href="#五、还有一个重要逻辑问题" class="headerlink" title="五、还有一个重要逻辑问题"></a>五、还有一个重要逻辑问题</h2><p>如果：</p>
+<blockquote>
+<p>2019年春夏欧美已有新冠大规模传播</p>
+</blockquote>
+<p>那应该看到：</p>
+<ul>
+<li>不明原因肺炎暴增</li>
+<li>医疗系统异常</li>
+<li>死亡率异常</li>
+<li>持续的呼吸道疾病波动</li>
+</ul>
+<p>但流行病学数据没有支持这种模式。</p>
+<p>2019 年美国“电子烟白肺”已被明确为：</p>
+<blockquote>
+<p><strong>EVALI</strong><br>与维生素E醋酸酯相关<br>不是传染病</p>
+</blockquote>
+<p>它没有形成持续传播链。</p>
+<hr>
+<h2 id="六、科学界目前的共识"><a href="#六、科学界目前的共识" class="headerlink" title="六、科学界目前的共识"></a>六、科学界目前的共识</h2><p>主流结论是：</p>
+<p>1️⃣ 2019 年 12 月前的“抗体阳性”证据不够可靠<br>2️⃣ 没有可重复的中和抗体确认<br>3️⃣ 没有早期病毒基因样本支持<br>4️⃣ 分子钟分析不支持早于 2019 年秋的广泛传播</p>
+<p>这并不等于：</p>
+<blockquote>
+<p>“绝对不可能存在零星极早期个案”</p>
+</blockquote>
+<p>但目前证据不足以支持“2019年春夏欧美已有疫情”。</p>
+<hr>
+<h2 id="七、简洁总结"><a href="#七、简洁总结" class="headerlink" title="七、简洁总结"></a>七、简洁总结</h2><p>确实有过“早期抗体”报道<br>但：</p>
+<ul>
+<li>证据存在方法学缺陷</li>
+<li>未被大规模重复</li>
+<li>不符合系统发育链条</li>
+<li>不符合流行病学模式</li>
+</ul>
+<p>因此主流学界认为：</p>
+<blockquote>
+<p>全球疫情的有效人群传播起点<br>仍然集中在 2019 年底</p>
+</blockquote>
+<h1 id="Q4-病毒的出现在19年底，而非更早么？"><a href="#Q4-病毒的出现在19年底，而非更早么？" class="headerlink" title="Q4: 病毒的出现在19年底，而非更早么？"></a>Q4: 病毒的出现在19年底，而非更早么？</h1><p>分子钟是如何排除“更早传播”的可能的？</p>
+<h2 id="答案-2"><a href="#答案-2" class="headerlink" title="答案"></a>答案</h2><blockquote>
+<p>分子钟（molecular clock）并不是“猜时间”，<br>而是用病毒突变累积的速度，去反推出共同祖先存在的时间。</p>
+</blockquote>
+<hr>
+<h1 id="一、什么是分子钟？"><a href="#一、什么是分子钟？" class="headerlink" title="一、什么是分子钟？"></a>一、什么是分子钟？</h1><p>病毒在复制时会不断产生随机突变。</p>
+<p>对于 <strong>COVID-19</strong> 的病原体 <strong>SARS-CoV-2</strong> 来说：</p>
+<ul>
+<li>基因组长度 ≈ 30,000 个碱基</li>
+<li>平均突变速率 ≈ 每月约 1–2 个碱基改变</li>
+<li>每年大约 ~20–25 个突变</li>
+</ul>
+<p>这个速度可以通过：</p>
+<ul>
+<li>2020–2022年全球样本</li>
+<li>已知采样日期</li>
+<li>序列差异</li>
+</ul>
+<p>进行统计拟合得出。</p>
+<hr>
+<h1 id="二、如何用它推回“最早时间”？"><a href="#二、如何用它推回“最早时间”？" class="headerlink" title="二、如何用它推回“最早时间”？"></a>二、如何用它推回“最早时间”？</h1><p>我们可以把问题想象成这样：</p>
+<p>如果病毒是 2019 年 6 月就开始在人群中传播，</p>
+<p>那从 6 月到 12 月，大约 6 个月时间。</p>
+<p>按照突变率推算：</p>
+<blockquote>
+<p>应该积累 ~10 个左右突变</p>
+</blockquote>
+<p>那么：</p>
+<ul>
+<li>2020 年初的病毒之间</li>
+<li>就应该已经存在较大的遗传差异</li>
+</ul>
+<hr>
+<p>但真实数据是什么？</p>
+<p>2020 年 1 月全球采样的病毒：</p>
+<ul>
+<li>基因差异极小</li>
+<li>大多数彼此只差 0–3 个突变</li>
+<li>系统树呈现“非常紧凑的扇形结构”</li>
+</ul>
+<p>这说明：</p>
+<blockquote>
+<p>它们的共同祖先距离采样时间非常近</p>
+</blockquote>
+<hr>
+<h1 id="三、如果真的“早半年传播”，会发生什么？"><a href="#三、如果真的“早半年传播”，会发生什么？" class="headerlink" title="三、如果真的“早半年传播”，会发生什么？"></a>三、如果真的“早半年传播”，会发生什么？</h1><p>我们做一个逻辑推演：</p>
+<p>假设 2019 年 6 月已在人群传播。</p>
+<p>那么到 2020 年 1 月：</p>
+<ol>
+<li>应出现多个深分支</li>
+<li>每个分支应有更长“树枝”</li>
+<li>样本之间差异应更大</li>
+<li>基因多样性应更高</li>
+</ol>
+<p>但现实中：</p>
+<ul>
+<li>没看到长枝</li>
+<li>没看到多个深层分叉</li>
+<li>所有样本都回到 2019 年秋一个节点</li>
+</ul>
+<p>这就是分子钟排除“早半年广泛传播”的关键逻辑。</p>
+<hr>
+<h1 id="四、系统发育树长什么样？"><a href="#四、系统发育树长什么样？" class="headerlink" title="四、系统发育树长什么样？"></a>四、系统发育树长什么样？</h1><p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-021-00267-w/MediaObjects/41598_2021_267_Fig1_HTML.png" alt="Image"></p>
+<p><img src="https://www.mdpi.com/viruses/viruses-15-01394/article_deploy/html/images/viruses-15-01394-g001-550.jpg" alt="Image"></p>
+<p><img src="https://beast.community/images/clocks/strictClock.png" alt="Image"></p>
+<p><img src="https://fiveable.me/_next/image?q=75&url=https://storage.googleapis.com/static.prod.fiveable.me/search-images%252F%2522Molecular_clock_virology_phylogenetic_analysis_evolutionary_divergence_viral_strains_applications_concept_and_insights%2522-default.jpg&w=3840" alt="Image"></p>
+<p>早期 SARS-CoV-2 的树呈现：</p>
+<ul>
+<li>中心紧凑</li>
+<li>向外短枝放射</li>
+<li>没有深层历史分叉</li>
+</ul>
+<p>这叫做：</p>
+<blockquote>
+<p>近期单一起源 + 快速扩散</p>
+</blockquote>
+<p>而不是：</p>
+<blockquote>
+<p>长期隐秘传播</p>
+</blockquote>
+<hr>
+<h1 id="五、分子钟的计算方式（简化版）"><a href="#五、分子钟的计算方式（简化版）" class="headerlink" title="五、分子钟的计算方式（简化版）"></a>五、分子钟的计算方式（简化版）</h1><p>科学家使用：</p>
+<ul>
+<li>贝叶斯时间树模型（BEAST）</li>
+<li>最大似然估计</li>
+<li>已知采样时间点</li>
+</ul>
+<p>核心思想是：</p>
+<blockquote>
+<p>序列差异数量 ∝ 时间差</p>
+</blockquote>
+<p>拟合出的结果显示：</p>
+<ul>
+<li>最近期共同祖先（tMRCA）</li>
+<li>大约在 2019 年 10–11 月</li>
+</ul>
+<p>置信区间一般：</p>
+<ul>
+<li>2019 年 9 月下旬 – 12 月初</li>
+</ul>
+<p>并不支持 2019 年春夏。</p>
+<hr>
+<h1 id="六、那有没有可能“低水平传播”没被发现？"><a href="#六、那有没有可能“低水平传播”没被发现？" class="headerlink" title="六、那有没有可能“低水平传播”没被发现？"></a>六、那有没有可能“低水平传播”没被发现？</h1><p>理论上：</p>
+<ul>
+<li>少量零星个案可能存在</li>
+<li>但必须规模非常小</li>
+</ul>
+<p>因为：</p>
+<p>只要传播链持续几个月并扩散到多个城市，</p>
+<p>就一定会留下：</p>
+<blockquote>
+<p>基因多样性痕迹</p>
+</blockquote>
+<p>而这种痕迹在全球数据库中不存在。</p>
+<hr>
+<h1 id="七、为什么分子钟比抗体研究更可靠？"><a href="#七、为什么分子钟比抗体研究更可靠？" class="headerlink" title="七、为什么分子钟比抗体研究更可靠？"></a>七、为什么分子钟比抗体研究更可靠？</h1><p>抗体研究：</p>
+<ul>
+<li>易假阳性</li>
+<li>易交叉反应</li>
+<li>可重复性问题大</li>
+</ul>
+<p>分子钟：</p>
+<ul>
+<li>使用真实病毒基因</li>
+<li>数百万条序列</li>
+<li>统计一致性极强</li>
+<li>可跨实验室重复</li>
+</ul>
+<hr>
+<h1 id="八、核心逻辑总结"><a href="#八、核心逻辑总结" class="headerlink" title="八、核心逻辑总结"></a>八、核心逻辑总结</h1><p>分子钟不是“证明没有”，</p>
+<p>而是说明：</p>
+<blockquote>
+<p>如果早半年已有广泛传播<br>那么今天的病毒系统树不可能长这样</p>
+</blockquote>
+<p>但现实系统树显示：</p>
+<ul>
+<li>所有分支收敛在 2019 年秋</li>
+<li>基因多样性符合近期爆发</li>
+<li>不符合 2019 年春夏已广泛传播</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Q1-%E7%97%85%E6%AF%92%E7%9A%84%E4%BC%A0%E6%92%AD%E9%93%BE"><span class="toc-number">1.</span> <span class="toc-text">Q1:  病毒的传播链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E2019%E5%B9%B4%E5%BA%95%E7%88%86%E5%8F%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%96%AB%E6%83%85%EF%BC%8C%E4%BB%8E%E7%9B%AE%E5%89%8D%E7%9F%A5%E9%81%93%E7%9A%84%E8%AF%81%E6%8D%AE%E6%9D%A5%E7%9C%8B%EF%BC%8C%E5%B0%A4%E5%85%B6%E6%98%AF%E7%97%85%E6%AF%92%E5%9F%BA%E5%9B%A0%E7%9A%84%E5%8F%98%E5%BC%82%E9%93%BE%E6%9D%A5%E7%9C%8B%EF%BC%8C%E7%97%85%E6%AF%92%E7%9A%84%E5%88%9B%E6%92%AD%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E5%AD%90%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">对于2019年底爆发的新冠疫情，从目前知道的证据来看，尤其是病毒基因的变异链来看，病毒的创播链是什么样子的呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E7%AD%94%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">回答：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%80%E6%97%A9%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%AD%A6%E6%B1%89%E7%9A%84%E6%97%A9%E6%9C%9F%E4%BC%A0%E6%92%AD%EF%BC%882019%E5%B9%B411%E2%80%9312%E6%9C%88%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">一、最早阶段：武汉的早期传播（2019年11–12月）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E8%B5%B7%E6%BA%90%E6%97%B6%E9%97%B4"><span class="toc-number">1.3.1.</span> <span class="toc-text">1️⃣ 起源时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E5%9F%BA%E5%9B%A0%E8%B0%B1%E7%B3%BB%EF%BC%9AA-%E5%9E%8B%E4%B8%8E-B-%E5%9E%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">2️⃣ 基因谱系：A 型与 B 型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%AD%A6%E6%B1%89-%E2%86%92-%E4%B8%AD%E5%9B%BD%E5%85%B6%E4%BB%96%E5%9C%B0%E5%8C%BA-%E2%86%92-%E5%85%A8%E7%90%83%EF%BC%882020%E5%B9%B41%E2%80%933%E6%9C%88%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">二、武汉 → 中国其他地区 → 全球（2020年1–3月）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E6%92%AD%E9%93%BE%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">传播链模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%97%A9%E6%9C%9F%E5%85%B3%E9%94%AE%E7%AA%81%E5%8F%98%EF%BC%9AD614G%EF%BC%882020%E5%B9%B42%E2%80%934%E6%9C%88%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">三、早期关键突变：D614G（2020年2–4月）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%90%8E%E7%BB%AD%E4%B8%BB%E8%A6%81%E5%8F%98%E5%BC%82%E6%A0%AA%E7%9A%84%E5%88%86%E6%94%AF%E5%85%B3%E7%B3%BB"><span class="toc-number">1.6.</span> <span class="toc-text">四、后续主要变异株的分支关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B3%E4%BA%8E%E2%80%9C%E5%88%9B%E6%92%AD%E9%93%BE%E2%80%9D%E7%9A%84%E7%A7%91%E5%AD%A6%E5%85%B1%E8%AF%86"><span class="toc-number">1.7.</span> <span class="toc-text">五、关于“创播链”的科学共识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%AE%80%E5%8C%96%E7%89%88%E4%BC%A0%E6%92%AD%E9%93%BE%E6%97%B6%E9%97%B4%E8%BD%B4"><span class="toc-number">1.8.</span> <span class="toc-text">六、简化版传播链时间轴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%9B%AE%E5%89%8D%E4%BB%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="toc-number">1.9.</span> <span class="toc-text">七、目前仍存在的不确定性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q2-%E7%BE%8E%E5%9B%BD%E7%9A%84%E7%94%B5%E5%AD%90%E7%83%9F%E7%99%BD%E8%82%BA%E4%BA%8B%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">Q2: 美国的电子烟白肺事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-number">2.1.</span> <span class="toc-text">答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E8%83%8C%E6%99%AF%EF%BC%882019%E5%B9%B4%E5%A4%8F%E2%80%93%E7%A7%8B%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">一、事件背景（2019年夏–秋）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9C%80%E7%BB%88%E7%A1%AE%E8%AE%A4%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.3.</span> <span class="toc-text">二、最终确认的主要原因</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%87%B4%E7%97%85%E5%9B%A0%E7%B4%A0%EF%BC%9A%E7%BB%B4%E7%94%9F%E7%B4%A0E%E9%86%8B%E9%85%B8%E9%85%AF%EF%BC%88Vitamin-E-acetate%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">核心致病因素：维生素E醋酸酯（Vitamin E acetate）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%83%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9C%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%83%8F%E6%96%B0%E5%86%A0%E2%80%9D%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">三、它为什么“看起来像新冠”？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E5%BD%B1%E5%83%8F%E5%AD%A6%E7%9B%B8%E4%BC%BC"><span class="toc-number">2.4.1.</span> <span class="toc-text">1️⃣ 影像学相似</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E4%B8%B4%E5%BA%8A%E7%97%87%E7%8A%B6%E9%87%8D%E5%8F%A0"><span class="toc-number">2.4.2.</span> <span class="toc-text">2️⃣ 临床症状重叠</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%97%B6%E9%97%B4%E4%B8%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9C%E9%87%8D%E5%8F%A0%E2%80%9D%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">四、时间上为什么“重叠”？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%97%85%E7%90%86%E6%9C%BA%E5%88%B6%E5%AF%B9%E6%AF%94"><span class="toc-number">2.6.</span> <span class="toc-text">五、病理机制对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%AA-EVALI%EF%BC%9A%E8%84%82%E8%B4%A8%E6%80%A7-%E5%8C%96%E5%AD%A6%E6%80%A7%E8%82%BA%E6%8D%9F%E4%BC%A4"><span class="toc-number">2.6.1.</span> <span class="toc-text">🧪 EVALI：脂质性&#x2F;化学性肺损伤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A6%A0-COVID-19%EF%BC%9A%E7%97%85%E6%AF%92%E6%84%9F%E6%9F%93"><span class="toc-number">2.6.2.</span> <span class="toc-text">🦠 COVID-19：病毒感染</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%98%B4%E8%B0%8B%E8%AE%BA%E4%BC%9A%E5%87%BA%E7%8E%B0%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">六、为什么阴谋论会出现？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%AE%80%E6%B4%81%E7%BB%93%E8%AE%BA"><span class="toc-number">2.8.</span> <span class="toc-text">七、简洁结论</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q3-%E7%BE%8E%E5%9B%BD%E5%92%8C%E6%84%8F%E5%A4%A7%E5%88%A9%E5%9C%A8%E6%AD%A4%E4%B9%8B%E5%89%8D%E6%9C%89%E6%96%B0%E5%86%A0%E6%8A%97%E4%BD%93%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">Q3: 美国和意大利在此之前有新冠抗体么?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-1"><span class="toc-number">3.1.</span> <span class="toc-text">答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%84%8F%E5%A4%A7%E5%88%A9%E7%9A%84%E2%80%9C2019%E5%B9%B4%E6%8A%97%E4%BD%93%E2%80%9D%E7%A0%94%E7%A9%B6"><span class="toc-number">3.2.</span> <span class="toc-text">一、意大利的“2019年抗体”研究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%86%E9%97%AE%E9%A2%98%E5%9C%A8%E4%BA%8E%EF%BC%9A"><span class="toc-number">3.2.1.</span> <span class="toc-text">但问题在于：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BE%8E%E5%9B%BD%E7%9A%84%E2%80%9C2019%E5%B9%B4%E6%8A%97%E4%BD%93%E2%80%9D%E6%8A%A5%E5%91%8A"><span class="toc-number">3.3.</span> <span class="toc-text">二、美国的“2019年抗体”报告</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%97%E4%BD%93%E6%A3%80%E6%B5%8B%E5%AE%B9%E6%98%93%E2%80%9C%E8%AF%AF%E6%8A%A5%E2%80%9D%EF%BC%9F"><span class="toc-number">3.4.</span> <span class="toc-text">三、为什么抗体检测容易“误报”？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E4%BA%A4%E5%8F%89%E5%8F%8D%E5%BA%94"><span class="toc-number">3.4.1.</span> <span class="toc-text">1️⃣ 交叉反应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E4%BD%8E%E6%B5%81%E8%A1%8C%E7%8E%87%E4%B8%8B%E7%9A%84%E5%81%87%E9%98%B3%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">3.4.2.</span> <span class="toc-text">2️⃣ 低流行率下的假阳性问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%9F%BA%E5%9B%A0%E8%BF%9B%E5%8C%96%E8%AF%81%E6%8D%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%BC%BA%EF%BC%9F"><span class="toc-number">3.5.</span> <span class="toc-text">四、基因进化证据为什么更强？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%AA%E9%87%8D%E8%A6%81%E9%80%BB%E8%BE%91%E9%97%AE%E9%A2%98"><span class="toc-number">3.6.</span> <span class="toc-text">五、还有一个重要逻辑问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%A7%91%E5%AD%A6%E7%95%8C%E7%9B%AE%E5%89%8D%E7%9A%84%E5%85%B1%E8%AF%86"><span class="toc-number">3.7.</span> <span class="toc-text">六、科学界目前的共识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%AE%80%E6%B4%81%E6%80%BB%E7%BB%93"><span class="toc-number">3.8.</span> <span class="toc-text">七、简洁总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Q4-%E7%97%85%E6%AF%92%E7%9A%84%E5%87%BA%E7%8E%B0%E5%9C%A819%E5%B9%B4%E5%BA%95%EF%BC%8C%E8%80%8C%E9%9D%9E%E6%9B%B4%E6%97%A9%E4%B9%88%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">Q4: 病毒的出现在19年底，而非更早么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-2"><span class="toc-number">4.1.</span> <span class="toc-text">答案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%AD%90%E9%92%9F%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">一、什么是分子钟？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E7%94%A8%E5%AE%83%E6%8E%A8%E5%9B%9E%E2%80%9C%E6%9C%80%E6%97%A9%E6%97%B6%E9%97%B4%E2%80%9D%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">二、如何用它推回“最早时间”？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E6%9E%9C%E7%9C%9F%E7%9A%84%E2%80%9C%E6%97%A9%E5%8D%8A%E5%B9%B4%E4%BC%A0%E6%92%AD%E2%80%9D%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">三、如果真的“早半年传播”，会发生什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%B3%BB%E7%BB%9F%E5%8F%91%E8%82%B2%E6%A0%91%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="toc-number">8.</span> <span class="toc-text">四、系统发育树长什么样？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E5%AD%90%E9%92%9F%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F%EF%BC%88%E7%AE%80%E5%8C%96%E7%89%88%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">五、分子钟的计算方式（简化版）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%82%A3%E6%9C%89%E6%B2%A1%E6%9C%89%E5%8F%AF%E8%83%BD%E2%80%9C%E4%BD%8E%E6%B0%B4%E5%B9%B3%E4%BC%A0%E6%92%AD%E2%80%9D%E6%B2%A1%E8%A2%AB%E5%8F%91%E7%8E%B0%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">六、那有没有可能“低水平传播”没被发现？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%88%86%E5%AD%90%E9%92%9F%E6%AF%94%E6%8A%97%E4%BD%93%E7%A0%94%E7%A9%B6%E6%9B%B4%E5%8F%AF%E9%9D%A0%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">七、为什么分子钟比抗体研究更可靠？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E6%80%BB%E7%BB%93"><span class="toc-number">12.</span> <span class="toc-text">八、核心逻辑总结</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/02/about-covid/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/02/about-covid/&text=关于2019年底的新冠疫情"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/02/about-covid/&is_video=false&description=关于2019年底的新冠疫情"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=关于2019年底的新冠疫情&body=Check out this article: https://blog.zfdang.com/2026/02/about-covid/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/02/about-covid/&title=关于2019年底的新冠疫情"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/02/about-covid/&name=关于2019年底的新冠疫情&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/02/about-covid/&t=关于2019年底的新冠疫情"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
