@@ -1,11 +1,11 @@
 ---
-title: Choosing an AWS Nitro Enclaves Stack in 2026: 
+title: Choosing an AWS Nitro Enclaves Stack in 2026
 date: 2026-03-19 22:55:24
 tags:
 ---
 
 
-# Choosing an AWS Nitro Enclaves Stack in 2026: Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That Matter
+# Choosing an AWS Nitro Enclaves Stack in 2026 : Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That Matter
 
 AWS Nitro Enclaves has matured into a real design space rather than a single product choice. Once you move beyond the base AWS feature, you quickly discover several distinct categories of solutions:
 

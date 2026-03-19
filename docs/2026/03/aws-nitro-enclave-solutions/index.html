@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Choosing an AWS Nitro Enclaves Stack in 2026 : Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That MatterAWS Nitro Enclaves has matured into a real design space rather than a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Choosing an AWS Nitro Enclaves Stack in 2026">
+<meta property="og:url" content="https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="Choosing an AWS Nitro Enclaves Stack in 2026 : Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That MatterAWS Nitro Enclaves has matured into a real design space rather than a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-19T14:55:24.000Z">
+<meta property="article:modified_time" content="2026-03-19T15:18:14.528Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>Choosing an AWS Nitro Enclaves Stack in 2026</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2026/02/about-covid/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&text=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&is_video=false&description=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Choosing an AWS Nitro Enclaves Stack in 2026&body=Check out this article: https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&name=Choosing an AWS Nitro Enclaves Stack in 2026&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&t=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Choosing-an-AWS-Nitro-Enclaves-Stack-in-2026-Nova-Capsule-vs-Enclaver-vs-Marlin-vs-Anjuna-Plus-the-Other-Options-That-Matter"><span class="toc-number">1.</span> <span class="toc-text">Choosing an AWS Nitro Enclaves Stack in 2026 : Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That Matter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Start-with-the-constraint-that-shapes-everything"><span class="toc-number">1.1.</span> <span class="toc-text">Start with the constraint that shapes everything</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-evaluation-lens"><span class="toc-number">1.2.</span> <span class="toc-text">The evaluation lens</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-How-close-is-it-to-raw-Nitro"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. How close is it to raw Nitro?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-How-much-application-change-is-required"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. How much application change is required?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-How-opinionated-is-the-runtime-model"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. How opinionated is the runtime model?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-How-strong-is-the-attestation-story"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. How strong is the attestation story?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-How-production-ready-is-the-operational-story"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. How production-ready is the operational story?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-How-open-is-the-stack"><span class="toc-number">1.2.6.</span> <span class="toc-text">6. How open is the stack?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-What-kind-of-workload-is-it-really-for"><span class="toc-number">1.2.7.</span> <span class="toc-text">7. What kind of workload is it really for?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AWS-native-Nitro-Enclaves-the-most-control-the-most-work"><span class="toc-number">1.3.</span> <span class="toc-text">1) AWS-native Nitro Enclaves: the most control, the most work</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Sparsity-Nova-nova-enclave-capsule-a-higher-level-Nitro-application-platform"><span class="toc-number">1.4.</span> <span class="toc-text">2) Sparsity Nova &#x2F; nova-enclave-capsule: a higher-level Nitro application platform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Enclaver-the-cleaner-open-source-toolkit-route"><span class="toc-number">1.5.</span> <span class="toc-text">3) Enclaver: the cleaner open-source toolkit route</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Marlin-Oyster-not-just-Nitro-but-verifiable-compute-as-a-network"><span class="toc-number">1.6.</span> <span class="toc-text">4) Marlin &#x2F; Oyster: not just Nitro, but verifiable compute as a network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Anjuna-the-enterprise-lift-and-shift-choice"><span class="toc-number">1.7.</span> <span class="toc-text">5) Anjuna: the enterprise lift-and-shift choice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Evervault-Enclaves-strong-developer-experience-but-not-yet-full-self-hosting"><span class="toc-number">1.8.</span> <span class="toc-text">6) Evervault Enclaves: strong developer experience, but not yet full self-hosting</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Kubernetes-EKS-useful-deployment-substrate-not-a-full-answer"><span class="toc-number">1.9.</span> <span class="toc-text">7) Kubernetes &#x2F; EKS: useful deployment substrate, not a full answer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-real-segmentation-these-products-are-solving-different-jobs"><span class="toc-number">1.10.</span> <span class="toc-text">The real segmentation: these products are solving different jobs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-maximum-control"><span class="toc-number">1.10.1.</span> <span class="toc-text">If you want maximum control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-an-open-higher-level-Nitro-application-platform"><span class="toc-number">1.10.2.</span> <span class="toc-text">If you want an open, higher-level Nitro application platform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-enterprise-migration-with-minimal-code-change"><span class="toc-number">1.10.3.</span> <span class="toc-text">If you want enterprise migration with minimal code change</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-publicly-verifiable-or-decentralized-compute"><span class="toc-number">1.10.4.</span> <span class="toc-text">If you want publicly verifiable or decentralized compute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-a-managed-developer-friendly-enclave-experience"><span class="toc-number">1.10.5.</span> <span class="toc-text">If you want a managed, developer-friendly enclave experience</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-Kubernetes-integration"><span class="toc-number">1.10.6.</span> <span class="toc-text">If you want Kubernetes integration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#My-practical-take"><span class="toc-number">1.11.</span> <span class="toc-text">My practical take</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AWS-native-Nitro-Enclaves"><span class="toc-number">1.11.1.</span> <span class="toc-text">AWS-native Nitro Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nova-nova-enclave-capsule"><span class="toc-number">1.11.2.</span> <span class="toc-text">Nova &#x2F; nova-enclave-capsule</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enclaver"><span class="toc-number">1.11.3.</span> <span class="toc-text">Enclaver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Marlin-Oyster"><span class="toc-number">1.11.4.</span> <span class="toc-text">Marlin &#x2F; Oyster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anjuna"><span class="toc-number">1.11.5.</span> <span class="toc-text">Anjuna</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Evervault-Enclaves"><span class="toc-number">1.11.6.</span> <span class="toc-text">Evervault Enclaves</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-bottom-line"><span class="toc-number">1.12.</span> <span class="toc-text">The bottom line</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-simple-recommendation-matrix"><span class="toc-number">1.13.</span> <span class="toc-text">A simple recommendation matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Links"><span class="toc-number">1.14.</span> <span class="toc-text">Links</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AWS-native-Nitro-Enclaves-1"><span class="toc-number">1.14.1.</span> <span class="toc-text">AWS-native Nitro Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sparsity-Nova-nova-enclave-capsule"><span class="toc-number">1.14.2.</span> <span class="toc-text">Sparsity Nova &#x2F; nova-enclave-capsule</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enclaver-1"><span class="toc-number">1.14.3.</span> <span class="toc-text">Enclaver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Marlin-Oyster-1"><span class="toc-number">1.14.4.</span> <span class="toc-text">Marlin &#x2F; Oyster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anjuna-1"><span class="toc-number">1.14.5.</span> <span class="toc-text">Anjuna</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Evervault-Enclaves-1"><span class="toc-number">1.14.6.</span> <span class="toc-text">Evervault Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-EKS"><span class="toc-number">1.14.7.</span> <span class="toc-text">Kubernetes &#x2F; EKS</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Choosing an AWS Nitro Enclaves Stack in 2026
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-03-19T14:55:24.000Z" itemprop="datePublished">2026-03-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Choosing-an-AWS-Nitro-Enclaves-Stack-in-2026-Nova-Capsule-vs-Enclaver-vs-Marlin-vs-Anjuna-Plus-the-Other-Options-That-Matter"><a href="#Choosing-an-AWS-Nitro-Enclaves-Stack-in-2026-Nova-Capsule-vs-Enclaver-vs-Marlin-vs-Anjuna-Plus-the-Other-Options-That-Matter" class="headerlink" title="Choosing an AWS Nitro Enclaves Stack in 2026 : Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That Matter"></a>Choosing an AWS Nitro Enclaves Stack in 2026 : Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That Matter</h1><p>AWS Nitro Enclaves has matured into a real design space rather than a single product choice. Once you move beyond the base AWS feature, you quickly discover several distinct categories of solutions:</p>
+<ul>
+<li>the raw AWS-native path</li>
+<li>open-source packaging and runtime frameworks</li>
+<li>managed developer platforms</li>
+<li>enterprise “lift-and-shift” products</li>
+<li>decentralized verifiable compute networks</li>
+</ul>
+<p>That distinction matters, because most teams are not actually choosing between <em>equivalent</em> Nitro Enclaves products. They are choosing between very different philosophies for how enclave applications should be built, operated, attested, and exposed to the outside world.</p>
+<p>This post compares the main options I would seriously consider today:</p>
+<ul>
+<li><strong>AWS-native Nitro Enclaves</strong></li>
+<li><strong>Sparsity Nova &#x2F; <code>nova-enclave-capsule</code></strong></li>
+<li><strong><code>enclaver-io/enclaver</code></strong></li>
+<li><strong>Marlin &#x2F; Oyster</strong></li>
+<li><strong>Anjuna</strong></li>
+<li><strong>Evervault Enclaves</strong></li>
+<li><strong>AWS Nitro Enclaves on Kubernetes &#x2F; EKS</strong></li>
+</ul>
+<hr>
+<h2 id="Start-with-the-constraint-that-shapes-everything"><a href="#Start-with-the-constraint-that-shapes-everything" class="headerlink" title="Start with the constraint that shapes everything"></a>Start with the constraint that shapes everything</h2><p>Before comparing products, it is worth remembering what Nitro Enclaves actually is.</p>
+<p>A Nitro Enclave is a hardened, isolated VM carved out of a parent EC2 instance. It has <strong>no external networking</strong>, <strong>no persistent storage</strong>, and communicates with the parent only over <strong>local vsock</strong>. That single design choice explains why the ecosystem looks the way it does.</p>
+<p>Every Nitro Enclaves “platform” is, in one way or another, trying to solve the same set of problems:</p>
+<ul>
+<li>how to make enclave apps easier to build</li>
+<li>how to proxy ingress and egress safely</li>
+<li>how to handle attestation and measurement validation</li>
+<li>how to release secrets only to known enclave identities</li>
+<li>how to preserve developer ergonomics despite the lack of normal networking and storage</li>
+</ul>
+<p>So the right question is not “Which Nitro solution has the longest feature list?” The real question is:</p>
+<blockquote>
+<p><strong>Which layer of the Nitro problem do you want to own yourself, and which layer do you want someone else to abstract away?</strong></p>
+</blockquote>
+<hr>
+<h2 id="The-evaluation-lens"><a href="#The-evaluation-lens" class="headerlink" title="The evaluation lens"></a>The evaluation lens</h2><p>I find these seven dimensions the most useful:</p>
+<h3 id="1-How-close-is-it-to-raw-Nitro"><a href="#1-How-close-is-it-to-raw-Nitro" class="headerlink" title="1. How close is it to raw Nitro?"></a>1. How close is it to raw Nitro?</h3><p>Some teams want maximum control and minimum abstraction. Others want Nitro to disappear behind a developer-friendly platform.</p>
+<h3 id="2-How-much-application-change-is-required"><a href="#2-How-much-application-change-is-required" class="headerlink" title="2. How much application change is required?"></a>2. How much application change is required?</h3><p>This is often the dividing line between enterprise products and framework-first solutions.</p>
+<h3 id="3-How-opinionated-is-the-runtime-model"><a href="#3-How-opinionated-is-the-runtime-model" class="headerlink" title="3. How opinionated is the runtime model?"></a>3. How opinionated is the runtime model?</h3><p>Some tools are thin wrappers around Nitro; others introduce a full app platform with proxies, APIs, identities, and conventions.</p>
+<h3 id="4-How-strong-is-the-attestation-story"><a href="#4-How-strong-is-the-attestation-story" class="headerlink" title="4. How strong is the attestation story?"></a>4. How strong is the attestation story?</h3><p>This includes both technical correctness and how easy it is to consume attestation from clients, services, or even blockchains.</p>
+<h3 id="5-How-production-ready-is-the-operational-story"><a href="#5-How-production-ready-is-the-operational-story" class="headerlink" title="5. How production-ready is the operational story?"></a>5. How production-ready is the operational story?</h3><p>Kubernetes, CI&#x2F;CD, secrets, upgrades, logging, observability, rollout patterns, and support all matter.</p>
+<h3 id="6-How-open-is-the-stack"><a href="#6-How-open-is-the-stack" class="headerlink" title="6. How open is the stack?"></a>6. How open is the stack?</h3><p>Open source, auditability, self-hosting, and vendor lock-in may matter more than convenience, depending on the use case.</p>
+<h3 id="7-What-kind-of-workload-is-it-really-for"><a href="#7-What-kind-of-workload-is-it-really-for" class="headerlink" title="7. What kind of workload is it really for?"></a>7. What kind of workload is it really for?</h3><p>Enterprise migration, developer platform, key custody, agent infrastructure, verifiable cloud, and on-chain coprocessors are not the same thing.</p>
+<hr>
+<h2 id="1-AWS-native-Nitro-Enclaves-the-most-control-the-most-work"><a href="#1-AWS-native-Nitro-Enclaves-the-most-control-the-most-work" class="headerlink" title="1) AWS-native Nitro Enclaves: the most control, the most work"></a>1) AWS-native Nitro Enclaves: the most control, the most work</h2><p>The AWS-native route is the cleanest conceptual baseline. AWS provides the enclave model, Nitro CLI, SDKs, attestation documents, and integration points such as KMS policies bound to enclave measurements.</p>
+<p>This path is ideal if you want to own the full architecture yourself. You keep the trust boundary simple. You avoid third-party control planes. You can build exactly the ingress, egress, attestation verification, and secret-release model you want.</p>
+<p>But this also means you inherit the hardest parts:</p>
+<ul>
+<li>parent&#x2F;enclave split architecture</li>
+<li>vsock plumbing</li>
+<li>custom proxying</li>
+<li>image build and measurement management</li>
+<li>operational debugging in a constrained environment</li>
+<li>secret release and attestation verification flows</li>
+</ul>
+<p>AWS’s own model makes clear that enclave applications commonly have to be split into a parent-side component and an enclave-side component because of the constrained runtime model.</p>
+<p><strong>Best for:</strong> security-heavy teams, infrastructure teams, and teams building a platform rather than just shipping one app.</p>
+<p><strong>Weakness:</strong> time-to-value is the worst of all options.</p>
+<hr>
+<h2 id="2-Sparsity-Nova-nova-enclave-capsule-a-higher-level-Nitro-application-platform"><a href="#2-Sparsity-Nova-nova-enclave-capsule-a-higher-level-Nitro-application-platform" class="headerlink" title="2) Sparsity Nova &#x2F; nova-enclave-capsule: a higher-level Nitro application platform"></a>2) Sparsity Nova &#x2F; <code>nova-enclave-capsule</code>: a higher-level Nitro application platform</h2><p>Sparsity’s public repositories and examples make it clear that Nova is not just a packaging tool. It appears to be a broader stack for building enclave applications with a stronger focus on attestation, identity, platform-integrated services, and application templates.</p>
+<p>That is a very different ambition from a thin Nitro wrapper.</p>
+<p>Nova appears to be solving for teams that want Nitro as the substrate for <strong>verifiable applications</strong>, not just confidential ones. In practice, that means a stronger opinion around:</p>
+<ul>
+<li>enclave identity</li>
+<li>attestation exposure</li>
+<li>platform-integrated services</li>
+<li>application templates</li>
+<li>higher-level runtime conventions</li>
+<li>potentially on-chain verification and payment patterns</li>
+</ul>
+<p>This is a compelling direction if your workload is not merely “run code in an enclave,” but rather:</p>
+<ul>
+<li>trusted agent runtimes</li>
+<li>verifiable APIs</li>
+<li>secure key or wallet operations</li>
+<li>confidential compute with externally checkable provenance</li>
+</ul>
+<p>The tradeoff is equally clear: the more value Nova adds, the more it becomes a platform with its own model of how applications should be built and operated.</p>
+<p>That is not a flaw. It is the point. But it means Nova is strongest when you <em>want</em> that opinionated platform layer.</p>
+<p><strong>Best for:</strong> teams building Nitro-native products, agent infra, verifiable services, or on-chain-adjacent systems.</p>
+<p><strong>Weakness:</strong> more platform coupling than a minimal toolkit.</p>
+<hr>
+<h2 id="3-Enclaver-the-cleaner-open-source-toolkit-route"><a href="#3-Enclaver-the-cleaner-open-source-toolkit-route" class="headerlink" title="3) Enclaver: the cleaner open-source toolkit route"></a>3) Enclaver: the cleaner open-source toolkit route</h2><p><code>enclaver-io/enclaver</code> sits in a more minimal category. It is closer to a toolkit than a platform.</p>
+<p>That is a very useful signal.</p>
+<p>Enclaver is appealing precisely because it does <strong>less</strong>. It is closer to a toolkit than a platform. If Nova is trying to become a full Nitro application stack, Enclaver feels more like a cleaner base layer for teams that want to stay close to the metal while still avoiding some raw Nitro friction.</p>
+<p>That makes it attractive for teams that want:</p>
+<ul>
+<li>open-source transparency</li>
+<li>lower-level control</li>
+<li>less ecosystem lock-in</li>
+<li>a simpler mental model than a full platform</li>
+</ul>
+<p>The downside is that you should not expect it to solve every production concern for you. You are likely still taking responsibility for a significant portion of the runtime, operational, and attestation-consumption story.</p>
+<p><strong>Best for:</strong> technically strong teams that want an open-source Nitro abstraction without buying into a larger platform.</p>
+<p><strong>Weakness:</strong> thinner product surface and more user-owned integration work.</p>
+<hr>
+<h2 id="4-Marlin-Oyster-not-just-Nitro-but-verifiable-compute-as-a-network"><a href="#4-Marlin-Oyster-not-just-Nitro-but-verifiable-compute-as-a-network" class="headerlink" title="4) Marlin &#x2F; Oyster: not just Nitro, but verifiable compute as a network"></a>4) Marlin &#x2F; Oyster: not just Nitro, but verifiable compute as a network</h2><p>Marlin is the most conceptually different option in this set.</p>
+<p>It is not mainly selling “better enclave packaging.” It is selling a new consumption model for trusted compute.</p>
+<p>This matters because many Nitro discussions are really about one of two goals:</p>
+<ol>
+<li>“I want a secure place to run part of my existing system.”</li>
+<li>“I want the outside world to verify that this computation was performed by the intended enclave.”</li>
+</ol>
+<p>Marlin is strongly optimized for the second.</p>
+<p>Its approach is especially appealing for workloads closer to:</p>
+<ul>
+<li>on-chain coprocessors</li>
+<li>decentralized AI or agent services</li>
+<li>publicly verifiable compute</li>
+<li>third-party-rentable confidential execution</li>
+</ul>
+<p>If your workload is “internal enterprise app migration,” it may be the wrong mental model altogether.</p>
+<p><strong>Best for:</strong> Web3, verifiable services, public attestability, decentralized confidential compute.</p>
+<p><strong>Weakness:</strong> less natural for traditional enterprise migration and internal-only workloads.</p>
+<hr>
+<h2 id="5-Anjuna-the-enterprise-lift-and-shift-choice"><a href="#5-Anjuna-the-enterprise-lift-and-shift-choice" class="headerlink" title="5) Anjuna: the enterprise lift-and-shift choice"></a>5) Anjuna: the enterprise lift-and-shift choice</h2><p>Anjuna’s positioning is one of the clearest in the category: running applications inside AWS Nitro Enclaves with minimal or no code changes, while also addressing network communication, key management, encryption, and operational concerns.</p>
+<p>That tells you almost everything you need to know about the target buyer.</p>
+<p>Anjuna is for teams that do not want to redesign their application architecture around Nitro. They want a product that minimizes app changes and maximizes enterprise readiness.</p>
+<p>This is especially attractive when the goal is:</p>
+<ul>
+<li>migrating existing services</li>
+<li>protecting sensitive code paths</li>
+<li>adding confidential execution to regulated workloads</li>
+<li>reducing the specialized enclave engineering burden</li>
+</ul>
+<p>The tradeoff is classic enterprise software tradeoff:</p>
+<ul>
+<li>less open than pure OSS routes</li>
+<li>more vendor coupling</li>
+<li>likely higher cost</li>
+<li>less flexibility for teams that want a bespoke or protocol-native architecture</li>
+</ul>
+<p><strong>Best for:</strong> enterprises, regulated workloads, existing application migration, teams prioritizing time-to-production over low-level control.</p>
+<p><strong>Weakness:</strong> less attractive if openness, self-hosting purity, or architectural sovereignty is your top priority.</p>
+<hr>
+<h2 id="6-Evervault-Enclaves-strong-developer-experience-but-not-yet-full-self-hosting"><a href="#6-Evervault-Enclaves-strong-developer-experience-but-not-yet-full-self-hosting" class="headerlink" title="6) Evervault Enclaves: strong developer experience, but not yet full self-hosting"></a>6) Evervault Enclaves: strong developer experience, but not yet full self-hosting</h2><p>Evervault Enclaves is an interesting middle ground.</p>
+<p>It offers more transparency than a fully closed enterprise product, but it is not equivalent to a fully self-hostable open-source stack. That can still be a very good trade for teams that care more about:</p>
+<ul>
+<li>fast adoption</li>
+<li>a polished developer experience</li>
+<li>managed control plane convenience</li>
+</ul>
+<p>than about complete infrastructure sovereignty.</p>
+<p><strong>Best for:</strong> teams that want Nitro-based secure compute with a smoother managed experience.</p>
+<p><strong>Weakness:</strong> not the right fit if full self-hosting is a hard requirement today.</p>
+<hr>
+<h2 id="7-Kubernetes-EKS-useful-deployment-substrate-not-a-full-answer"><a href="#7-Kubernetes-EKS-useful-deployment-substrate-not-a-full-answer" class="headerlink" title="7) Kubernetes &#x2F; EKS: useful deployment substrate, not a full answer"></a>7) Kubernetes &#x2F; EKS: useful deployment substrate, not a full answer</h2><p>AWS’s Nitro Enclaves Kubernetes device plugin is valuable, especially for teams already invested in EKS or self-managed Kubernetes.</p>
+<p>Kubernetes support helps with scheduling and deployment integration. It does <strong>not</strong> by itself solve:</p>
+<ul>
+<li>your enclave app architecture</li>
+<li>secret release design</li>
+<li>attestation verification interfaces</li>
+<li>ingress&#x2F;egress strategy</li>
+<li>developer ergonomics</li>
+</ul>
+<p>So Kubernetes is best thought of as a deployment substrate, not a complete Nitro application platform.</p>
+<p><strong>Best for:</strong> teams that are already deeply invested in EKS or self-managed Kubernetes.</p>
+<p><strong>Weakness:</strong> only solves one layer of the overall Nitro problem.</p>
+<hr>
+<h2 id="The-real-segmentation-these-products-are-solving-different-jobs"><a href="#The-real-segmentation-these-products-are-solving-different-jobs" class="headerlink" title="The real segmentation: these products are solving different jobs"></a>The real segmentation: these products are solving different jobs</h2><p>A lot of Nitro comparisons go wrong because they compare unlike things. Here is the cleaner framing.</p>
+<h3 id="If-you-want-maximum-control"><a href="#If-you-want-maximum-control" class="headerlink" title="If you want maximum control"></a>If you want maximum control</h3><p>Choose <strong>AWS-native Nitro Enclaves</strong>, or possibly <strong>Enclaver</strong> if you want a lighter abstraction while staying close to the core model.</p>
+<h3 id="If-you-want-an-open-higher-level-Nitro-application-platform"><a href="#If-you-want-an-open-higher-level-Nitro-application-platform" class="headerlink" title="If you want an open, higher-level Nitro application platform"></a>If you want an open, higher-level Nitro application platform</h3><p>Choose <strong>Nova</strong>. It is explicitly closer to a broader platform for building verifiable enclave applications than just a packaging utility.</p>
+<h3 id="If-you-want-enterprise-migration-with-minimal-code-change"><a href="#If-you-want-enterprise-migration-with-minimal-code-change" class="headerlink" title="If you want enterprise migration with minimal code change"></a>If you want enterprise migration with minimal code change</h3><p>Choose <strong>Anjuna</strong>. That is the category it is clearly optimized for.</p>
+<h3 id="If-you-want-publicly-verifiable-or-decentralized-compute"><a href="#If-you-want-publicly-verifiable-or-decentralized-compute" class="headerlink" title="If you want publicly verifiable or decentralized compute"></a>If you want publicly verifiable or decentralized compute</h3><p>Choose <strong>Marlin &#x2F; Oyster</strong>. Its positioning is fundamentally about verifiable compute over decentralized infrastructure, not just confidential hosting.</p>
+<h3 id="If-you-want-a-managed-developer-friendly-enclave-experience"><a href="#If-you-want-a-managed-developer-friendly-enclave-experience" class="headerlink" title="If you want a managed, developer-friendly enclave experience"></a>If you want a managed, developer-friendly enclave experience</h3><p>Look at <strong>Evervault Enclaves</strong>, with the caveat that full self-hosting is not there yet.</p>
+<h3 id="If-you-want-Kubernetes-integration"><a href="#If-you-want-Kubernetes-integration" class="headerlink" title="If you want Kubernetes integration"></a>If you want Kubernetes integration</h3><p>Use the <strong>AWS Nitro Enclaves device plugin</strong>, but understand that it complements rather than replaces the rest of the architecture.</p>
+<hr>
+<h2 id="My-practical-take"><a href="#My-practical-take" class="headerlink" title="My practical take"></a>My practical take</h2><p>If I reduce the decision to one line per option, it looks like this:</p>
+<h3 id="AWS-native-Nitro-Enclaves"><a href="#AWS-native-Nitro-Enclaves" class="headerlink" title="AWS-native Nitro Enclaves"></a>AWS-native Nitro Enclaves</h3><p><strong>Use this if you want the cleanest trust boundary and are willing to build the missing platform yourself.</strong></p>
+<h3 id="Nova-nova-enclave-capsule"><a href="#Nova-nova-enclave-capsule" class="headerlink" title="Nova &#x2F; nova-enclave-capsule"></a>Nova &#x2F; <code>nova-enclave-capsule</code></h3><p><strong>Use this if you want a Nitro-native application platform, especially for verifiable services, trusted agents, or on-chain-adjacent systems.</strong></p>
+<h3 id="Enclaver"><a href="#Enclaver" class="headerlink" title="Enclaver"></a>Enclaver</h3><p><strong>Use this if you want an open-source toolkit and prefer to keep more of the architecture under your own control.</strong></p>
+<h3 id="Marlin-Oyster"><a href="#Marlin-Oyster" class="headerlink" title="Marlin &#x2F; Oyster"></a>Marlin &#x2F; Oyster</h3><p><strong>Use this if public verifiability and decentralized compute are part of the product, not just an implementation detail.</strong></p>
+<h3 id="Anjuna"><a href="#Anjuna" class="headerlink" title="Anjuna"></a>Anjuna</h3><p><strong>Use this if your main problem is moving existing enterprise applications into enclaves without a ground-up redesign.</strong></p>
+<h3 id="Evervault-Enclaves"><a href="#Evervault-Enclaves" class="headerlink" title="Evervault Enclaves"></a>Evervault Enclaves</h3><p><strong>Use this if you want the easiest secure compute developer experience and can accept a managed-product posture.</strong></p>
+<hr>
+<h2 id="The-bottom-line"><a href="#The-bottom-line" class="headerlink" title="The bottom line"></a>The bottom line</h2><p>The Nitro Enclaves ecosystem is no longer just about “Can this run in an enclave?” That part is the easy part.</p>
+<p>The real differentiation is:</p>
+<ul>
+<li><strong>who owns the platform complexity</strong></li>
+<li><strong>how much abstraction sits above raw Nitro</strong></li>
+<li><strong>whether attestability is internal, external, or even on-chain</strong></li>
+<li><strong>whether your goal is migration, platform building, or networked verifiable compute</strong></li>
+</ul>
+<p>That is why Nova, Enclaver, Marlin, and Anjuna should not be seen as four versions of the same product. They are four answers to four different questions.</p>
+<p>And that is probably the most useful way to choose.</p>
+<hr>
+<h2 id="A-simple-recommendation-matrix"><a href="#A-simple-recommendation-matrix" class="headerlink" title="A simple recommendation matrix"></a>A simple recommendation matrix</h2><p>If your team looks like this, start here:</p>
+<ul>
+<li><strong>Security&#x2F;infrastructure team that wants full control:</strong> AWS-native Nitro Enclaves</li>
+<li><strong>Open-source team building a Nitro platform or trusted app stack:</strong> Nova</li>
+<li><strong>Engineering-heavy team that wants a leaner open-source toolkit:</strong> Enclaver</li>
+<li><strong>Web3 or publicly verifiable compute team:</strong> Marlin &#x2F; Oyster</li>
+<li><strong>Enterprise team migrating existing systems:</strong> Anjuna</li>
+<li><strong>Developer-first team that wants a managed enclave product:</strong> Evervault</li>
+</ul>
+<p>In other words:</p>
+<blockquote>
+<p><strong>Choose the solution that matches the job you are hiring Nitro to do.</strong></p>
+<p>If you choose only by feature checklist, you will probably end up with the wrong architecture.</p>
+</blockquote>
+<hr>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><h3 id="AWS-native-Nitro-Enclaves-1"><a href="#AWS-native-Nitro-Enclaves-1" class="headerlink" title="AWS-native Nitro Enclaves"></a>AWS-native Nitro Enclaves</h3><ul>
+<li>AWS Nitro Enclaves overview: <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html">https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html</a></li>
+<li>AWS Nitro Enclaves concepts: <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html">https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html</a></li>
+<li>AWS Nitro Enclaves developer guide: <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html">https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html</a></li>
+</ul>
+<h3 id="Sparsity-Nova-nova-enclave-capsule"><a href="#Sparsity-Nova-nova-enclave-capsule" class="headerlink" title="Sparsity Nova &#x2F; nova-enclave-capsule"></a>Sparsity Nova &#x2F; <code>nova-enclave-capsule</code></h3><ul>
+<li>Nova Enclave Capsule repository: <a target="_blank" rel="noopener" href="https://github.com/sparsity-xyz/nova-enclave-capsule">https://github.com/sparsity-xyz/nova-enclave-capsule</a></li>
+<li>Nova examples: <a target="_blank" rel="noopener" href="https://github.com/sparsity-xyz/sparsity-nova-examples">https://github.com/sparsity-xyz/sparsity-nova-examples</a></li>
+<li>Nova app template: <a target="_blank" rel="noopener" href="https://github.com/sparsity-xyz/nova-app-template">https://github.com/sparsity-xyz/nova-app-template</a></li>
+<li>Sparsity organization: <a target="_blank" rel="noopener" href="https://github.com/sparsity-xyz">https://github.com/sparsity-xyz</a></li>
+</ul>
+<h3 id="Enclaver-1"><a href="#Enclaver-1" class="headerlink" title="Enclaver"></a>Enclaver</h3><ul>
+<li>Enclaver repository: <a target="_blank" rel="noopener" href="https://github.com/edgebitio/enclaver">https://github.com/edgebitio/enclaver</a></li>
+</ul>
+<h3 id="Marlin-Oyster-1"><a href="#Marlin-Oyster-1" class="headerlink" title="Marlin &#x2F; Oyster"></a>Marlin &#x2F; Oyster</h3><ul>
+<li>Marlin docs: <a target="_blank" rel="noopener" href="https://docs.marlin.org/oyster/introduction-to-marlin/">https://docs.marlin.org/oyster/introduction-to-marlin/</a></li>
+<li>Oyster overview: <a target="_blank" rel="noopener" href="https://docs.marlin.org/oyster/">https://docs.marlin.org/oyster/</a></li>
+</ul>
+<h3 id="Anjuna-1"><a href="#Anjuna-1" class="headerlink" title="Anjuna"></a>Anjuna</h3><ul>
+<li>Anjuna Nitro docs: <a target="_blank" rel="noopener" href="https://docs.anjuna.io/nitro/latest/index.html">https://docs.anjuna.io/nitro/latest/index.html</a></li>
+</ul>
+<h3 id="Evervault-Enclaves-1"><a href="#Evervault-Enclaves-1" class="headerlink" title="Evervault Enclaves"></a>Evervault Enclaves</h3><ul>
+<li>Evervault Enclaves repository: <a target="_blank" rel="noopener" href="https://github.com/evervault/enclaves">https://github.com/evervault/enclaves</a></li>
+<li>Evervault docs: <a target="_blank" rel="noopener" href="https://docs.evervault.com/">https://docs.evervault.com/</a></li>
+</ul>
+<h3 id="Kubernetes-EKS"><a href="#Kubernetes-EKS" class="headerlink" title="Kubernetes &#x2F; EKS"></a>Kubernetes &#x2F; EKS</h3><ul>
+<li>AWS Nitro Enclaves K8s device plugin: <a target="_blank" rel="noopener" href="https://github.com/aws/aws-nitro-enclaves-k8s-device-plugin">https://github.com/aws/aws-nitro-enclaves-k8s-device-plugin</a></li>
+<li>AWS EKS + Nitro Enclaves example: <a target="_blank" rel="noopener" href="https://github.com/aws/aws-nitro-enclaves-with-k8s">https://github.com/aws/aws-nitro-enclaves-with-k8s</a></li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Choosing-an-AWS-Nitro-Enclaves-Stack-in-2026-Nova-Capsule-vs-Enclaver-vs-Marlin-vs-Anjuna-Plus-the-Other-Options-That-Matter"><span class="toc-number">1.</span> <span class="toc-text">Choosing an AWS Nitro Enclaves Stack in 2026 : Nova Capsule vs. Enclaver vs. Marlin vs. Anjuna, Plus the Other Options That Matter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Start-with-the-constraint-that-shapes-everything"><span class="toc-number">1.1.</span> <span class="toc-text">Start with the constraint that shapes everything</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-evaluation-lens"><span class="toc-number">1.2.</span> <span class="toc-text">The evaluation lens</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-How-close-is-it-to-raw-Nitro"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. How close is it to raw Nitro?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-How-much-application-change-is-required"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. How much application change is required?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-How-opinionated-is-the-runtime-model"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. How opinionated is the runtime model?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-How-strong-is-the-attestation-story"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. How strong is the attestation story?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-How-production-ready-is-the-operational-story"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. How production-ready is the operational story?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-How-open-is-the-stack"><span class="toc-number">1.2.6.</span> <span class="toc-text">6. How open is the stack?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-What-kind-of-workload-is-it-really-for"><span class="toc-number">1.2.7.</span> <span class="toc-text">7. What kind of workload is it really for?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AWS-native-Nitro-Enclaves-the-most-control-the-most-work"><span class="toc-number">1.3.</span> <span class="toc-text">1) AWS-native Nitro Enclaves: the most control, the most work</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Sparsity-Nova-nova-enclave-capsule-a-higher-level-Nitro-application-platform"><span class="toc-number">1.4.</span> <span class="toc-text">2) Sparsity Nova &#x2F; nova-enclave-capsule: a higher-level Nitro application platform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Enclaver-the-cleaner-open-source-toolkit-route"><span class="toc-number">1.5.</span> <span class="toc-text">3) Enclaver: the cleaner open-source toolkit route</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Marlin-Oyster-not-just-Nitro-but-verifiable-compute-as-a-network"><span class="toc-number">1.6.</span> <span class="toc-text">4) Marlin &#x2F; Oyster: not just Nitro, but verifiable compute as a network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Anjuna-the-enterprise-lift-and-shift-choice"><span class="toc-number">1.7.</span> <span class="toc-text">5) Anjuna: the enterprise lift-and-shift choice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Evervault-Enclaves-strong-developer-experience-but-not-yet-full-self-hosting"><span class="toc-number">1.8.</span> <span class="toc-text">6) Evervault Enclaves: strong developer experience, but not yet full self-hosting</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Kubernetes-EKS-useful-deployment-substrate-not-a-full-answer"><span class="toc-number">1.9.</span> <span class="toc-text">7) Kubernetes &#x2F; EKS: useful deployment substrate, not a full answer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-real-segmentation-these-products-are-solving-different-jobs"><span class="toc-number">1.10.</span> <span class="toc-text">The real segmentation: these products are solving different jobs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-maximum-control"><span class="toc-number">1.10.1.</span> <span class="toc-text">If you want maximum control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-an-open-higher-level-Nitro-application-platform"><span class="toc-number">1.10.2.</span> <span class="toc-text">If you want an open, higher-level Nitro application platform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-enterprise-migration-with-minimal-code-change"><span class="toc-number">1.10.3.</span> <span class="toc-text">If you want enterprise migration with minimal code change</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-publicly-verifiable-or-decentralized-compute"><span class="toc-number">1.10.4.</span> <span class="toc-text">If you want publicly verifiable or decentralized compute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-a-managed-developer-friendly-enclave-experience"><span class="toc-number">1.10.5.</span> <span class="toc-text">If you want a managed, developer-friendly enclave experience</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#If-you-want-Kubernetes-integration"><span class="toc-number">1.10.6.</span> <span class="toc-text">If you want Kubernetes integration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#My-practical-take"><span class="toc-number">1.11.</span> <span class="toc-text">My practical take</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AWS-native-Nitro-Enclaves"><span class="toc-number">1.11.1.</span> <span class="toc-text">AWS-native Nitro Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nova-nova-enclave-capsule"><span class="toc-number">1.11.2.</span> <span class="toc-text">Nova &#x2F; nova-enclave-capsule</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enclaver"><span class="toc-number">1.11.3.</span> <span class="toc-text">Enclaver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Marlin-Oyster"><span class="toc-number">1.11.4.</span> <span class="toc-text">Marlin &#x2F; Oyster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anjuna"><span class="toc-number">1.11.5.</span> <span class="toc-text">Anjuna</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Evervault-Enclaves"><span class="toc-number">1.11.6.</span> <span class="toc-text">Evervault Enclaves</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-bottom-line"><span class="toc-number">1.12.</span> <span class="toc-text">The bottom line</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-simple-recommendation-matrix"><span class="toc-number">1.13.</span> <span class="toc-text">A simple recommendation matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Links"><span class="toc-number">1.14.</span> <span class="toc-text">Links</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AWS-native-Nitro-Enclaves-1"><span class="toc-number">1.14.1.</span> <span class="toc-text">AWS-native Nitro Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sparsity-Nova-nova-enclave-capsule"><span class="toc-number">1.14.2.</span> <span class="toc-text">Sparsity Nova &#x2F; nova-enclave-capsule</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enclaver-1"><span class="toc-number">1.14.3.</span> <span class="toc-text">Enclaver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Marlin-Oyster-1"><span class="toc-number">1.14.4.</span> <span class="toc-text">Marlin &#x2F; Oyster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anjuna-1"><span class="toc-number">1.14.5.</span> <span class="toc-text">Anjuna</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Evervault-Enclaves-1"><span class="toc-number">1.14.6.</span> <span class="toc-text">Evervault Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-EKS"><span class="toc-number">1.14.7.</span> <span class="toc-text">Kubernetes &#x2F; EKS</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&text=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&is_video=false&description=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Choosing an AWS Nitro Enclaves Stack in 2026&body=Check out this article: https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&title=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&name=Choosing an AWS Nitro Enclaves Stack in 2026&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/03/aws-nitro-enclave-solutions/&t=Choosing an AWS Nitro Enclaves Stack in 2026"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
