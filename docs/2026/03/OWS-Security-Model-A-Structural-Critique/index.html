@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="OWS Security Model: A Structural CritiqueSummaryThe Open Wallet Standard (OWS) provides a well-documented local vault model for AI agent wallet access. However, a close reading of its storage format,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OWS Security Model: A Structural Critique">
+<meta property="og:url" content="https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="OWS Security Model: A Structural CritiqueSummaryThe Open Wallet Standard (OWS) provides a well-documented local vault model for AI agent wallet access. However, a close reading of its storage format,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-25T09:41:11.000Z">
+<meta property="article:modified_time" content="2026-03-25T09:41:51.538Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>OWS Security Model: A Structural Critique</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2026/03/aws-nitro-enclave-solutions/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&text=OWS Security Model: A Structural Critique"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&is_video=false&description=OWS Security Model: A Structural Critique"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=OWS Security Model: A Structural Critique&body=Check out this article: https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&name=OWS Security Model: A Structural Critique&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&t=OWS Security Model: A Structural Critique"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OWS-Security-Model-A-Structural-Critique"><span class="toc-number">1.</span> <span class="toc-text">OWS Security Model: A Structural Critique</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.</span> <span class="toc-text">Summary</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Local-Only-Trust-Model-in-a-Multi-Machine-World"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. Local-Only Trust Model in a Multi-Machine World</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-Based-Authentication-Not-Agent-Identity"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. Token-Based Authentication, Not Agent Identity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-No-Isolation-Between-Same-User-Processes"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. No Isolation Between Same-User Processes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Policy-Bypass-via-Direct-Decryption"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. Policy Bypass via Direct Decryption</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Cross-Agent-Interference"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. Cross-Agent Interference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Policy-Files-Are-Even-More-Exposed"><span class="toc-number">1.1.6.</span> <span class="toc-text">6. Policy Files Are Even More Exposed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Fundamental-Gap"><span class="toc-number">1.1.7.</span> <span class="toc-text">The Fundamental Gap</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        OWS Security Model: A Structural Critique
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-03-25T09:41:11.000Z" itemprop="datePublished">2026-03-25</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="OWS-Security-Model-A-Structural-Critique"><a href="#OWS-Security-Model-A-Structural-Critique" class="headerlink" title="OWS Security Model: A Structural Critique"></a>OWS Security Model: A Structural Critique</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>The Open Wallet Standard (OWS) provides a well-documented local vault model for AI agent wallet access. However, a close reading of its storage format, policy engine, and key isolation specs reveals several structural security limitations that matter as agents move toward multi-machine, agent-as-a-service deployments.</p>
+<h3 id="1-Local-Only-Trust-Model-in-a-Multi-Machine-World"><a href="#1-Local-Only-Trust-Model-in-a-Multi-Machine-World" class="headerlink" title="1. Local-Only Trust Model in a Multi-Machine World"></a>1. Local-Only Trust Model in a Multi-Machine World</h3><p>OWS trusts the local filesystem (<code>~/.ows/</code>) as its sole vault storage. All encrypted wallets, API key files, policies, and audit logs live on one machine.</p>
+<p>But the reality of AI agents has already moved past single-machine deployments. Frameworks like OpenClaw run agents across distributed infrastructure. Agent-as-a-service is the clear trajectory. OWS’s local vault assumption means it cannot natively serve agents running on different machines — let alone agents managed as hosted services by third-party providers.</p>
+<h3 id="2-Token-Based-Authentication-Not-Agent-Identity"><a href="#2-Token-Based-Authentication-Not-Agent-Identity" class="headerlink" title="2. Token-Based Authentication, Not Agent Identity"></a>2. Token-Based Authentication, Not Agent Identity</h3><p>OWS authenticates agents via bearer tokens (<code>ows_key_&lt;64 hex chars&gt;</code>). There is no concept of verified agent identity — no code measurement, no attestation, no proof of what software is actually running.</p>
+<p>The token is both the authentication credential and the decryption capability. Whoever holds the token <em>is</em> the agent, as far as OWS is concerned. This makes agent verification inherently weak: a leaked token gives full access with no way to distinguish the legitimate agent from an attacker.</p>
+<h3 id="3-No-Isolation-Between-Same-User-Processes"><a href="#3-No-Isolation-Between-Same-User-Processes" class="headerlink" title="3. No Isolation Between Same-User Processes"></a>3. No Isolation Between Same-User Processes</h3><p>The root structural issue: all agents running under the same OS user share full filesystem access to <code>~/.ows/</code>. Unix file permissions (700&#x2F;600) protect against <em>other users</em>, not against other processes owned by the same user.</p>
+<p>This means any agent process can read, modify, or delete any file in the vault directory — including files belonging to other agents.</p>
+<h3 id="4-Policy-Bypass-via-Direct-Decryption"><a href="#4-Policy-Bypass-via-Direct-Decryption" class="headerlink" title="4. Policy Bypass via Direct Decryption"></a>4. Policy Bypass via Direct Decryption</h3><p>This is the most critical design implication. OWS’s policy enforcement is a <em>code-path boundary</em>, not a <em>cryptographic boundary</em>.</p>
+<p>If an agent has:</p>
+<ul>
+<li>its raw API token (<code>ows_key_...</code>)</li>
+<li>read access to <code>~/.ows/keys/&lt;key-id&gt;.json</code> (which any same-user process has)</li>
+</ul>
+<p>Then it can implement the decryption itself:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKDF-SHA256(token, salt, info=&quot;ows-api-key-v1&quot;, dklen=32) → AES key</span><br><span class="line">AES-256-GCM(key, iv, ciphertext) → mnemonic or private_key</span><br></pre></td></tr></table></figure>
+
+<p>All required parameters — <code>salt</code>, <code>iv</code>, <code>auth_tag</code>, <code>ciphertext</code> — are stored in plaintext inside the key file’s <code>wallet_secrets</code> map. The algorithms are standard. A few lines of code in any language is sufficient.</p>
+<p>Policy checks (spending limits, chain restrictions, time windows) only run inside the OWS SDK’s <code>sign()</code> call path. They do not alter the ciphertext’s decryption conditions. An agent that bypasses the SDK bypasses all policies.</p>
+<h3 id="5-Cross-Agent-Interference"><a href="#5-Cross-Agent-Interference" class="headerlink" title="5. Cross-Agent Interference"></a>5. Cross-Agent Interference</h3><p>Any agent can read, delete, or tamper with other agents’ key files — even without their tokens. The effects:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Requires token?</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read another agent’s key file</td>
+<td>No</td>
+<td>Exposes wallet IDs, policy IDs, encrypted secrets</td>
+</tr>
+<tr>
+<td>Delete another agent’s key file</td>
+<td>No</td>
+<td>Denial of service — that agent loses all wallet access</td>
+</tr>
+<tr>
+<td>Tamper with another agent’s key file</td>
+<td>No</td>
+<td>Corruption or sabotage</td>
+</tr>
+<tr>
+<td>Decrypt another agent’s wallet secrets</td>
+<td>Yes</td>
+<td>Full key extraction</td>
+</tr>
+</tbody></table>
+<h3 id="6-Policy-Files-Are-Even-More-Exposed"><a href="#6-Policy-Files-Are-Even-More-Exposed" class="headerlink" title="6. Policy Files Are Even More Exposed"></a>6. Policy Files Are Even More Exposed</h3><p>Policy files have the weakest permissions in the entire vault:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/.ows/policies/              drwxr-xr-x  (755)</span><br><span class="line">~/.ows/policies/*.json        -rw-r--r--  (644)</span><br></pre></td></tr></table></figure>
+
+<p>OWS intentionally relaxes these because “policy files are not secret material.” But this means a malicious agent can:</p>
+<ol>
+<li>Read its own key file to find its <code>policy_ids</code></li>
+<li>Rewrite the referenced policy files — raise spending limits, expand allowed chains, remove time restrictions</li>
+<li>Call <code>sign()</code> through the OWS SDK normally — the SDK loads the tampered policies from disk and evaluates them as legitimate</li>
+</ol>
+<p>There is no integrity check (signature, hash binding) on policy files. The policy ID in the key file is a plain string reference resolved at runtime from the filesystem.</p>
+<p>This is an even lower-barrier attack than direct decryption — it requires no cryptographic knowledge, no token manipulation, just writing a JSON file.</p>
+<h3 id="The-Fundamental-Gap"><a href="#The-Fundamental-Gap" class="headerlink" title="The Fundamental Gap"></a>The Fundamental Gap</h3><p>These are not implementation bugs. They are structural consequences of OWS’s trust model:</p>
+<ul>
+<li>Trust the local OS user as the security boundary</li>
+<li>Token-as-capability for agent access</li>
+<li>Policy-as-code-path, not policy-as-cryptographic-constraint</li>
+<li>No agent identity beyond bearer tokens</li>
+</ul>
+<p>For single-user, single-machine, trusted-agent scenarios, this model is reasonable. For the emerging world of distributed, multi-provider, potentially adversarial agent ecosystems, these limitations become critical.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OWS-Security-Model-A-Structural-Critique"><span class="toc-number">1.</span> <span class="toc-text">OWS Security Model: A Structural Critique</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.</span> <span class="toc-text">Summary</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Local-Only-Trust-Model-in-a-Multi-Machine-World"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. Local-Only Trust Model in a Multi-Machine World</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-Based-Authentication-Not-Agent-Identity"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. Token-Based Authentication, Not Agent Identity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-No-Isolation-Between-Same-User-Processes"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. No Isolation Between Same-User Processes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Policy-Bypass-via-Direct-Decryption"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. Policy Bypass via Direct Decryption</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Cross-Agent-Interference"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. Cross-Agent Interference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Policy-Files-Are-Even-More-Exposed"><span class="toc-number">1.1.6.</span> <span class="toc-text">6. Policy Files Are Even More Exposed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Fundamental-Gap"><span class="toc-number">1.1.7.</span> <span class="toc-text">The Fundamental Gap</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&text=OWS Security Model: A Structural Critique"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&is_video=false&description=OWS Security Model: A Structural Critique"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=OWS Security Model: A Structural Critique&body=Check out this article: https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&title=OWS Security Model: A Structural Critique"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&name=OWS Security Model: A Structural Critique&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/03/OWS-Security-Model-A-Structural-Critique/&t=OWS Security Model: A Structural Critique"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
