@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Comparing Major TEE Solutions: What Is Measured, What Is Trusted, and Where Confidential Computing Actually Stops1. Scope and MethodTrusted Execution Environments (TEEs) are often discussed as if they">
+<meta property="og:type" content="article">
+<meta property="og:title" content="comparing major tee solutions">
+<meta property="og:url" content="https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="Comparing Major TEE Solutions: What Is Measured, What Is Trusted, and Where Confidential Computing Actually Stops1. Scope and MethodTrusted Execution Environments (TEEs) are often discussed as if they">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-18T02:14:36.000Z">
+<meta property="article:modified_time" content="2026-03-27T02:21:16.167Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="Zhengfa Dang 党政法 FreeWheel Tsinghua 清华">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>comparing major tee solutions</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇 " href="/2026/02/about-covid/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2026/01/return-of-PRC-to-the-united-nations/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&text=comparing major tee solutions"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&is_video=false&description=comparing major tee solutions"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=comparing major tee solutions&body=Check out this article: https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&name=comparing major tee solutions&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&t=comparing major tee solutions"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparing-Major-TEE-Solutions-What-Is-Measured-What-Is-Trusted-and-Where-Confidential-Computing-Actually-Stops"><span class="toc-number">1.</span> <span class="toc-text">Comparing Major TEE Solutions: What Is Measured, What Is Trusted, and Where Confidential Computing Actually Stops</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Scope-and-Method"><span class="toc-number">1.1.</span> <span class="toc-text">1. Scope and Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Executive-Summary"><span class="toc-number">1.2.</span> <span class="toc-text">2. Executive Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-The-Right-Comparison-Questions"><span class="toc-number">1.3.</span> <span class="toc-text">3. The Right Comparison Questions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Threat-model-actors"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 Threat model actors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Comparison-dimensions"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 Comparison dimensions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-One-under-discussed-constant"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 One under-discussed constant</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-The-Four-Families-That-Matter"><span class="toc-number">1.4.</span> <span class="toc-text">4. The Four Families That Matter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Application-measurement-TEEs"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 Application-measurement TEEs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-VM-Realm-confidentiality-TEEs"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 VM &#x2F; Realm confidentiality TEEs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Accelerator-TEEs"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 Accelerator TEEs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Platform-overlays-on-TEEs"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 Platform overlays on TEEs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Intel-SGX"><span class="toc-number">1.5.</span> <span class="toc-text">5. Intel SGX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Core-idea"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Native-measurement-and-attestation"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-What-SGX-proves-well"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 What SGX proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-What-SGX-does-not-solve-by-itself"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 What SGX does not solve by itself</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-Practical-strengths"><span class="toc-number">1.5.5.</span> <span class="toc-text">5.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-Practical-limits"><span class="toc-number">1.5.6.</span> <span class="toc-text">5.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-Best-fit"><span class="toc-number">1.5.7.</span> <span class="toc-text">5.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8-Primary-sources"><span class="toc-number">1.5.8.</span> <span class="toc-text">5.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-AWS-Nitro-Enclaves"><span class="toc-number">1.6.</span> <span class="toc-text">6. AWS Nitro Enclaves</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-Core-idea"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-Native-measurement-and-attestation"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-What-Nitro-proves-well"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 What Nitro proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-What-Nitro-does-not-solve-by-itself"><span class="toc-number">1.6.4.</span> <span class="toc-text">6.4 What Nitro does not solve by itself</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-Practical-strengths"><span class="toc-number">1.6.5.</span> <span class="toc-text">6.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-Practical-limits"><span class="toc-number">1.6.6.</span> <span class="toc-text">6.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-7-Best-fit"><span class="toc-number">1.6.7.</span> <span class="toc-text">6.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-8-Nitro-as-a-solution-landscape"><span class="toc-number">1.6.8.</span> <span class="toc-text">6.8 Nitro as a solution landscape</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-9-Primary-sources"><span class="toc-number">1.6.9.</span> <span class="toc-text">6.9 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Intel-TDX"><span class="toc-number">1.7.</span> <span class="toc-text">7. Intel TDX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-Core-idea"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-Native-measurement-and-attestation"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-What-TDX-proves-well"><span class="toc-number">1.7.3.</span> <span class="toc-text">7.3 What TDX proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-What-TDX-does-not-prove-by-default"><span class="toc-number">1.7.4.</span> <span class="toc-text">7.4 What TDX does not prove by default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-Practical-strengths"><span class="toc-number">1.7.5.</span> <span class="toc-text">7.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-Practical-limits"><span class="toc-number">1.7.6.</span> <span class="toc-text">7.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-Best-fit"><span class="toc-number">1.7.7.</span> <span class="toc-text">7.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-Primary-sources"><span class="toc-number">1.7.8.</span> <span class="toc-text">7.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-AMD-SEV-SNP"><span class="toc-number">1.8.</span> <span class="toc-text">8. AMD SEV-SNP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-Core-idea"><span class="toc-number">1.8.1.</span> <span class="toc-text">8.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-Key-architectural-mechanisms"><span class="toc-number">1.8.2.</span> <span class="toc-text">8.2 Key architectural mechanisms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-Native-measurement-and-attestation"><span class="toc-number">1.8.3.</span> <span class="toc-text">8.3 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-What-SEV-SNP-proves-well"><span class="toc-number">1.8.4.</span> <span class="toc-text">8.4 What SEV-SNP proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-What-SEV-SNP-does-not-prove-by-default"><span class="toc-number">1.8.5.</span> <span class="toc-text">8.5 What SEV-SNP does not prove by default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6-Practical-strengths"><span class="toc-number">1.8.6.</span> <span class="toc-text">8.6 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-Practical-limits"><span class="toc-number">1.8.7.</span> <span class="toc-text">8.7 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-Best-fit"><span class="toc-number">1.8.8.</span> <span class="toc-text">8.8 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-9-Primary-sources"><span class="toc-number">1.8.9.</span> <span class="toc-text">8.9 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Arm-Confidential-Compute-Architecture-CCA"><span class="toc-number">1.9.</span> <span class="toc-text">9. Arm Confidential Compute Architecture (CCA)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-Core-idea"><span class="toc-number">1.9.1.</span> <span class="toc-text">9.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-Core-architecture"><span class="toc-number">1.9.2.</span> <span class="toc-text">9.2 Core architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-Native-measurement-and-attestation"><span class="toc-number">1.9.3.</span> <span class="toc-text">9.3 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-What-CCA-proves-well"><span class="toc-number">1.9.4.</span> <span class="toc-text">9.4 What CCA proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-What-CCA-does-not-prove-by-default"><span class="toc-number">1.9.5.</span> <span class="toc-text">9.5 What CCA does not prove by default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-6-Practical-strengths"><span class="toc-number">1.9.6.</span> <span class="toc-text">9.6 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-7-Practical-limits"><span class="toc-number">1.9.7.</span> <span class="toc-text">9.7 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-8-Best-fit"><span class="toc-number">1.9.8.</span> <span class="toc-text">9.8 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-9-Primary-sources"><span class="toc-number">1.9.9.</span> <span class="toc-text">9.9 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-NVIDIA-Confidential-Computing"><span class="toc-number">1.10.</span> <span class="toc-text">10. NVIDIA Confidential Computing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-Core-idea"><span class="toc-number">1.10.1.</span> <span class="toc-text">10.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-Native-measurement-and-attestation"><span class="toc-number">1.10.2.</span> <span class="toc-text">10.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-What-NVIDIA-CC-proves-well"><span class="toc-number">1.10.3.</span> <span class="toc-text">10.3 What NVIDIA CC proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-What-NVIDIA-CC-does-not-replace"><span class="toc-number">1.10.4.</span> <span class="toc-text">10.4 What NVIDIA CC does not replace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-Practical-strengths"><span class="toc-number">1.10.5.</span> <span class="toc-text">10.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-Practical-limits"><span class="toc-number">1.10.6.</span> <span class="toc-text">10.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-7-Best-fit"><span class="toc-number">1.10.7.</span> <span class="toc-text">10.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-8-Primary-sources"><span class="toc-number">1.10.8.</span> <span class="toc-text">10.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-RISC-V-Keystone"><span class="toc-number">1.11.</span> <span class="toc-text">11. RISC-V Keystone</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-Core-idea"><span class="toc-number">1.11.1.</span> <span class="toc-text">11.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-Core-architecture"><span class="toc-number">1.11.2.</span> <span class="toc-text">11.2 Core architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-What-Keystone-proves-well"><span class="toc-number">1.11.3.</span> <span class="toc-text">11.3 What Keystone proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4-What-Keystone-does-not-optimize-for"><span class="toc-number">1.11.4.</span> <span class="toc-text">11.4 What Keystone does not optimize for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-Practical-strengths"><span class="toc-number">1.11.5.</span> <span class="toc-text">11.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-Practical-limits"><span class="toc-number">1.11.6.</span> <span class="toc-text">11.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-7-Best-fit"><span class="toc-number">1.11.7.</span> <span class="toc-text">11.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-8-Primary-sources"><span class="toc-number">1.11.8.</span> <span class="toc-text">11.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-dstack-on-Intel-TDX"><span class="toc-number">1.12.</span> <span class="toc-text">12. dstack on Intel TDX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-1-What-it-is"><span class="toc-number">1.12.1.</span> <span class="toc-text">12.1 What it is</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-What-it-adds"><span class="toc-number">1.12.2.</span> <span class="toc-text">12.2 What it adds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-The-key-measurement-nuance"><span class="toc-number">1.12.3.</span> <span class="toc-text">12.3 The key measurement nuance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-Practical-strengths"><span class="toc-number">1.12.4.</span> <span class="toc-text">12.4 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-Practical-limits"><span class="toc-number">1.12.5.</span> <span class="toc-text">12.5 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-6-Best-fit"><span class="toc-number">1.12.6.</span> <span class="toc-text">12.6 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-7-Primary-sources"><span class="toc-number">1.12.7.</span> <span class="toc-text">12.7 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-Attestation-Protocol-Patterns-and-Verification-Appendix"><span class="toc-number">1.13.</span> <span class="toc-text">13. Attestation Protocol Patterns and Verification Appendix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1-Intel-SGX-DCAP"><span class="toc-number">1.13.1.</span> <span class="toc-text">13.1 Intel SGX DCAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-2-AWS-Nitro-attestation"><span class="toc-number">1.13.2.</span> <span class="toc-text">13.2 AWS Nitro attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-3-Intel-TDX-quote"><span class="toc-number">1.13.3.</span> <span class="toc-text">13.3 Intel TDX quote</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-AMD-SEV-SNP-report"><span class="toc-number">1.13.4.</span> <span class="toc-text">13.4 AMD SEV-SNP report</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-Arm-CCA-Realm-attestation"><span class="toc-number">1.13.5.</span> <span class="toc-text">13.5 Arm CCA Realm attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-6-NVIDIA-attestation"><span class="toc-number">1.13.6.</span> <span class="toc-text">13.6 NVIDIA attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-7-dstack-style-composed-attestation"><span class="toc-number">1.13.7.</span> <span class="toc-text">13.7 dstack-style composed attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-8-Verification-takeaway"><span class="toc-number">1.13.8.</span> <span class="toc-text">13.8 Verification takeaway</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-Measurement-Depth-The-Difference-That-Changes-Everything"><span class="toc-number">1.14.</span> <span class="toc-text">14. Measurement Depth: The Difference That Changes Everything</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-Comparison-Matrix"><span class="toc-number">1.15.</span> <span class="toc-text">15. Comparison Matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-Three-Claims-That-Are-Often-Confused"><span class="toc-number">1.16.</span> <span class="toc-text">16. Three Claims That Are Often Confused</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#16-1-%E2%80%9CThe-host-cannot-read-my-VM%E2%80%9D"><span class="toc-number">1.16.1.</span> <span class="toc-text">16.1 “The host cannot read my VM”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-2-%E2%80%9CI-can-verify-the-code-or-image-I-intended-to-trust%E2%80%9D"><span class="toc-number">1.16.2.</span> <span class="toc-text">16.2 “I can verify the code or image I intended to trust”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-3-%E2%80%9CMy-AI-workload-is-protected-end-to-end%E2%80%9D"><span class="toc-number">1.16.3.</span> <span class="toc-text">16.3 “My AI workload is protected end to end”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-Selection-Guidance-by-Use-Case"><span class="toc-number">1.17.</span> <span class="toc-text">17. Selection Guidance by Use Case</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#17-1-Small-auditable-trusted-core"><span class="toc-number">1.17.1.</span> <span class="toc-text">17.1 Small, auditable trusted core</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-2-AWS-native-secure-service-boundary"><span class="toc-number">1.17.2.</span> <span class="toc-text">17.2 AWS-native secure service boundary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-3-Large-lift-and-shift-confidential-workloads"><span class="toc-number">1.17.3.</span> <span class="toc-text">17.3 Large lift-and-shift confidential workloads</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-4-Arm-first-confidential-compute-roadmap"><span class="toc-number">1.17.4.</span> <span class="toc-text">17.4 Arm-first confidential compute roadmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-5-GPU-resident-confidential-AI"><span class="toc-number">1.17.5.</span> <span class="toc-text">17.5 GPU-resident confidential AI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-6-Open-and-customizable-TEE-research"><span class="toc-number">1.17.6.</span> <span class="toc-text">17.6 Open and customizable TEE research</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-7-TDX-plus-stronger-user-visible-workload-verification"><span class="toc-number">1.17.7.</span> <span class="toc-text">17.7 TDX plus stronger user-visible workload verification</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-SGX-vs-Nitro-Enclaves-Which-One-Is-%E2%80%9CStronger%E2%80%9D"><span class="toc-number">1.18.</span> <span class="toc-text">18. SGX vs Nitro Enclaves: Which One Is “Stronger”?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#18-1-Why-SGX-can-be-stronger-in-theory"><span class="toc-number">1.18.1.</span> <span class="toc-text">18.1 Why SGX can be stronger in theory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-2-Why-Nitro-can-be-stronger-in-practice-for-many-teams"><span class="toc-number">1.18.2.</span> <span class="toc-text">18.2 Why Nitro can be stronger in practice for many teams</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-3-The-most-useful-conclusion"><span class="toc-number">1.18.3.</span> <span class="toc-text">18.3 The most useful conclusion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-Final-Takeaway"><span class="toc-number">1.19.</span> <span class="toc-text">19. Final Takeaway</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-Original-Source-Index"><span class="toc-number">1.20.</span> <span class="toc-text">20. Original-Source Index</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#20-1-Common-confidential-computing-background"><span class="toc-number">1.20.1.</span> <span class="toc-text">20.1 Common confidential computing background</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-2-Intel-SGX"><span class="toc-number">1.20.2.</span> <span class="toc-text">20.2 Intel SGX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-3-AWS-Nitro-Enclaves"><span class="toc-number">1.20.3.</span> <span class="toc-text">20.3 AWS Nitro Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-4-Intel-TDX"><span class="toc-number">1.20.4.</span> <span class="toc-text">20.4 Intel TDX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-5-AMD-SEV-SNP"><span class="toc-number">1.20.5.</span> <span class="toc-text">20.5 AMD SEV-SNP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-6-Arm-CCA"><span class="toc-number">1.20.6.</span> <span class="toc-text">20.6 Arm CCA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-7-NVIDIA-Confidential-Computing"><span class="toc-number">1.20.7.</span> <span class="toc-text">20.7 NVIDIA Confidential Computing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-8-Keystone"><span class="toc-number">1.20.8.</span> <span class="toc-text">20.8 Keystone</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-9-dstack-Phala"><span class="toc-number">1.20.9.</span> <span class="toc-text">20.9 dstack &#x2F; Phala</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        comparing major tee solutions
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-01-18T02:14:36.000Z" itemprop="datePublished">2026-01-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Comparing-Major-TEE-Solutions-What-Is-Measured-What-Is-Trusted-and-Where-Confidential-Computing-Actually-Stops"><a href="#Comparing-Major-TEE-Solutions-What-Is-Measured-What-Is-Trusted-and-Where-Confidential-Computing-Actually-Stops" class="headerlink" title="Comparing Major TEE Solutions: What Is Measured, What Is Trusted, and Where Confidential Computing Actually Stops"></a>Comparing Major TEE Solutions: What Is Measured, What Is Trusted, and Where Confidential Computing Actually Stops</h1><h2 id="1-Scope-and-Method"><a href="#1-Scope-and-Method" class="headerlink" title="1. Scope and Method"></a>1. Scope and Method</h2><p>Trusted Execution Environments (TEEs) are often discussed as if they all provide the same security property. They do not.</p>
+<p>This note compares the major server-side TEE families and one representative platform layer:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Solutions covered here</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base CPU enclave TEE</td>
+<td>Intel SGX</td>
+</tr>
+<tr>
+<td>Base microVM enclave TEE</td>
+<td>AWS Nitro Enclaves</td>
+</tr>
+<tr>
+<td>Base confidential VM &#x2F; realm TEE</td>
+<td>Intel TDX, AMD SEV-SNP, Arm CCA</td>
+</tr>
+<tr>
+<td>Base accelerator TEE</td>
+<td>NVIDIA Confidential Computing</td>
+</tr>
+<tr>
+<td>Open TEE framework</td>
+<td>RISC-V Keystone</td>
+</tr>
+<tr>
+<td>Platform layer built on a TEE</td>
+<td>dstack on Intel TDX</td>
+</tr>
+</tbody></table>
+<p>The comparison is organized around one practical question:</p>
+<blockquote>
+<p>What exactly can a remote relying party verify, and what trust assumptions still remain after attestation?</p>
+</blockquote>
+<p>All factual claims below were cross-checked against original vendor or project documentation. When the text says <strong>Analysis</strong>, that sentence is a synthesis across sources rather than a vendor claim.</p>
+<hr>
+<h2 id="2-Executive-Summary"><a href="#2-Executive-Summary" class="headerlink" title="2. Executive Summary"></a>2. Executive Summary</h2><ul>
+<li><strong>Intel SGX</strong> and <strong>AWS Nitro Enclaves</strong> are the closest mainstream TEEs to “measure the code or image I intend to trust.”</li>
+<li><strong>Intel TDX</strong>, <strong>AMD SEV-SNP</strong>, and <strong>Arm CCA</strong> are primarily about “protect the VM or Realm from the host,” not “prove this exact application binary is running.”</li>
+<li><strong>NVIDIA Confidential Computing</strong> extends the trust boundary into the GPU path, which matters for AI workloads where data and model state leave CPU memory.</li>
+<li><strong>Keystone</strong> optimizes for openness and customizability rather than production maturity.</li>
+<li><strong>dstack</strong> is not a new hardware TEE. It is a platform on top of <strong>TDX</strong> that adds workload-level claims such as <code>compose-hash</code>, <code>RTMR3</code>, and <code>report_data</code>.</li>
+</ul>
+<p>The most important distinction is not marketing language such as “confidential” or “zero trust.” It is the difference between:</p>
+<ul>
+<li>measuring <strong>application code or image</strong></li>
+<li>measuring <strong>VM &#x2F; Realm launch state</strong></li>
+<li>measuring <strong>device state</strong></li>
+<li>measuring a <strong>manifest or policy layer on top of a VM</strong></li>
+</ul>
+<p>Those are related, but they are not the same thing.</p>
+<hr>
+<h2 id="3-The-Right-Comparison-Questions"><a href="#3-The-Right-Comparison-Questions" class="headerlink" title="3. The Right Comparison Questions"></a>3. The Right Comparison Questions</h2><h3 id="3-1-Threat-model-actors"><a href="#3-1-Threat-model-actors" class="headerlink" title="3.1 Threat model actors"></a>3.1 Threat model actors</h3><p>In practice, confidential computing usually involves four actors:</p>
+<ol>
+<li><strong>Infrastructure operator</strong>: cloud provider, host OS, hypervisor, platform admins</li>
+<li><strong>Workload publisher</strong>: the team that built and shipped the application</li>
+<li><strong>Relying party &#x2F; data owner</strong>: the user who wants cryptographic assurance</li>
+<li><strong>Hardware vendor</strong>: the silicon or platform root of trust provider</li>
+</ol>
+<p>All mainstream TEEs reduce trust in the first actor. They differ sharply in how much trust remains in the second.</p>
+<h3 id="3-2-Comparison-dimensions"><a href="#3-2-Comparison-dimensions" class="headerlink" title="3.2 Comparison dimensions"></a>3.2 Comparison dimensions</h3><p>The most useful dimensions are:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Question to ask</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Isolation unit</strong></td>
+<td>Process enclave, microVM, VM, Realm, or GPU?</td>
+<td>Determines the TCB shape and developer ergonomics</td>
+</tr>
+<tr>
+<td><strong>Native measured object</strong></td>
+<td>What does the hardware or platform actually measure?</td>
+<td>Determines what attestation can honestly prove</td>
+</tr>
+<tr>
+<td><strong>Strongest native claim</strong></td>
+<td>What is the verifier really learning?</td>
+<td>Prevents over-claiming application identity</td>
+</tr>
+<tr>
+<td><strong>Residual trust</strong></td>
+<td>What still has to be trusted after attestation?</td>
+<td>Clarifies the remaining attack surface</td>
+</tr>
+<tr>
+<td><strong>Runtime model</strong></td>
+<td>Rewrite, LibOS, Linux guest, or device extension?</td>
+<td>Drives adoption cost</td>
+</tr>
+<tr>
+<td><strong>Device coverage</strong></td>
+<td>CPU only, or CPU plus GPU &#x2F; I&#x2F;O devices?</td>
+<td>Critical for AI and heterogeneous compute</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-One-under-discussed-constant"><a href="#3-3-One-under-discussed-constant" class="headerlink" title="3.3 One under-discussed constant"></a>3.3 One under-discussed constant</h3><p>All of these systems ultimately depend on a hardware root of trust:</p>
+<ul>
+<li>Intel for SGX and TDX</li>
+<li>AMD for SEV-SNP</li>
+<li>Arm for CCA</li>
+<li>NVIDIA for GPU confidential computing</li>
+<li>AWS for Nitro Enclaves</li>
+<li>The platform designer for Keystone deployments</li>
+</ul>
+<p>That dependency never goes away. Confidential computing reduces trust in operators, not in the hardware root itself.</p>
+<hr>
+<h2 id="4-The-Four-Families-That-Matter"><a href="#4-The-Four-Families-That-Matter" class="headerlink" title="4. The Four Families That Matter"></a>4. The Four Families That Matter</h2><h3 id="4-1-Application-measurement-TEEs"><a href="#4-1-Application-measurement-TEEs" class="headerlink" title="4.1 Application-measurement TEEs"></a>4.1 Application-measurement TEEs</h3><p>These TEEs natively bind attestation more directly to the application artifact:</p>
+<ul>
+<li><strong>Intel SGX</strong>: enclave identity via <code>MRENCLAVE</code> and signer identity via <code>MRSIGNER</code></li>
+<li><strong>AWS Nitro Enclaves</strong>: enclave image identity via PCRs derived from the EIF</li>
+</ul>
+<p>These are the closest to:</p>
+<blockquote>
+<p>“I know which measured code or image I am talking to.”</p>
+</blockquote>
+<h3 id="4-2-VM-Realm-confidentiality-TEEs"><a href="#4-2-VM-Realm-confidentiality-TEEs" class="headerlink" title="4.2 VM &#x2F; Realm confidentiality TEEs"></a>4.2 VM &#x2F; Realm confidentiality TEEs</h3><p>These TEEs primarily protect a full guest from the host:</p>
+<ul>
+<li><strong>Intel TDX</strong></li>
+<li><strong>AMD SEV-SNP</strong></li>
+<li><strong>Arm CCA</strong></li>
+</ul>
+<p>These are the closest to:</p>
+<blockquote>
+<p>“I know a confidential VM or Realm booted with a measured launch state on real hardware.”</p>
+</blockquote>
+<p>That is extremely valuable, but it is weaker than direct application identity.</p>
+<h3 id="4-3-Accelerator-TEEs"><a href="#4-3-Accelerator-TEEs" class="headerlink" title="4.3 Accelerator TEEs"></a>4.3 Accelerator TEEs</h3><ul>
+<li><strong>NVIDIA Confidential Computing</strong> extends the boundary to GPU-attached computation and memory.</li>
+</ul>
+<p>This matters because a CPU-only TEE is not enough once model weights, prompts, activations, or gradients move into accelerator memory.</p>
+<h3 id="4-4-Platform-overlays-on-TEEs"><a href="#4-4-Platform-overlays-on-TEEs" class="headerlink" title="4.4 Platform overlays on TEEs"></a>4.4 Platform overlays on TEEs</h3><ul>
+<li><strong>dstack on TDX</strong> is a good example of a platform that adds workload-level claims on top of a confidential VM.</li>
+</ul>
+<p><strong>Analysis:</strong> this is an important pattern to watch. Many production systems will likely converge toward “confidential VM plus workload attestation layer,” because raw CVM attestation alone is often not enough for user-facing verification.</p>
+<hr>
+<h2 id="5-Intel-SGX"><a href="#5-Intel-SGX" class="headerlink" title="5. Intel SGX"></a>5. Intel SGX</h2><h3 id="5-1-Core-idea"><a href="#5-1-Core-idea" class="headerlink" title="5.1 Core idea"></a>5.1 Core idea</h3><p>Intel SGX creates process-level enclaves inside an application address space and minimizes the trusted computing base to the CPU package, enclave contents, and a relatively small runtime boundary.</p>
+<p>This is the classic “small trusted core” model.</p>
+<h3 id="5-2-Native-measurement-and-attestation"><a href="#5-2-Native-measurement-and-attestation" class="headerlink" title="5.2 Native measurement and attestation"></a>5.2 Native measurement and attestation</h3><p>SGX exposes two core identities:</p>
+<ul>
+<li><strong><code>MRENCLAVE</code></strong>: measurement of the enclave image during build &#x2F; initialization</li>
+<li><strong><code>MRSIGNER</code></strong>: identity of the signing authority</li>
+</ul>
+<p>Modern data-center attestation centers on <strong>DCAP &#x2F; ECDSA</strong> and Intel provisioning collateral.</p>
+<h3 id="5-3-What-SGX-proves-well"><a href="#5-3-What-SGX-proves-well" class="headerlink" title="5.3 What SGX proves well"></a>5.3 What SGX proves well</h3><p>SGX is strongest when the relying party wants to verify:</p>
+<ul>
+<li>that a specific enclave measurement loaded</li>
+<li>that it was signed by an expected authority</li>
+<li>that the platform has valid attestation collateral</li>
+</ul>
+<p>This is still one of the strongest native application-identity models among mainstream server TEEs.</p>
+<h3 id="5-4-What-SGX-does-not-solve-by-itself"><a href="#5-4-What-SGX-does-not-solve-by-itself" class="headerlink" title="5.4 What SGX does not solve by itself"></a>5.4 What SGX does not solve by itself</h3><ul>
+<li>It does not automatically make a large Linux application easy to trust.</li>
+<li>It does not eliminate the need to audit enclave code.</li>
+<li>It has a long history of side-channel and microarchitectural research pressure, which means operational hardening matters a lot in practice.</li>
+</ul>
+<h3 id="5-5-Practical-strengths"><a href="#5-5-Practical-strengths" class="headerlink" title="5.5 Practical strengths"></a>5.5 Practical strengths</h3><ul>
+<li>Smallest trust boundary among mainstream server TEEs</li>
+<li>Precise enclave identity model</li>
+<li>Good fit for key custody, signing, MPC, and compact trusted kernels</li>
+<li>Strong attestation story for small, audited components</li>
+</ul>
+<h3 id="5-6-Practical-limits"><a href="#5-6-Practical-limits" class="headerlink" title="5.6 Practical limits"></a>5.6 Practical limits</h3><ul>
+<li>Hardest developer model of the mainstream options</li>
+<li>Poor fit for large general-purpose Linux workloads</li>
+<li>Performance can degrade sharply when enclave memory pressure becomes significant</li>
+<li>Intel’s current product positioning is server-centric: the active SGX processor list is centered on Xeon families, while 12th Gen Intel Core documentation lists SGX as deprecated on that client line</li>
+</ul>
+<h3 id="5-7-Best-fit"><a href="#5-7-Best-fit" class="headerlink" title="5.7 Best fit"></a>5.7 Best fit</h3><p>Choose SGX when the trusted component is small, high value, and worth treating almost like a cryptographic appliance.</p>
+<h3 id="5-8-Primary-sources"><a href="#5-8-Primary-sources" class="headerlink" title="5.8 Primary sources"></a>5.8 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/articles/technical/introduction-to-intel-sgx-sealing.html">Intel SGX sealing: <code>MRENCLAVE</code> and <code>MRSIGNER</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://download.01.org/intel-sgx/sgx-dcap/dcap-1.0.1/docs/Intel_SGX_DCAP_ECDSA_Orientation.pdf">Intel SGX DCAP ECDSA orientation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions-processors.html">Intel SGX processor support page</a></li>
+<li><a target="_blank" rel="noopener" href="https://edc.intel.com/content/www/tw/zh/design/ipla/software-development-platforms/client/platforms/alder-lake-desktop/12th-generation-intel-core-processors-datasheet-volume-1-of-2/011/deprecated-technologies/https%3A%25252F%25252Fedc.intel.com%25252Fcontent%25252Fwww%25252Fjp%25252Fja%25252Fdesign%25252Fipla%25252Fsoftware-development-platforms%25252Fclient%25252Fplatforms%25252Falder-lake-desktop%25252F12th-generation-intel-core-processors-datasheet-volume-1-of-2%25252F011%25252Fdeprecated-technologies%25252F/">12th Gen Intel Core deprecated technologies</a></li>
+</ul>
+<hr>
+<h2 id="6-AWS-Nitro-Enclaves"><a href="#6-AWS-Nitro-Enclaves" class="headerlink" title="6. AWS Nitro Enclaves"></a>6. AWS Nitro Enclaves</h2><h3 id="6-1-Core-idea"><a href="#6-1-Core-idea" class="headerlink" title="6.1 Core idea"></a>6.1 Core idea</h3><p>AWS Nitro Enclaves creates a hardened microVM carved out of a parent EC2 instance.</p>
+<p>The enclave has:</p>
+<ul>
+<li>dedicated vCPU and memory</li>
+<li>no persistent storage</li>
+<li>no interactive access</li>
+<li>no external networking</li>
+<li><code>vsock</code> as the main communication path to the parent</li>
+</ul>
+<p>This is not a process enclave. It is an isolated microVM with a narrow operational surface.</p>
+<h3 id="6-2-Native-measurement-and-attestation"><a href="#6-2-Native-measurement-and-attestation" class="headerlink" title="6.2 Native measurement and attestation"></a>6.2 Native measurement and attestation</h3><p>AWS documents Nitro attestation around PCRs exposed from the EIF build and parent context:</p>
+<table>
+<thead>
+<tr>
+<th>PCR</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PCR0</code></td>
+<td>Enclave image file</td>
+</tr>
+<tr>
+<td><code>PCR1</code></td>
+<td>Linux kernel and bootstrap</td>
+</tr>
+<tr>
+<td><code>PCR2</code></td>
+<td>Application</td>
+</tr>
+<tr>
+<td><code>PCR3</code></td>
+<td>Parent instance IAM role</td>
+</tr>
+<tr>
+<td><code>PCR4</code></td>
+<td>Parent instance ID</td>
+</tr>
+<tr>
+<td><code>PCR8</code></td>
+<td>EIF signing certificate</td>
+</tr>
+</tbody></table>
+<p>The attestation document is generated by the <strong>Nitro Hypervisor</strong>, encoded as CBOR, COSE-signed, and chained to the <strong>AWS Nitro Attestation PKI</strong>. Optional fields such as <code>public_key</code>, <code>user_data</code>, and <code>nonce</code> let a verifier build stronger challenge-binding or secret-release protocols.</p>
+<h3 id="6-3-What-Nitro-proves-well"><a href="#6-3-What-Nitro-proves-well" class="headerlink" title="6.3 What Nitro proves well"></a>6.3 What Nitro proves well</h3><p>Nitro is strong when the relying party wants to verify:</p>
+<ul>
+<li>a specific EIF-derived measured image</li>
+<li>a specific parent context if PCR3 &#x2F; PCR4 are enforced</li>
+<li>a challenge or recipient key bound into the attestation flow</li>
+</ul>
+<p>Combined with <strong>AWS KMS</strong> condition keys, Nitro enables a very practical pattern:</p>
+<blockquote>
+<p>release secrets only to an enclave with the expected PCRs</p>
+</blockquote>
+<h3 id="6-4-What-Nitro-does-not-solve-by-itself"><a href="#6-4-What-Nitro-does-not-solve-by-itself" class="headerlink" title="6.4 What Nitro does not solve by itself"></a>6.4 What Nitro does not solve by itself</h3><ul>
+<li>Nitro measures the starting image, not every future dynamic behavior inside it.</li>
+<li>If the measured image contains an interpreter, plugin loader, or mutable data dependencies, those need their own trust story.</li>
+<li>Nitro is AWS-specific.</li>
+</ul>
+<h3 id="6-5-Practical-strengths"><a href="#6-5-Practical-strengths" class="headerlink" title="6.5 Practical strengths"></a>6.5 Practical strengths</h3><ul>
+<li>Strong native image identity</li>
+<li>Much easier Linux environment than SGX</li>
+<li>Excellent fit for secure services, signing gateways, KMS clients, and policy-gated secret handling</li>
+<li>Very strong operational pattern through KMS-conditioned decryption</li>
+</ul>
+<h3 id="6-6-Practical-limits"><a href="#6-6-Practical-limits" class="headerlink" title="6.6 Practical limits"></a>6.6 Practical limits</h3><ul>
+<li>Larger TCB than SGX</li>
+<li>Not a general confidential VM for arbitrary lift-and-shift workloads</li>
+<li>Networking and storage constraints force architectural adaptation</li>
+</ul>
+<h3 id="6-7-Best-fit"><a href="#6-7-Best-fit" class="headerlink" title="6.7 Best fit"></a>6.7 Best fit</h3><p>Choose Nitro Enclaves when you want strong measured-image identity in an AWS-native service boundary and can accept the parent&#x2F;enclave split model.</p>
+<h3 id="6-8-Nitro-as-a-solution-landscape"><a href="#6-8-Nitro-as-a-solution-landscape" class="headerlink" title="6.8 Nitro as a solution landscape"></a>6.8 Nitro as a solution landscape</h3><p>One practical difference between Nitro Enclaves and some other TEE discussions is that “choosing Nitro” is often only the first decision.</p>
+<p><strong>Analysis:</strong> in real deployments, teams usually choose both:</p>
+<ul>
+<li><strong>Nitro as the base enclave primitive</strong></li>
+<li>a <strong>higher-level Nitro operating model</strong> on top of it</li>
+</ul>
+<p>That is a direct consequence of Nitro’s constraints:</p>
+<ul>
+<li>no external networking by default</li>
+<li>no persistent storage inside the enclave</li>
+<li>parent &#x2F; enclave split</li>
+<li><code>vsock</code>-centric communication model</li>
+</ul>
+<p>So the next architectural question is usually:</p>
+<blockquote>
+<p>Which layer of the Nitro problem do we want to own ourselves, and which layer do we want abstracted?</p>
+</blockquote>
+<p>Examples of distinct Nitro operating models include the following, as of <strong>March 27, 2026</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Nitro stack type</th>
+<th>Representative examples</th>
+<th>What it adds above raw Nitro</th>
+<th>Best fit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Raw AWS-native path</td>
+<td>AWS Nitro Enclaves itself</td>
+<td>Cleanest trust boundary, maximum control</td>
+<td>Teams willing to own enclave packaging, networking, and operations</td>
+</tr>
+<tr>
+<td>Open-source toolkit</td>
+<td>Enclaver</td>
+<td>Build &#x2F; run abstraction, networking helpers, attestation tooling</td>
+<td>Teams that want help with Nitro mechanics without giving up control</td>
+</tr>
+<tr>
+<td>Managed developer platform</td>
+<td>Evervault Enclaves</td>
+<td>Docker-centric deployment, managed ingress &#x2F; egress, SDK-driven attestation UX</td>
+<td>Teams optimizing for developer velocity</td>
+</tr>
+<tr>
+<td>Enterprise runtime &#x2F; platform</td>
+<td>Anjuna on Nitro</td>
+<td>Higher-level runtime, EKS integration, secrets &#x2F; policy helpers</td>
+<td>Larger enterprises migrating or operating broader workloads</td>
+</tr>
+<tr>
+<td>Networked public-verifiability path</td>
+<td>Marlin Oyster</td>
+<td>A public &#x2F; decentralized enclave deployment model rather than only a local runtime</td>
+<td>Web3 or public-verifiability use cases</td>
+</tr>
+<tr>
+<td>Kubernetes substrate</td>
+<td>AWS EKS + Nitro Enclaves device plugin</td>
+<td>Better orchestration and scheduling of enclaves in clusters</td>
+<td>Teams already standardized on Kubernetes</td>
+</tr>
+</tbody></table>
+<p>These are not one-for-one substitutes.</p>
+<p>They solve different jobs:</p>
+<ul>
+<li>low-level control</li>
+<li>toolkit convenience</li>
+<li>managed platform ergonomics</li>
+<li>enterprise operating model</li>
+<li>decentralized verifiable deployment</li>
+<li>cluster orchestration</li>
+</ul>
+<p>That distinction is useful because it prevents a common category error:</p>
+<blockquote>
+<p>Nitro Enclaves is the TEE primitive. Many “Nitro solutions” are really platform choices above that primitive.</p>
+</blockquote>
+<h3 id="6-9-Primary-sources"><a href="#6-9-Primary-sources" class="headerlink" title="6.9 Primary sources"></a>6.9 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html">What is Nitro Enclaves?</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html">Nitro Enclaves concepts</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/set-up-attestation.html">Cryptographic attestation and PCR definitions</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html">Verifying the Nitro root of trust</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/prescriptive-guidance/latest/privacy-reference-architecture/require-attestation-for-kms-key.html">Require attestation to use an AWS KMS key</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/kubernetes.html">Using Nitro Enclaves with Amazon EKS</a></li>
+<li><a target="_blank" rel="noopener" href="https://enclaver.io/">Enclaver</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.evervault.com/enclaves">Evervault Enclaves</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anjuna.io/partners/aws">Anjuna on AWS Nitro Enclaves</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.marlin.org/oyster/core-concepts/networking">Marlin Oyster Nitro-based networking docs</a></li>
+</ul>
+<hr>
+<h2 id="7-Intel-TDX"><a href="#7-Intel-TDX" class="headerlink" title="7. Intel TDX"></a>7. Intel TDX</h2><h3 id="7-1-Core-idea"><a href="#7-1-Core-idea" class="headerlink" title="7.1 Core idea"></a>7.1 Core idea</h3><p>Intel TDX protects a full confidential VM, called a <strong>Trust Domain (TD)</strong>, from the host VMM, hypervisor, and non-TD software.</p>
+<p>Its core value proposition is not “shrink the application TCB to a tiny enclave.” It is:</p>
+<blockquote>
+<p>run a conventional VM while excluding the host from the VM’s trust boundary</p>
+</blockquote>
+<h3 id="7-2-Native-measurement-and-attestation"><a href="#7-2-Native-measurement-and-attestation" class="headerlink" title="7.2 Native measurement and attestation"></a>7.2 Native measurement and attestation</h3><p>TDX attestation exposes measured TD state through claims such as:</p>
+<ul>
+<li><strong><code>MRTD</code></strong>: initial TD measurement</li>
+<li><strong><code>RTMR0-RTMR3</code></strong>: extendable measurement registers</li>
+<li><strong><code>report_data</code></strong>: caller-supplied data bound into the quote</li>
+</ul>
+<p>Intel Trust Authority documents the RTMR roles as:</p>
+<ul>
+<li><code>RTMR0</code>: TD virtual firmware configuration</li>
+<li><code>RTMR1</code>: TD OS loader and kernel</li>
+<li><code>RTMR2</code>: OS application</li>
+<li><code>RTMR3</code>: reserved for special usage</li>
+</ul>
+<p>That “special usage” point is exactly why higher-level platforms can extend TDX with workload claims.</p>
+<h3 id="7-3-What-TDX-proves-well"><a href="#7-3-What-TDX-proves-well" class="headerlink" title="7.3 What TDX proves well"></a>7.3 What TDX proves well</h3><p>TDX is strong when the relying party wants to verify:</p>
+<ul>
+<li>that a real TDX-enabled platform booted a confidential VM</li>
+<li>that the TD launch state matches expected measurements</li>
+<li>that a nonce, key, or runtime binding is reflected in <code>report_data</code></li>
+</ul>
+<h3 id="7-4-What-TDX-does-not-prove-by-default"><a href="#7-4-What-TDX-does-not-prove-by-default" class="headerlink" title="7.4 What TDX does not prove by default"></a>7.4 What TDX does not prove by default</h3><p>By itself, TDX does <strong>not</strong> natively answer:</p>
+<blockquote>
+<p>“Is this exact application binary running now?”</p>
+</blockquote>
+<p>It proves a measured confidential VM launch, not the full semantic identity of everything inside the guest.</p>
+<h3 id="7-5-Practical-strengths"><a href="#7-5-Practical-strengths" class="headerlink" title="7.5 Practical strengths"></a>7.5 Practical strengths</h3><ul>
+<li>Strong infrastructure isolation for conventional VM workloads</li>
+<li>Very good lift-and-shift story for Linux applications</li>
+<li>Better fit than SGX or Nitro for larger services, data systems, and CPU-side AI runtimes</li>
+<li>Extensible measurement model that platform layers can build on</li>
+</ul>
+<h3 id="7-6-Practical-limits"><a href="#7-6-Practical-limits" class="headerlink" title="7.6 Practical limits"></a>7.6 Practical limits</h3><ul>
+<li>Larger TCB than enclave-centric TEEs</li>
+<li>Application identity is indirect unless an additional workload attestation layer is added</li>
+<li>Verification often still assumes trust in the workload publisher</li>
+</ul>
+<h3 id="7-7-Best-fit"><a href="#7-7-Best-fit" class="headerlink" title="7.7 Best fit"></a>7.7 Best fit</h3><p>Choose TDX when the main goal is to make the infrastructure blind while keeping the developer model close to a normal VM.</p>
+<h3 id="7-8-Primary-sources"><a href="#7-8-Primary-sources" class="headerlink" title="7.8 Primary sources"></a>7.8 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html">Intel TDX overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.trustauthority.intel.com/main/articles/articles/ita/tee-tdx.html">Intel Trust Authority: TDX overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-tokens.html">Intel Trust Authority: attestation tokens and TDX claims</a></li>
+</ul>
+<hr>
+<h2 id="8-AMD-SEV-SNP"><a href="#8-AMD-SEV-SNP" class="headerlink" title="8. AMD SEV-SNP"></a>8. AMD SEV-SNP</h2><h3 id="8-1-Core-idea"><a href="#8-1-Core-idea" class="headerlink" title="8.1 Core idea"></a>8.1 Core idea</h3><p>AMD SEV-SNP belongs to the same broad family as TDX: a VM-based TEE that protects the guest from the hypervisor and host operator.</p>
+<p>AMD’s own developer material frames SEV as a VM-based confidential computing solution that requires <strong>no code changes</strong> and evolves generation by generation:</p>
+<ul>
+<li><strong>SEV</strong>: encrypted memory</li>
+<li><strong>SEV-ES</strong>: encrypted CPU state</li>
+<li><strong>SEV-SNP</strong>: integrity protection and guest attestation</li>
+<li><strong>Trusted I&#x2F;O &#x2F; TDISP on EPYC 9005</strong>: extending the TEE boundary toward devices</li>
+</ul>
+<h3 id="8-2-Key-architectural-mechanisms"><a href="#8-2-Key-architectural-mechanisms" class="headerlink" title="8.2 Key architectural mechanisms"></a>8.2 Key architectural mechanisms</h3><p>The most important technical mechanisms are:</p>
+<ul>
+<li><strong>AMD Secure Processor</strong>: manages keys and security operations</li>
+<li><strong>RMP (Reverse Map Table)</strong>: enforces page ownership and integrity constraints</li>
+<li><strong>VMPL</strong>: privilege separation inside the guest</li>
+<li><strong>GHCB</strong>: standardized guest-hypervisor communication block</li>
+</ul>
+<h3 id="8-3-Native-measurement-and-attestation"><a href="#8-3-Native-measurement-and-attestation" class="headerlink" title="8.3 Native measurement and attestation"></a>8.3 Native measurement and attestation</h3><p>SEV-SNP attestation centers on guest launch state, guest policy, and platform TCB.</p>
+<p>AMD’s SNP documentation makes the endorsement model explicit:</p>
+<ul>
+<li>the attestation signing key is the <strong>VCEK</strong></li>
+<li>the VCEK is derived from chip-unique secrets and TCB version</li>
+<li>AMD KDS publishes the certificate material used to validate it</li>
+</ul>
+<p>This is a very strong platform and launch attestation model, but it is still not a native “exact app binary” model.</p>
+<h3 id="8-4-What-SEV-SNP-proves-well"><a href="#8-4-What-SEV-SNP-proves-well" class="headerlink" title="8.4 What SEV-SNP proves well"></a>8.4 What SEV-SNP proves well</h3><p>SEV-SNP is strong when the relying party wants to verify:</p>
+<ul>
+<li>that a genuine AMD-backed confidential VM launched</li>
+<li>that the guest policy and platform TCB are acceptable</li>
+<li>that memory integrity protections such as SNP are actually in effect</li>
+</ul>
+<h3 id="8-5-What-SEV-SNP-does-not-prove-by-default"><a href="#8-5-What-SEV-SNP-does-not-prove-by-default" class="headerlink" title="8.5 What SEV-SNP does not prove by default"></a>8.5 What SEV-SNP does not prove by default</h3><p>Like TDX, it does not natively prove the exact application binary inside the guest unless a higher-level measurement layer is added.</p>
+<h3 id="8-6-Practical-strengths"><a href="#8-6-Practical-strengths" class="headerlink" title="8.6 Practical strengths"></a>8.6 Practical strengths</h3><ul>
+<li>Strong VM-level confidentiality and integrity model</li>
+<li>Very good compatibility with existing workloads</li>
+<li>Broad ecosystem and cloud availability documented by AMD</li>
+<li>Clear evolutionary path toward trusted devices through Trusted I&#x2F;O</li>
+</ul>
+<h3 id="8-7-Practical-limits"><a href="#8-7-Practical-limits" class="headerlink" title="8.7 Practical limits"></a>8.7 Practical limits</h3><ul>
+<li>Application identity is indirect by default</li>
+<li>TCB is much larger than a small enclave model</li>
+<li>The secure processor firmware remains a significant trust dependency</li>
+</ul>
+<h3 id="8-8-Best-fit"><a href="#8-8-Best-fit" class="headerlink" title="8.8 Best fit"></a>8.8 Best fit</h3><p>Choose SEV-SNP when you want confidential VM semantics similar to TDX, often with strong ecosystem availability on AMD-backed clouds and platforms.</p>
+<h3 id="8-9-Primary-sources"><a href="#8-9-Primary-sources" class="headerlink" title="8.9 Primary sources"></a>8.9 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/en/products/processors/server/epyc/infinity-guard.html">AMD Infinity Guard: SEV, SNP, and Trusted I&#x2F;O overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/en/newsroom/press-releases/2023-8-30-amd-shares-the-technical-details-of-technology-pow.html">AMD published technical details for SEV cloud offerings</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/content/dam/amd/en/documents/epyc-technical-docs/specifications/56860.pdf">AMD SEV-SNP Firmware ABI specification</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/content/dam/amd/en/documents/epyc-technical-docs/specifications/58271.pdf">AMD SEV-TIO Firmware Interface specification</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.amd.com/api/khub/documents/oJly8EPzLO1Bt7ncrkCytw/content">AMD GHCB standardization</a></li>
+</ul>
+<hr>
+<h2 id="9-Arm-Confidential-Compute-Architecture-CCA"><a href="#9-Arm-Confidential-Compute-Architecture-CCA" class="headerlink" title="9. Arm Confidential Compute Architecture (CCA)"></a>9. Arm Confidential Compute Architecture (CCA)</h2><h3 id="9-1-Core-idea"><a href="#9-1-Core-idea" class="headerlink" title="9.1 Core idea"></a>9.1 Core idea</h3><p>Arm CCA brings confidential computing to Armv9-A through the <strong>Realm Management Extension (RME)</strong> and the concept of <strong>Realms</strong>.</p>
+<p>Arm positions Realms as an execution environment isolated not only from the normal-world hypervisor, but also from other Realms and from devices that are not trusted by the Realm.</p>
+<h3 id="9-2-Core-architecture"><a href="#9-2-Core-architecture" class="headerlink" title="9.2 Core architecture"></a>9.2 Core architecture</h3><p>The key software components are:</p>
+<ul>
+<li><strong>RMM</strong>: Realm Management Monitor</li>
+<li><strong>RMI</strong>: host-facing Realm Management Interface</li>
+<li><strong>RSI</strong>: Realm-facing service interface</li>
+<li><strong>TF-A at EL3</strong>: root firmware layer used by the reference implementation</li>
+</ul>
+<p>TrustedFirmware’s documentation makes an important boundary explicit:</p>
+<ul>
+<li>the normal-world hypervisor still makes resource-management and policy decisions</li>
+<li>the RMM enforces Realm execution and provides services including attestation</li>
+</ul>
+<h3 id="9-3-Native-measurement-and-attestation"><a href="#9-3-Native-measurement-and-attestation" class="headerlink" title="9.3 Native measurement and attestation"></a>9.3 Native measurement and attestation</h3><p>Arm’s attestation flow combines:</p>
+<ul>
+<li>a <strong>Realm token</strong></li>
+<li>a <strong>CCA Platform token</strong></li>
+</ul>
+<p>TrustedFirmware documentation and Arm attestation material describe the Realm token as carrying Realm measurements plus a relying-party challenge, while the platform token carries platform claims and firmware state.</p>
+<h3 id="9-4-What-CCA-proves-well"><a href="#9-4-What-CCA-proves-well" class="headerlink" title="9.4 What CCA proves well"></a>9.4 What CCA proves well</h3><p>CCA is strong when the relying party wants to verify:</p>
+<ul>
+<li>that a genuine Realm launched on a CCA platform</li>
+<li>that the Realm initial state matches expected measurements</li>
+<li>that platform and firmware state are reflected in the attestation chain</li>
+</ul>
+<h3 id="9-5-What-CCA-does-not-prove-by-default"><a href="#9-5-What-CCA-does-not-prove-by-default" class="headerlink" title="9.5 What CCA does not prove by default"></a>9.5 What CCA does not prove by default</h3><p>Like TDX and SEV-SNP, CCA’s native proof is closer to “measured confidential VM &#x2F; Realm state” than “exact application binary identity.”</p>
+<h3 id="9-6-Practical-strengths"><a href="#9-6-Practical-strengths" class="headerlink" title="9.6 Practical strengths"></a>9.6 Practical strengths</h3><ul>
+<li>Clean architecture for confidential VM-style isolation on Arm</li>
+<li>Open-source reference implementation for RMM and TF-A</li>
+<li>Clear path toward device assignment and memory encryption contexts</li>
+<li>Strong relevance for cloud-on-Arm, edge, and mobile-adjacent deployments</li>
+</ul>
+<h3 id="9-7-Practical-limits"><a href="#9-7-Practical-limits" class="headerlink" title="9.7 Practical limits"></a>9.7 Practical limits</h3><ul>
+<li>Ecosystem maturity is still earlier than the established x86 CVM stacks</li>
+<li>Availability depends on Armv9-A plus platform support for RME</li>
+<li>Native application identity remains indirect</li>
+</ul>
+<h3 id="9-8-Best-fit"><a href="#9-8-Best-fit" class="headerlink" title="9.8 Best fit"></a>9.8 Best fit</h3><p>Choose Arm CCA when your roadmap includes Arm-based cloud, edge, or accelerator-rich systems and you value an open management-layer implementation.</p>
+<h3 id="9-9-Primary-sources"><a href="#9-9-Primary-sources" class="headerlink" title="9.9 Primary sources"></a>9.9 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/unlocking-the-power-of-data-with-arm-cca">Arm: Unlocking the power of data with Arm CCA</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/arm-and-confidential-computing">Arm: Arm and confidential computing</a></li>
+<li><a target="_blank" rel="noopener" href="https://rmm.docs.trustedfirmware.org/en/latest/readme.html">TF-RMM readme</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.trustedfirmware.org/docs/Attestation_and_Measured_Boot.pdf">TrustedFirmware attestation and measured boot</a></li>
+</ul>
+<hr>
+<h2 id="10-NVIDIA-Confidential-Computing"><a href="#10-NVIDIA-Confidential-Computing" class="headerlink" title="10. NVIDIA Confidential Computing"></a>10. NVIDIA Confidential Computing</h2><h3 id="10-1-Core-idea"><a href="#10-1-Core-idea" class="headerlink" title="10.1 Core idea"></a>10.1 Core idea</h3><p>NVIDIA Confidential Computing addresses the part that CPU TEEs do not cover: data and code that execute on the GPU.</p>
+<p>NVIDIA’s H100 material describes Hopper as the first GPU with native confidential computing support, anchored in an on-die hardware root of trust.</p>
+<h3 id="10-2-Native-measurement-and-attestation"><a href="#10-2-Native-measurement-and-attestation" class="headerlink" title="10.2 Native measurement and attestation"></a>10.2 Native measurement and attestation</h3><p>NVIDIA documents attestation through the <strong>NVIDIA Attestation Suite</strong>, which includes:</p>
+<ul>
+<li><strong>NRAS</strong>: NVIDIA Remote Attestation Service</li>
+<li>local verifier flows</li>
+<li>SDK and CLI tooling for collecting and validating evidence</li>
+</ul>
+<p>Current NVIDIA attestation docs describe the typical deployment precondition as:</p>
+<blockquote>
+<p>a confidential virtual machine with an H100-or-later GPU that supports confidential computing</p>
+</blockquote>
+<p>That is the key architectural point: in practice, GPU confidential computing composes with a CPU-side TEE.</p>
+<h3 id="10-3-What-NVIDIA-CC-proves-well"><a href="#10-3-What-NVIDIA-CC-proves-well" class="headerlink" title="10.3 What NVIDIA CC proves well"></a>10.3 What NVIDIA CC proves well</h3><p>NVIDIA CC is strong when the relying party wants to verify:</p>
+<ul>
+<li>that a genuine NVIDIA GPU is present</li>
+<li>that its firmware &#x2F; mode &#x2F; attestation evidence are acceptable</li>
+<li>that the GPU is operating in confidential-computing mode before sensitive workloads run</li>
+</ul>
+<h3 id="10-4-What-NVIDIA-CC-does-not-replace"><a href="#10-4-What-NVIDIA-CC-does-not-replace" class="headerlink" title="10.4 What NVIDIA CC does not replace"></a>10.4 What NVIDIA CC does not replace</h3><ul>
+<li>It does not replace the need for CPU-side isolation.</li>
+<li>It does not by itself provide a full-system trust story for the application unless the CPU-side environment is also attested.</li>
+</ul>
+<h3 id="10-5-Practical-strengths"><a href="#10-5-Practical-strengths" class="headerlink" title="10.5 Practical strengths"></a>10.5 Practical strengths</h3><ul>
+<li>Extends the boundary into the GPU path, which is essential for confidential AI</li>
+<li>Strong vendor-provided attestation tooling</li>
+<li>Enables end-to-end reasoning about CPU-plus-GPU trusted execution instead of CPU-only confidentiality</li>
+</ul>
+<h3 id="10-6-Practical-limits"><a href="#10-6-Practical-limits" class="headerlink" title="10.6 Practical limits"></a>10.6 Practical limits</h3><ul>
+<li>NVIDIA-specific trust root and tooling</li>
+<li>Must usually be composed with a confidential VM</li>
+<li>The full trust base now includes GPU firmware and driver state in addition to the CPU-side stack</li>
+</ul>
+<h3 id="10-7-Best-fit"><a href="#10-7-Best-fit" class="headerlink" title="10.7 Best fit"></a>10.7 Best fit</h3><p>Choose NVIDIA Confidential Computing when sensitive data or model state enters the GPU and CPU-only confidential computing is therefore incomplete.</p>
+<h3 id="10-8-Primary-sources"><a href="#10-8-Primary-sources" class="headerlink" title="10.8 Primary sources"></a>10.8 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/confidential-computing-on-h100-gpus-for-secure-and-trustworthy-ai/">Confidential Computing on NVIDIA H100 GPUs</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/">NVIDIA Hopper architecture in depth</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/attestation/index.html">NVIDIA Attestation overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/attestation/overview-attestation-suite/latest/introduction.html">NVIDIA Attestation Suite introduction</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/attestation/attestation-client-tools-sdk/latest/gpu_and_switch_attestation.html">GPU attestation guide</a></li>
+</ul>
+<hr>
+<h2 id="11-RISC-V-Keystone"><a href="#11-RISC-V-Keystone" class="headerlink" title="11. RISC-V Keystone"></a>11. RISC-V Keystone</h2><h3 id="11-1-Core-idea"><a href="#11-1-Core-idea" class="headerlink" title="11.1 Core idea"></a>11.1 Core idea</h3><p>Keystone is an open-source framework for building TEEs on RISC-V. Its goal is very different from Intel, AMD, AWS, Arm, or NVIDIA product stacks:</p>
+<blockquote>
+<p>maximize openness and customizability, even if that means accepting lower product maturity</p>
+</blockquote>
+<h3 id="11-2-Core-architecture"><a href="#11-2-Core-architecture" class="headerlink" title="11.2 Core architecture"></a>11.2 Core architecture</h3><p>Keystone builds around:</p>
+<ul>
+<li>a <strong>Security Monitor</strong> running in machine mode</li>
+<li><strong>PMP</strong> for memory isolation</li>
+<li>untrusted host software</li>
+<li>enclave runtimes on top of the monitor</li>
+</ul>
+<p>The project documentation is explicit that full security depends on platform support for:</p>
+<ul>
+<li>measured boot</li>
+<li>secure on-chip key storage</li>
+<li>a hardware root of trust</li>
+</ul>
+<p>It can still run on platforms without a real hardware root of trust for development, but that is not the same as a fully anchored production trust chain.</p>
+<h3 id="11-3-What-Keystone-proves-well"><a href="#11-3-What-Keystone-proves-well" class="headerlink" title="11.3 What Keystone proves well"></a>11.3 What Keystone proves well</h3><p>Keystone is strong when the goal is to study or build:</p>
+<ul>
+<li>a customizable open TEE stack</li>
+<li>inspectable security monitor logic</li>
+<li>remote attestation and measurement flows without a closed vendor architecture</li>
+</ul>
+<h3 id="11-4-What-Keystone-does-not-optimize-for"><a href="#11-4-What-Keystone-does-not-optimize-for" class="headerlink" title="11.4 What Keystone does not optimize for"></a>11.4 What Keystone does not optimize for</h3><ul>
+<li>turnkey cloud deployment</li>
+<li>mature commercial attestation infrastructure</li>
+<li>broad production compatibility</li>
+</ul>
+<h3 id="11-5-Practical-strengths"><a href="#11-5-Practical-strengths" class="headerlink" title="11.5 Practical strengths"></a>11.5 Practical strengths</h3><ul>
+<li>Fully open software stack</li>
+<li>Strong research value</li>
+<li>Good fit for experimentation, formal methods, and custom threat models</li>
+</ul>
+<h3 id="11-6-Practical-limits"><a href="#11-6-Practical-limits" class="headerlink" title="11.6 Practical limits"></a>11.6 Practical limits</h3><ul>
+<li>Research and incubation maturity</li>
+<li>Much weaker ecosystem support than mainstream commercial TEEs</li>
+<li>Security strength depends heavily on the chosen RISC-V platform and its root-of-trust story</li>
+</ul>
+<h3 id="11-7-Best-fit"><a href="#11-7-Best-fit" class="headerlink" title="11.7 Best fit"></a>11.7 Best fit</h3><p>Choose Keystone when openness, inspectability, and TEE experimentation matter more than commercial deployment maturity.</p>
+<h3 id="11-8-Primary-sources"><a href="#11-8-Primary-sources" class="headerlink" title="11.8 Primary sources"></a>11.8 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/keystone-enclave/keystone">Keystone GitHub repository</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.keystone-enclave.org/en/latest/Security-Monitor/">Keystone Security Monitor documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.keystone-enclave.org/en/latest/Getting-Started/How-Keystone-Works/RISC-V-Background.html">Keystone RISC-V background and PMP</a></li>
+</ul>
+<hr>
+<h2 id="12-dstack-on-Intel-TDX"><a href="#12-dstack-on-Intel-TDX" class="headerlink" title="12. dstack on Intel TDX"></a>12. dstack on Intel TDX</h2><h3 id="12-1-What-it-is"><a href="#12-1-What-it-is" class="headerlink" title="12.1 What it is"></a>12.1 What it is</h3><p>dstack is best understood as a <strong>platform layer on top of Intel TDX</strong>, not as a separate hardware TEE.</p>
+<p>Its job is to strengthen workload-level verification for TDX-based deployments.</p>
+<h3 id="12-2-What-it-adds"><a href="#12-2-What-it-adds" class="headerlink" title="12.2 What it adds"></a>12.2 What it adds</h3><p>Phala’s dstack &#x2F; attestation documentation exposes workload-facing claims such as:</p>
+<ul>
+<li><strong><code>compose-hash</code></strong></li>
+<li><strong><code>RTMR3</code></strong></li>
+<li><strong><code>report_data</code></strong></li>
+<li>event-log replay and higher-level verification tooling</li>
+</ul>
+<p>The official docs frame this as a way to verify:</p>
+<ul>
+<li>that a specific deployment configuration was booted</li>
+<li>that the quote came from genuine TDX hardware</li>
+<li>that the application-level measurement chain matches the quoted value</li>
+</ul>
+<h3 id="12-3-The-key-measurement-nuance"><a href="#12-3-The-key-measurement-nuance" class="headerlink" title="12.3 The key measurement nuance"></a>12.3 The key measurement nuance</h3><p>Phala’s docs define <code>compose-hash</code> as the SHA-256 hash of <strong><code>app-compose.json</code></strong>, which contains the Docker Compose configuration plus metadata.</p>
+<p>That is important because it means the measured application identity is <strong>manifest-centric</strong>, not equivalent to SGX-style page measurement or Nitro-style EIF measurement.</p>
+<p><strong>Analysis:</strong> dstack materially strengthens raw TDX, but its strongest workload claim is still:</p>
+<blockquote>
+<p>“this attested deployment manifest and related event chain booted in the CVM”</p>
+</blockquote>
+<p>not:</p>
+<blockquote>
+<p>“the CPU hardware directly measured this application binary page by page”</p>
+</blockquote>
+<p>The docs themselves also stress that full verification requires:</p>
+<ul>
+<li>digest-pinned container images</li>
+<li>RTMR3 replay</li>
+<li>quote validation</li>
+<li>source provenance or reproducible build linkage</li>
+</ul>
+<p>That is exactly the right mental model: dstack adds a serious verification layer, but the verifier must actually perform it.</p>
+<h3 id="12-4-Practical-strengths"><a href="#12-4-Practical-strengths" class="headerlink" title="12.4 Practical strengths"></a>12.4 Practical strengths</h3><ul>
+<li>Much stronger workload story than raw TDX</li>
+<li>Docker-centric developer experience</li>
+<li>External verification flows are explicitly documented</li>
+<li>Good bridge between “confidential infrastructure” and “verifiable deployment”</li>
+</ul>
+<h3 id="12-5-Practical-limits"><a href="#12-5-Practical-limits" class="headerlink" title="12.5 Practical limits"></a>12.5 Practical limits</h3><ul>
+<li>Still inherits TDX as the underlying hardware TEE</li>
+<li>Workload identity is only as strong as the full verification procedure actually performed</li>
+<li>Manifest measurement is not identical to direct binary measurement</li>
+</ul>
+<h3 id="12-6-Best-fit"><a href="#12-6-Best-fit" class="headerlink" title="12.6 Best fit"></a>12.6 Best fit</h3><p>Choose dstack when you want TDX’s full-VM convenience but also need a meaningful workload-verification layer for users, auditors, or downstream services.</p>
+<h3 id="12-7-Primary-sources"><a href="#12-7-Primary-sources" class="headerlink" title="12.7 Primary sources"></a>12.7 Primary sources</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/attestation-fields">Phala attestation fields reference</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/verify-your-application">Verify your application</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/verify-the-platform">Verify the platform</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/trust-center-verification">Trust Center verification</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/images/audits/dstack-audit.pdf">dstack audit PDF</a></li>
+</ul>
+<hr>
+<h2 id="13-Attestation-Protocol-Patterns-and-Verification-Appendix"><a href="#13-Attestation-Protocol-Patterns-and-Verification-Appendix" class="headerlink" title="13. Attestation Protocol Patterns and Verification Appendix"></a>13. Attestation Protocol Patterns and Verification Appendix</h2><p>The earlier sections focus on trust meaning. This appendix focuses on attestation mechanics.</p>
+<p><strong>Analysis:</strong> the main reason attestation sections matter is not because every verifier needs to memorize the wire format, but because each attestation design reveals what the platform considers its primary object of trust.</p>
+<h3 id="13-1-Intel-SGX-DCAP"><a href="#13-1-Intel-SGX-DCAP" class="headerlink" title="13.1 Intel SGX DCAP"></a>13.1 Intel SGX DCAP</h3><ul>
+<li><strong>Evidence shape</strong>: a quote over enclave claims such as <code>MRENCLAVE</code>, <code>MRSIGNER</code>, attributes, and user-bound data</li>
+<li><strong>Root of trust</strong>: Intel provisioning collateral</li>
+<li><strong>Typical verifier question</strong>: “Does this enclave measurement and signer match the release policy I trust?”</li>
+<li><strong>What it is uniquely good at</strong>: direct enclave-identity verification</li>
+</ul>
+<h3 id="13-2-AWS-Nitro-attestation"><a href="#13-2-AWS-Nitro-attestation" class="headerlink" title="13.2 AWS Nitro attestation"></a>13.2 AWS Nitro attestation</h3><ul>
+<li><strong>Evidence shape</strong>: a Nitro attestation document signed in the AWS Nitro attestation PKI</li>
+<li><strong>Core claims</strong>: PCRs, certificate chain, and optional <code>nonce</code>, <code>user_data</code>, <code>public_key</code></li>
+<li><strong>Typical verifier question</strong>: “Does this enclave image and parent context match the policy I allow?”</li>
+<li><strong>What it is uniquely good at</strong>: secret release and session setup bound to a measured enclave image</li>
+</ul>
+<h3 id="13-3-Intel-TDX-quote"><a href="#13-3-Intel-TDX-quote" class="headerlink" title="13.3 Intel TDX quote"></a>13.3 Intel TDX quote</h3><ul>
+<li><strong>Evidence shape</strong>: a TD quote exposing claims such as <code>MRTD</code>, <code>RTMR0-RTMR3</code>, and <code>report_data</code></li>
+<li><strong>Root of trust</strong>: Intel TDX attestation infrastructure and collateral</li>
+<li><strong>Typical verifier question</strong>: “Did a TD with this measured launch state boot on a genuine TDX platform?”</li>
+<li><strong>What it is uniquely good at</strong>: platform-grade confidential-VM attestation with room for higher-layer measurement extensions</li>
+</ul>
+<h3 id="13-4-AMD-SEV-SNP-report"><a href="#13-4-AMD-SEV-SNP-report" class="headerlink" title="13.4 AMD SEV-SNP report"></a>13.4 AMD SEV-SNP report</h3><ul>
+<li><strong>Evidence shape</strong>: an attestation report signed using AMD’s SNP endorsement chain</li>
+<li><strong>Root of trust</strong>: AMD certificate hierarchy, including VCEK-backed verification</li>
+<li><strong>Typical verifier question</strong>: “Did this SNP guest launch with the expected policy and acceptable TCB?”</li>
+<li><strong>What it is uniquely good at</strong>: strong launch and policy attestation tied to AMD’s per-platform trust model</li>
+</ul>
+<h3 id="13-5-Arm-CCA-Realm-attestation"><a href="#13-5-Arm-CCA-Realm-attestation" class="headerlink" title="13.5 Arm CCA Realm attestation"></a>13.5 Arm CCA Realm attestation</h3><ul>
+<li><strong>Evidence shape</strong>: Realm token plus platform token</li>
+<li><strong>Root of trust</strong>: Arm CCA attestation architecture and platform attestation keys</li>
+<li><strong>Typical verifier question</strong>: “Did this Realm launch with the expected initial state on a valid CCA platform?”</li>
+<li><strong>What it is uniquely good at</strong>: clean separation between Realm state and platform state</li>
+</ul>
+<h3 id="13-6-NVIDIA-attestation"><a href="#13-6-NVIDIA-attestation" class="headerlink" title="13.6 NVIDIA attestation"></a>13.6 NVIDIA attestation</h3><ul>
+<li><strong>Evidence shape</strong>: GPU evidence validated via the NVIDIA Attestation Suite</li>
+<li><strong>Root of trust</strong>: NVIDIA GPU identity and attestation chain</li>
+<li><strong>Typical verifier question</strong>: “Is this GPU genuine, in confidential mode, and correctly configured before the workload runs?”</li>
+<li><strong>What it is uniquely good at</strong>: extending the attestation story to accelerator state</li>
+</ul>
+<h3 id="13-7-dstack-style-composed-attestation"><a href="#13-7-dstack-style-composed-attestation" class="headerlink" title="13.7 dstack-style composed attestation"></a>13.7 dstack-style composed attestation</h3><ul>
+<li><strong>Evidence shape</strong>: TDX quote plus workload-facing claims such as <code>RTMR3</code>, <code>compose-hash</code>, and <code>report_data</code></li>
+<li><strong>Root of trust</strong>: Intel TDX hardware plus dstack’s workload measurement flow</li>
+<li><strong>Typical verifier question</strong>: “Did this expected deployment manifest, bound to my challenge or key, boot inside genuine TDX hardware?”</li>
+<li><strong>What it is uniquely good at</strong>: pushing a CVM toward workload-verifiable deployment</li>
+</ul>
+<h3 id="13-8-Verification-takeaway"><a href="#13-8-Verification-takeaway" class="headerlink" title="13.8 Verification takeaway"></a>13.8 Verification takeaway</h3><p>Across all these systems, the relying party should ask the same sequence of questions:</p>
+<ol>
+<li>Is the evidence genuine and chained to a valid root of trust?</li>
+<li>Is the measured object the one I actually care about?</li>
+<li>Are the measurements pinned to a release, manifest, policy, or signer I trust?</li>
+<li>Is my key, nonce, or session binding reflected in the evidence?</li>
+<li>What trusted software still sits between this evidence and the real application behavior?</li>
+</ol>
+<p>That last question is the one most likely to be skipped, and it is exactly where many overclaims about TEEs begin.</p>
+<hr>
+<h2 id="14-Measurement-Depth-The-Difference-That-Changes-Everything"><a href="#14-Measurement-Depth-The-Difference-That-Changes-Everything" class="headerlink" title="14. Measurement Depth: The Difference That Changes Everything"></a>14. Measurement Depth: The Difference That Changes Everything</h2><p>One of the biggest sources of confusion in TEE comparisons is measurement depth.</p>
+<table>
+<thead>
+<tr>
+<th>Measurement depth</th>
+<th>Representative systems</th>
+<th>What is natively measured</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Direct enclave code &#x2F; page measurement</strong></td>
+<td>Intel SGX</td>
+<td>Enclave image as it is built &#x2F; initialized</td>
+</tr>
+<tr>
+<td><strong>Direct measured image measurement</strong></td>
+<td>AWS Nitro Enclaves</td>
+<td>EIF-derived image components through PCRs</td>
+</tr>
+<tr>
+<td><strong>Launch-state measurement for a confidential guest</strong></td>
+<td>Intel TDX, AMD SEV-SNP, Arm CCA</td>
+<td>VM &#x2F; Realm launch state, policy, firmware &#x2F; boot chain</td>
+</tr>
+<tr>
+<td><strong>Device-state measurement</strong></td>
+<td>NVIDIA CC</td>
+<td>GPU mode, device identity, firmware &#x2F; evidence</td>
+</tr>
+<tr>
+<td><strong>Manifest-layer measurement on top of a CVM</strong></td>
+<td>dstack on TDX</td>
+<td>Deployment manifest and workload event chain</td>
+</tr>
+</tbody></table>
+<p>This is why statements like “all TEEs prove the running code” are too imprecise to be useful.</p>
+<p>They do not all prove the same thing.</p>
+<hr>
+<h2 id="15-Comparison-Matrix"><a href="#15-Comparison-Matrix" class="headerlink" title="15. Comparison Matrix"></a>15. Comparison Matrix</h2><table>
+<thead>
+<tr>
+<th>Solution</th>
+<th>Isolation unit</th>
+<th>Strongest native thing a verifier can learn</th>
+<th>What still usually has to be trusted</th>
+<th>Best mental model</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Intel SGX</strong></td>
+<td>Process enclave</td>
+<td>A specific enclave measurement and signer identity</td>
+<td>Enclave author intent, enclave-side side-channel hardening</td>
+<td>Small trusted core</td>
+</tr>
+<tr>
+<td><strong>AWS Nitro Enclaves</strong></td>
+<td>Isolated microVM</td>
+<td>A specific measured EIF plus parent-context claims</td>
+<td>What the measured image may load or depend on at runtime</td>
+<td>Measured secure service boundary</td>
+</tr>
+<tr>
+<td><strong>Intel TDX</strong></td>
+<td>Confidential VM</td>
+<td>A measured TD booted on genuine TDX hardware</td>
+<td>Workload publisher for exact guest contents</td>
+<td>Confidential infrastructure</td>
+</tr>
+<tr>
+<td><strong>AMD SEV-SNP</strong></td>
+<td>Confidential VM</td>
+<td>A measured SNP guest with platform-backed policy &#x2F; TCB</td>
+<td>Workload publisher for exact guest contents</td>
+<td>Confidential infrastructure</td>
+</tr>
+<tr>
+<td><strong>Arm CCA</strong></td>
+<td>Realm VM</td>
+<td>A measured Realm booted with valid platform claims</td>
+<td>Workload publisher for exact guest contents</td>
+<td>Confidential infrastructure on Arm</td>
+</tr>
+<tr>
+<td><strong>NVIDIA CC</strong></td>
+<td>GPU device + mode</td>
+<td>A GPU is genuine and running in confidential mode</td>
+<td>CPU-side environment unless attested too</td>
+<td>Confidential accelerator</td>
+</tr>
+<tr>
+<td><strong>Keystone</strong></td>
+<td>Enclave framework</td>
+<td>Open, monitor-based enclave measurements on a chosen RISC-V platform</td>
+<td>Platform root-of-trust design and deployment quality</td>
+<td>Open TEE framework</td>
+</tr>
+<tr>
+<td><strong>dstack on TDX</strong></td>
+<td>Platform layer in a CVM</td>
+<td>A measured deployment manifest and RTMR3 chain on top of TDX</td>
+<td>Full verification flow, digest pinning, image provenance</td>
+<td>TDX plus workload attestation</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="16-Three-Claims-That-Are-Often-Confused"><a href="#16-Three-Claims-That-Are-Often-Confused" class="headerlink" title="16. Three Claims That Are Often Confused"></a>16. Three Claims That Are Often Confused</h2><h3 id="16-1-“The-host-cannot-read-my-VM”"><a href="#16-1-“The-host-cannot-read-my-VM”" class="headerlink" title="16.1 “The host cannot read my VM”"></a>16.1 “The host cannot read my VM”</h3><p>This is what <strong>TDX</strong>, <strong>SEV-SNP</strong>, and <strong>CCA</strong> are designed to do well.</p>
+<h3 id="16-2-“I-can-verify-the-code-or-image-I-intended-to-trust”"><a href="#16-2-“I-can-verify-the-code-or-image-I-intended-to-trust”" class="headerlink" title="16.2 “I can verify the code or image I intended to trust”"></a>16.2 “I can verify the code or image I intended to trust”</h3><p>This is where <strong>SGX</strong> and <strong>Nitro Enclaves</strong> are naturally stronger.</p>
+<h3 id="16-3-“My-AI-workload-is-protected-end-to-end”"><a href="#16-3-“My-AI-workload-is-protected-end-to-end”" class="headerlink" title="16.3 “My AI workload is protected end to end”"></a>16.3 “My AI workload is protected end to end”</h3><p>This usually requires more than a CPU TEE. Once the workload moves into GPU memory and execution state, <strong>NVIDIA Confidential Computing</strong> or an equivalent accelerator trust story becomes necessary.</p>
+<hr>
+<h2 id="17-Selection-Guidance-by-Use-Case"><a href="#17-Selection-Guidance-by-Use-Case" class="headerlink" title="17. Selection Guidance by Use Case"></a>17. Selection Guidance by Use Case</h2><h3 id="17-1-Small-auditable-trusted-core"><a href="#17-1-Small-auditable-trusted-core" class="headerlink" title="17.1 Small, auditable trusted core"></a>17.1 Small, auditable trusted core</h3><p>Choose <strong>Intel SGX</strong>.</p>
+<p>Typical fit:</p>
+<ul>
+<li>signing engines</li>
+<li>wallets</li>
+<li>MPC</li>
+<li>compact policy kernels</li>
+</ul>
+<h3 id="17-2-AWS-native-secure-service-boundary"><a href="#17-2-AWS-native-secure-service-boundary" class="headerlink" title="17.2 AWS-native secure service boundary"></a>17.2 AWS-native secure service boundary</h3><p>Choose <strong>AWS Nitro Enclaves</strong>.</p>
+<p>Typical fit:</p>
+<ul>
+<li>KMS-gated decryption</li>
+<li>HSM-adjacent service patterns</li>
+<li>secure API middle tiers</li>
+<li>secret handling inside an enclave-specific service</li>
+</ul>
+<h3 id="17-3-Large-lift-and-shift-confidential-workloads"><a href="#17-3-Large-lift-and-shift-confidential-workloads" class="headerlink" title="17.3 Large lift-and-shift confidential workloads"></a>17.3 Large lift-and-shift confidential workloads</h3><p>Choose <strong>Intel TDX</strong> or <strong>AMD SEV-SNP</strong>.</p>
+<p>Typical fit:</p>
+<ul>
+<li>existing Linux services</li>
+<li>confidential databases</li>
+<li>data-processing pipelines</li>
+<li>CPU-side confidential AI runtimes</li>
+</ul>
+<h3 id="17-4-Arm-first-confidential-compute-roadmap"><a href="#17-4-Arm-first-confidential-compute-roadmap" class="headerlink" title="17.4 Arm-first confidential compute roadmap"></a>17.4 Arm-first confidential compute roadmap</h3><p>Choose <strong>Arm CCA</strong> when the platform supports it and the roadmap matters more than short-term ecosystem depth.</p>
+<h3 id="17-5-GPU-resident-confidential-AI"><a href="#17-5-GPU-resident-confidential-AI" class="headerlink" title="17.5 GPU-resident confidential AI"></a>17.5 GPU-resident confidential AI</h3><p>Choose <strong>CPU TEE + NVIDIA Confidential Computing</strong>.</p>
+<p>Typical fit:</p>
+<ul>
+<li>protected model weights</li>
+<li>private inference prompts</li>
+<li>confidential fine-tuning or training</li>
+</ul>
+<h3 id="17-6-Open-and-customizable-TEE-research"><a href="#17-6-Open-and-customizable-TEE-research" class="headerlink" title="17.6 Open and customizable TEE research"></a>17.6 Open and customizable TEE research</h3><p>Choose <strong>Keystone</strong>.</p>
+<h3 id="17-7-TDX-plus-stronger-user-visible-workload-verification"><a href="#17-7-TDX-plus-stronger-user-visible-workload-verification" class="headerlink" title="17.7 TDX plus stronger user-visible workload verification"></a>17.7 TDX plus stronger user-visible workload verification</h3><p>Choose <strong>dstack on TDX</strong>.</p>
+<p>This is often the right compromise when you want:</p>
+<ul>
+<li>a normal VM-like runtime</li>
+<li>Docker-centric deployment</li>
+<li>workload-level claims stronger than raw CVM attestation</li>
+</ul>
+<hr>
+<h2 id="18-SGX-vs-Nitro-Enclaves-Which-One-Is-“Stronger”"><a href="#18-SGX-vs-Nitro-Enclaves-Which-One-Is-“Stronger”" class="headerlink" title="18. SGX vs Nitro Enclaves: Which One Is “Stronger”?"></a>18. SGX vs Nitro Enclaves: Which One Is “Stronger”?</h2><p>This comparison comes up often because SGX and Nitro are the two mainstream options that get closest to native application identity. But they optimize for different kinds of strength.</p>
+<h3 id="18-1-Why-SGX-can-be-stronger-in-theory"><a href="#18-1-Why-SGX-can-be-stronger-in-theory" class="headerlink" title="18.1 Why SGX can be stronger in theory"></a>18.1 Why SGX can be stronger in theory</h3><p>In the narrow minimal-TCB sense, SGX is often the stronger construction:</p>
+<ul>
+<li>the trust boundary is smaller</li>
+<li>enclave identity is more direct</li>
+<li>the model is explicitly built around a compact trusted computation</li>
+</ul>
+<p>If the question is only:</p>
+<blockquote>
+<p>Which model minimizes trusted surface most aggressively?</p>
+</blockquote>
+<p>SGX often wins.</p>
+<h3 id="18-2-Why-Nitro-can-be-stronger-in-practice-for-many-teams"><a href="#18-2-Why-Nitro-can-be-stronger-in-practice-for-many-teams" class="headerlink" title="18.2 Why Nitro can be stronger in practice for many teams"></a>18.2 Why Nitro can be stronger in practice for many teams</h3><p>In production, however, many teams care about a different question:</p>
+<blockquote>
+<p>Which model gives us a strong enough trust story with fewer operational traps?</p>
+</blockquote>
+<p>Nitro often looks stronger on that axis because it offers:</p>
+<ul>
+<li>a conventional Linux environment</li>
+<li>simpler packaging and debugging than SGX</li>
+<li>a clean measured-image story</li>
+<li>powerful AWS KMS policy integration</li>
+<li>a service-boundary model that many teams can actually operate correctly</li>
+</ul>
+<p><strong>Analysis:</strong> this is the practical split:</p>
+<ul>
+<li><strong>SGX</strong> optimizes for smallest theoretical trust base</li>
+<li><strong>Nitro</strong> optimizes for a stronger balance of verifiability and deployability</li>
+</ul>
+<h3 id="18-3-The-most-useful-conclusion"><a href="#18-3-The-most-useful-conclusion" class="headerlink" title="18.3 The most useful conclusion"></a>18.3 The most useful conclusion</h3><p>The best answer is usually not “SGX is better” or “Nitro is better.”</p>
+<p>It is:</p>
+<ul>
+<li>choose <strong>SGX</strong> when a tiny, audited, high-value trusted core is worth the complexity</li>
+<li>choose <strong>Nitro</strong> when you want strong measured-image identity in a production-friendly isolated service model</li>
+</ul>
+<hr>
+<h2 id="19-Final-Takeaway"><a href="#19-Final-Takeaway" class="headerlink" title="19. Final Takeaway"></a>19. Final Takeaway</h2><p>The main fault line in the TEE landscape is not “which vendor says their security is stronger.”</p>
+<p>It is:</p>
+<ul>
+<li><strong>what is actually measured</strong></li>
+<li><strong>what the attestation can honestly prove</strong></li>
+<li><strong>what residual trust remains</strong></li>
+</ul>
+<p>That gives a much cleaner map of the current landscape:</p>
+<ul>
+<li><strong>SGX</strong>: verify a small enclave</li>
+<li><strong>Nitro Enclaves</strong>: verify a measured service image</li>
+<li><strong>TDX &#x2F; SEV-SNP &#x2F; CCA</strong>: protect a confidential guest from the host</li>
+<li><strong>NVIDIA CC</strong>: extend that trust boundary into the GPU</li>
+<li><strong>Keystone</strong>: keep the TEE stack open and customizable</li>
+<li><strong>dstack</strong>: add workload verification on top of a confidential VM</li>
+</ul>
+<p>If a document does not clearly distinguish those categories, it will almost always overstate what at least one of the TEEs is proving.</p>
+<hr>
+<h2 id="20-Original-Source-Index"><a href="#20-Original-Source-Index" class="headerlink" title="20. Original-Source Index"></a>20. Original-Source Index</h2><h3 id="20-1-Common-confidential-computing-background"><a href="#20-1-Common-confidential-computing-background" class="headerlink" title="20.1 Common confidential computing background"></a>20.1 Common confidential computing background</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://confidentialcomputing.io/wp-content/uploads/sites/10/2023/03/Common-Terminology-for-Confidential-Computing.pdf">CCC: Common Terminology for Confidential Computing</a></li>
+<li><a target="_blank" rel="noopener" href="https://confidentialcomputing.io/2023/04/06/why-is-attestation-required-for-confidential-computing/">CCC: Why is Attestation Required for Confidential Computing?</a></li>
+</ul>
+<h3 id="20-2-Intel-SGX"><a href="#20-2-Intel-SGX" class="headerlink" title="20.2 Intel SGX"></a>20.2 Intel SGX</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/articles/technical/introduction-to-intel-sgx-sealing.html">Intel SGX sealing</a></li>
+<li><a target="_blank" rel="noopener" href="https://download.01.org/intel-sgx/sgx-dcap/dcap-1.0.1/docs/Intel_SGX_DCAP_ECDSA_Orientation.pdf">Intel SGX DCAP ECDSA orientation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions-processors.html">Intel SGX processor support</a></li>
+</ul>
+<h3 id="20-3-AWS-Nitro-Enclaves"><a href="#20-3-AWS-Nitro-Enclaves" class="headerlink" title="20.3 AWS Nitro Enclaves"></a>20.3 AWS Nitro Enclaves</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html">What is Nitro Enclaves?</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/set-up-attestation.html">Nitro attestation</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html">Nitro root of trust verification</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/prescriptive-guidance/latest/privacy-reference-architecture/require-attestation-for-kms-key.html">KMS attestation policy example</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/enclaves/latest/user/kubernetes.html">Using Nitro Enclaves with Amazon EKS</a></li>
+<li><a target="_blank" rel="noopener" href="https://enclaver.io/">Enclaver</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.evervault.com/enclaves">Evervault Enclaves</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anjuna.io/partners/aws">Anjuna on AWS Nitro Enclaves</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.marlin.org/oyster/introduction-to-marlin/trusted-execution-environments">Marlin Oyster docs</a></li>
+</ul>
+<h3 id="20-4-Intel-TDX"><a href="#20-4-Intel-TDX" class="headerlink" title="20.4 Intel TDX"></a>20.4 Intel TDX</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html">Intel TDX overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.trustauthority.intel.com/main/articles/articles/ita/tee-tdx.html">Intel Trust Authority: TDX</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.trustauthority.intel.com/main/articles/articles/ita/concept-attestation-tokens.html">Intel Trust Authority: attestation claims</a></li>
+</ul>
+<h3 id="20-5-AMD-SEV-SNP"><a href="#20-5-AMD-SEV-SNP" class="headerlink" title="20.5 AMD SEV-SNP"></a>20.5 AMD SEV-SNP</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/en/products/processors/server/epyc/infinity-guard.html">AMD Infinity Guard</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/en/newsroom/press-releases/2023-8-30-amd-shares-the-technical-details-of-technology-pow.html">AMD press release on technical details and source publication</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/content/dam/amd/en/documents/epyc-technical-docs/specifications/56860.pdf">AMD SEV-SNP Firmware ABI</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amd.com/content/dam/amd/en/documents/epyc-technical-docs/specifications/58271.pdf">AMD SEV-TIO Firmware Interface specification</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.amd.com/api/khub/documents/oJly8EPzLO1Bt7ncrkCytw/content">AMD GHCB standard</a></li>
+</ul>
+<h3 id="20-6-Arm-CCA"><a href="#20-6-Arm-CCA" class="headerlink" title="20.6 Arm CCA"></a>20.6 Arm CCA</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/unlocking-the-power-of-data-with-arm-cca">Arm: Unlocking the power of data with Arm CCA</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/arm-and-confidential-computing">Arm: Arm and confidential computing</a></li>
+<li><a target="_blank" rel="noopener" href="https://rmm.docs.trustedfirmware.org/en/latest/readme.html">TF-RMM documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.trustedfirmware.org/docs/Attestation_and_Measured_Boot.pdf">TrustedFirmware attestation and measured boot</a></li>
+</ul>
+<h3 id="20-7-NVIDIA-Confidential-Computing"><a href="#20-7-NVIDIA-Confidential-Computing" class="headerlink" title="20.7 NVIDIA Confidential Computing"></a>20.7 NVIDIA Confidential Computing</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/confidential-computing-on-h100-gpus-for-secure-and-trustworthy-ai/">Confidential Computing on NVIDIA H100 GPUs</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/">NVIDIA Hopper architecture in depth</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/attestation/index.html">NVIDIA Attestation documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/attestation/overview-attestation-suite/latest/introduction.html">NVIDIA Attestation Suite</a></li>
+</ul>
+<h3 id="20-8-Keystone"><a href="#20-8-Keystone" class="headerlink" title="20.8 Keystone"></a>20.8 Keystone</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/keystone-enclave/keystone">Keystone GitHub</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.keystone-enclave.org/en/latest/Security-Monitor/">Keystone Security Monitor docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.keystone-enclave.org/en/latest/Getting-Started/How-Keystone-Works/RISC-V-Background.html">Keystone PMP &#x2F; RISC-V background docs</a></li>
+</ul>
+<h3 id="20-9-dstack-Phala"><a href="#20-9-dstack-Phala" class="headerlink" title="20.9 dstack &#x2F; Phala"></a>20.9 dstack &#x2F; Phala</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/attestation-fields">Attestation fields reference</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/verify-your-application">Verify your application</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/verify-the-platform">Verify the platform</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/phala-cloud/attestation/trust-center-verification">Trust Center verification</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.phala.com/images/audits/dstack-audit.pdf">dstack audit PDF</a></li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparing-Major-TEE-Solutions-What-Is-Measured-What-Is-Trusted-and-Where-Confidential-Computing-Actually-Stops"><span class="toc-number">1.</span> <span class="toc-text">Comparing Major TEE Solutions: What Is Measured, What Is Trusted, and Where Confidential Computing Actually Stops</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Scope-and-Method"><span class="toc-number">1.1.</span> <span class="toc-text">1. Scope and Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Executive-Summary"><span class="toc-number">1.2.</span> <span class="toc-text">2. Executive Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-The-Right-Comparison-Questions"><span class="toc-number">1.3.</span> <span class="toc-text">3. The Right Comparison Questions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Threat-model-actors"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 Threat model actors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Comparison-dimensions"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 Comparison dimensions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-One-under-discussed-constant"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 One under-discussed constant</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-The-Four-Families-That-Matter"><span class="toc-number">1.4.</span> <span class="toc-text">4. The Four Families That Matter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Application-measurement-TEEs"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 Application-measurement TEEs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-VM-Realm-confidentiality-TEEs"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 VM &#x2F; Realm confidentiality TEEs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Accelerator-TEEs"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 Accelerator TEEs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Platform-overlays-on-TEEs"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 Platform overlays on TEEs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Intel-SGX"><span class="toc-number">1.5.</span> <span class="toc-text">5. Intel SGX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Core-idea"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Native-measurement-and-attestation"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-What-SGX-proves-well"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 What SGX proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-What-SGX-does-not-solve-by-itself"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 What SGX does not solve by itself</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-Practical-strengths"><span class="toc-number">1.5.5.</span> <span class="toc-text">5.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-Practical-limits"><span class="toc-number">1.5.6.</span> <span class="toc-text">5.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-Best-fit"><span class="toc-number">1.5.7.</span> <span class="toc-text">5.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8-Primary-sources"><span class="toc-number">1.5.8.</span> <span class="toc-text">5.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-AWS-Nitro-Enclaves"><span class="toc-number">1.6.</span> <span class="toc-text">6. AWS Nitro Enclaves</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-Core-idea"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-Native-measurement-and-attestation"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-What-Nitro-proves-well"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 What Nitro proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-What-Nitro-does-not-solve-by-itself"><span class="toc-number">1.6.4.</span> <span class="toc-text">6.4 What Nitro does not solve by itself</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-Practical-strengths"><span class="toc-number">1.6.5.</span> <span class="toc-text">6.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-Practical-limits"><span class="toc-number">1.6.6.</span> <span class="toc-text">6.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-7-Best-fit"><span class="toc-number">1.6.7.</span> <span class="toc-text">6.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-8-Nitro-as-a-solution-landscape"><span class="toc-number">1.6.8.</span> <span class="toc-text">6.8 Nitro as a solution landscape</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-9-Primary-sources"><span class="toc-number">1.6.9.</span> <span class="toc-text">6.9 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Intel-TDX"><span class="toc-number">1.7.</span> <span class="toc-text">7. Intel TDX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-Core-idea"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-Native-measurement-and-attestation"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-What-TDX-proves-well"><span class="toc-number">1.7.3.</span> <span class="toc-text">7.3 What TDX proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-What-TDX-does-not-prove-by-default"><span class="toc-number">1.7.4.</span> <span class="toc-text">7.4 What TDX does not prove by default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-Practical-strengths"><span class="toc-number">1.7.5.</span> <span class="toc-text">7.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-Practical-limits"><span class="toc-number">1.7.6.</span> <span class="toc-text">7.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-Best-fit"><span class="toc-number">1.7.7.</span> <span class="toc-text">7.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-Primary-sources"><span class="toc-number">1.7.8.</span> <span class="toc-text">7.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-AMD-SEV-SNP"><span class="toc-number">1.8.</span> <span class="toc-text">8. AMD SEV-SNP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-Core-idea"><span class="toc-number">1.8.1.</span> <span class="toc-text">8.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-Key-architectural-mechanisms"><span class="toc-number">1.8.2.</span> <span class="toc-text">8.2 Key architectural mechanisms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-Native-measurement-and-attestation"><span class="toc-number">1.8.3.</span> <span class="toc-text">8.3 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-What-SEV-SNP-proves-well"><span class="toc-number">1.8.4.</span> <span class="toc-text">8.4 What SEV-SNP proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-What-SEV-SNP-does-not-prove-by-default"><span class="toc-number">1.8.5.</span> <span class="toc-text">8.5 What SEV-SNP does not prove by default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6-Practical-strengths"><span class="toc-number">1.8.6.</span> <span class="toc-text">8.6 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-Practical-limits"><span class="toc-number">1.8.7.</span> <span class="toc-text">8.7 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-Best-fit"><span class="toc-number">1.8.8.</span> <span class="toc-text">8.8 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-9-Primary-sources"><span class="toc-number">1.8.9.</span> <span class="toc-text">8.9 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Arm-Confidential-Compute-Architecture-CCA"><span class="toc-number">1.9.</span> <span class="toc-text">9. Arm Confidential Compute Architecture (CCA)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-Core-idea"><span class="toc-number">1.9.1.</span> <span class="toc-text">9.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-Core-architecture"><span class="toc-number">1.9.2.</span> <span class="toc-text">9.2 Core architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-Native-measurement-and-attestation"><span class="toc-number">1.9.3.</span> <span class="toc-text">9.3 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-What-CCA-proves-well"><span class="toc-number">1.9.4.</span> <span class="toc-text">9.4 What CCA proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-What-CCA-does-not-prove-by-default"><span class="toc-number">1.9.5.</span> <span class="toc-text">9.5 What CCA does not prove by default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-6-Practical-strengths"><span class="toc-number">1.9.6.</span> <span class="toc-text">9.6 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-7-Practical-limits"><span class="toc-number">1.9.7.</span> <span class="toc-text">9.7 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-8-Best-fit"><span class="toc-number">1.9.8.</span> <span class="toc-text">9.8 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-9-Primary-sources"><span class="toc-number">1.9.9.</span> <span class="toc-text">9.9 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-NVIDIA-Confidential-Computing"><span class="toc-number">1.10.</span> <span class="toc-text">10. NVIDIA Confidential Computing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-Core-idea"><span class="toc-number">1.10.1.</span> <span class="toc-text">10.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-Native-measurement-and-attestation"><span class="toc-number">1.10.2.</span> <span class="toc-text">10.2 Native measurement and attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-What-NVIDIA-CC-proves-well"><span class="toc-number">1.10.3.</span> <span class="toc-text">10.3 What NVIDIA CC proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-What-NVIDIA-CC-does-not-replace"><span class="toc-number">1.10.4.</span> <span class="toc-text">10.4 What NVIDIA CC does not replace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-Practical-strengths"><span class="toc-number">1.10.5.</span> <span class="toc-text">10.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-Practical-limits"><span class="toc-number">1.10.6.</span> <span class="toc-text">10.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-7-Best-fit"><span class="toc-number">1.10.7.</span> <span class="toc-text">10.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-8-Primary-sources"><span class="toc-number">1.10.8.</span> <span class="toc-text">10.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-RISC-V-Keystone"><span class="toc-number">1.11.</span> <span class="toc-text">11. RISC-V Keystone</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-Core-idea"><span class="toc-number">1.11.1.</span> <span class="toc-text">11.1 Core idea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-Core-architecture"><span class="toc-number">1.11.2.</span> <span class="toc-text">11.2 Core architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-What-Keystone-proves-well"><span class="toc-number">1.11.3.</span> <span class="toc-text">11.3 What Keystone proves well</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4-What-Keystone-does-not-optimize-for"><span class="toc-number">1.11.4.</span> <span class="toc-text">11.4 What Keystone does not optimize for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-Practical-strengths"><span class="toc-number">1.11.5.</span> <span class="toc-text">11.5 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-Practical-limits"><span class="toc-number">1.11.6.</span> <span class="toc-text">11.6 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-7-Best-fit"><span class="toc-number">1.11.7.</span> <span class="toc-text">11.7 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-8-Primary-sources"><span class="toc-number">1.11.8.</span> <span class="toc-text">11.8 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-dstack-on-Intel-TDX"><span class="toc-number">1.12.</span> <span class="toc-text">12. dstack on Intel TDX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-1-What-it-is"><span class="toc-number">1.12.1.</span> <span class="toc-text">12.1 What it is</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-What-it-adds"><span class="toc-number">1.12.2.</span> <span class="toc-text">12.2 What it adds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-The-key-measurement-nuance"><span class="toc-number">1.12.3.</span> <span class="toc-text">12.3 The key measurement nuance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-Practical-strengths"><span class="toc-number">1.12.4.</span> <span class="toc-text">12.4 Practical strengths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-Practical-limits"><span class="toc-number">1.12.5.</span> <span class="toc-text">12.5 Practical limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-6-Best-fit"><span class="toc-number">1.12.6.</span> <span class="toc-text">12.6 Best fit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-7-Primary-sources"><span class="toc-number">1.12.7.</span> <span class="toc-text">12.7 Primary sources</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-Attestation-Protocol-Patterns-and-Verification-Appendix"><span class="toc-number">1.13.</span> <span class="toc-text">13. Attestation Protocol Patterns and Verification Appendix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1-Intel-SGX-DCAP"><span class="toc-number">1.13.1.</span> <span class="toc-text">13.1 Intel SGX DCAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-2-AWS-Nitro-attestation"><span class="toc-number">1.13.2.</span> <span class="toc-text">13.2 AWS Nitro attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-3-Intel-TDX-quote"><span class="toc-number">1.13.3.</span> <span class="toc-text">13.3 Intel TDX quote</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-AMD-SEV-SNP-report"><span class="toc-number">1.13.4.</span> <span class="toc-text">13.4 AMD SEV-SNP report</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-Arm-CCA-Realm-attestation"><span class="toc-number">1.13.5.</span> <span class="toc-text">13.5 Arm CCA Realm attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-6-NVIDIA-attestation"><span class="toc-number">1.13.6.</span> <span class="toc-text">13.6 NVIDIA attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-7-dstack-style-composed-attestation"><span class="toc-number">1.13.7.</span> <span class="toc-text">13.7 dstack-style composed attestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-8-Verification-takeaway"><span class="toc-number">1.13.8.</span> <span class="toc-text">13.8 Verification takeaway</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-Measurement-Depth-The-Difference-That-Changes-Everything"><span class="toc-number">1.14.</span> <span class="toc-text">14. Measurement Depth: The Difference That Changes Everything</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-Comparison-Matrix"><span class="toc-number">1.15.</span> <span class="toc-text">15. Comparison Matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-Three-Claims-That-Are-Often-Confused"><span class="toc-number">1.16.</span> <span class="toc-text">16. Three Claims That Are Often Confused</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#16-1-%E2%80%9CThe-host-cannot-read-my-VM%E2%80%9D"><span class="toc-number">1.16.1.</span> <span class="toc-text">16.1 “The host cannot read my VM”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-2-%E2%80%9CI-can-verify-the-code-or-image-I-intended-to-trust%E2%80%9D"><span class="toc-number">1.16.2.</span> <span class="toc-text">16.2 “I can verify the code or image I intended to trust”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-3-%E2%80%9CMy-AI-workload-is-protected-end-to-end%E2%80%9D"><span class="toc-number">1.16.3.</span> <span class="toc-text">16.3 “My AI workload is protected end to end”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-Selection-Guidance-by-Use-Case"><span class="toc-number">1.17.</span> <span class="toc-text">17. Selection Guidance by Use Case</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#17-1-Small-auditable-trusted-core"><span class="toc-number">1.17.1.</span> <span class="toc-text">17.1 Small, auditable trusted core</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-2-AWS-native-secure-service-boundary"><span class="toc-number">1.17.2.</span> <span class="toc-text">17.2 AWS-native secure service boundary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-3-Large-lift-and-shift-confidential-workloads"><span class="toc-number">1.17.3.</span> <span class="toc-text">17.3 Large lift-and-shift confidential workloads</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-4-Arm-first-confidential-compute-roadmap"><span class="toc-number">1.17.4.</span> <span class="toc-text">17.4 Arm-first confidential compute roadmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-5-GPU-resident-confidential-AI"><span class="toc-number">1.17.5.</span> <span class="toc-text">17.5 GPU-resident confidential AI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-6-Open-and-customizable-TEE-research"><span class="toc-number">1.17.6.</span> <span class="toc-text">17.6 Open and customizable TEE research</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-7-TDX-plus-stronger-user-visible-workload-verification"><span class="toc-number">1.17.7.</span> <span class="toc-text">17.7 TDX plus stronger user-visible workload verification</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-SGX-vs-Nitro-Enclaves-Which-One-Is-%E2%80%9CStronger%E2%80%9D"><span class="toc-number">1.18.</span> <span class="toc-text">18. SGX vs Nitro Enclaves: Which One Is “Stronger”?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#18-1-Why-SGX-can-be-stronger-in-theory"><span class="toc-number">1.18.1.</span> <span class="toc-text">18.1 Why SGX can be stronger in theory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-2-Why-Nitro-can-be-stronger-in-practice-for-many-teams"><span class="toc-number">1.18.2.</span> <span class="toc-text">18.2 Why Nitro can be stronger in practice for many teams</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-3-The-most-useful-conclusion"><span class="toc-number">1.18.3.</span> <span class="toc-text">18.3 The most useful conclusion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-Final-Takeaway"><span class="toc-number">1.19.</span> <span class="toc-text">19. Final Takeaway</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-Original-Source-Index"><span class="toc-number">1.20.</span> <span class="toc-text">20. Original-Source Index</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#20-1-Common-confidential-computing-background"><span class="toc-number">1.20.1.</span> <span class="toc-text">20.1 Common confidential computing background</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-2-Intel-SGX"><span class="toc-number">1.20.2.</span> <span class="toc-text">20.2 Intel SGX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-3-AWS-Nitro-Enclaves"><span class="toc-number">1.20.3.</span> <span class="toc-text">20.3 AWS Nitro Enclaves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-4-Intel-TDX"><span class="toc-number">1.20.4.</span> <span class="toc-text">20.4 Intel TDX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-5-AMD-SEV-SNP"><span class="toc-number">1.20.5.</span> <span class="toc-text">20.5 AMD SEV-SNP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-6-Arm-CCA"><span class="toc-number">1.20.6.</span> <span class="toc-text">20.6 Arm CCA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-7-NVIDIA-Confidential-Computing"><span class="toc-number">1.20.7.</span> <span class="toc-text">20.7 NVIDIA Confidential Computing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-8-Keystone"><span class="toc-number">1.20.8.</span> <span class="toc-text">20.8 Keystone</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-9-dstack-Phala"><span class="toc-number">1.20.9.</span> <span class="toc-text">20.9 dstack &#x2F; Phala</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&text=comparing major tee solutions"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&is_video=false&description=comparing major tee solutions"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=comparing major tee solutions&body=Check out this article: https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&title=comparing major tee solutions"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&name=comparing major tee solutions&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/01/comparing-major-tee-solutions/&t=comparing major tee solutions"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
