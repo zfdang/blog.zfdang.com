@@ -276,33 +276,67 @@ So the next architectural question is usually:
 
 > Which layer of the Nitro problem do we want to own ourselves, and which layer do we want abstracted?
 
-Examples of distinct Nitro operating models include the following, as of **March 27, 2026**:
+If someone is actually choosing a Nitro path, the main public options worth comparing one by one are the following, as of **March 27, 2026**:
 
-| Nitro stack type | Representative examples | What it adds above raw Nitro | Best fit |
-| --- | --- | --- | --- |
-| Raw AWS-native path | AWS Nitro Enclaves itself | Cleanest trust boundary, maximum control | Teams willing to own enclave packaging, networking, and operations |
-| Open-source toolkit | Enclaver | Build / run abstraction, networking helpers, attestation tooling | Teams that want help with Nitro mechanics without giving up control |
-| Managed developer platform | Evervault Enclaves | Docker-centric deployment, managed ingress / egress, SDK-driven attestation UX | Teams optimizing for developer velocity |
-| Enterprise runtime / platform | Anjuna on Nitro | Higher-level runtime, EKS integration, secrets / policy helpers | Larger enterprises migrating or operating broader workloads |
-| Networked public-verifiability path | Marlin Oyster | A public / decentralized enclave deployment model rather than only a local runtime | Web3 or public-verifiability use cases |
-| Kubernetes substrate | AWS EKS + Nitro Enclaves device plugin | Better orchestration and scheduling of enclaves in clusters | Teams already standardized on Kubernetes |
+| Option | Link | What it is | Strengths | Weaknesses / tradeoffs | Best fit |
+| --- | --- | --- | --- | --- | --- |
+| AWS Nitro Enclaves | [AWS docs](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html) | The base Nitro primitive itself | Cleanest trust boundary, direct AWS integration, maximum control | You own packaging, networking, attestation flow, and most operational complexity | Teams that want the most direct and least abstracted Nitro model |
+| Nova Enclave Capsule | [GitHub](https://github.com/sparsity-xyz/nova-enclave-capsule) | A full open-source toolkit / framework for building and running Nitro apps | Strong attestation support, richer runtime model, enclave networking, KMS integration, mounts, lifecycle tooling | More opinionated than thinner wrappers; still requires adopting its framework model | Teams that want the strongest open-source Nitro toolkit without jumping all the way to a managed platform |
+| Enclaver | [Official site](https://enclaver.io/) | A thinner open-source Nitro toolkit | Simpler abstraction over Nitro packaging and deployment, lighter-weight than bigger frameworks | Narrower scope and less complete runtime story than Capsule | Teams that want Nitro helpers but still want to own most of the architecture |
+| Evervault Enclaves | [Docs](https://docs.evervault.com/enclaves) | A managed Nitro-based developer platform | Strong developer experience, managed ingress / egress, less operational burden | More platform dependency and less low-level control | Product teams optimizing for speed and convenience |
+| Anjuna on AWS Nitro Enclaves | [Official page](https://www.anjuna.io/partners/aws) | An enterprise-oriented Nitro runtime / platform | Enterprise integrations, higher-level runtime conveniences, migration support | Heavier and more commercial than open-source toolkit routes | Enterprises moving larger existing workloads into Nitro |
+| Marlin Oyster | [Docs](https://docs.marlin.org/oyster/introduction-to-marlin/trusted-execution-environments) | A Nitro-based public / decentralized deployment path | Public verifiability and decentralized-compute orientation | Different product shape from a normal private Nitro service stack | Web3 and public-verifiability use cases |
+| AWS EKS + Nitro Enclaves device plugin | [AWS docs](https://docs.aws.amazon.com/enclaves/latest/user/kubernetes.html) | Kubernetes orchestration support for Nitro enclaves | Better cluster scheduling and integration for Kubernetes teams | Not a full application framework or managed runtime by itself | Teams already organized around Kubernetes |
 
-These are not one-for-one substitutes.
+One practical point matters here:
 
-They solve different jobs:
+- **AWS Nitro Enclaves** is the base primitive
+- the other rows are different ways to build, operate, or productize on top of that primitive
 
-- low-level control
-- toolkit convenience
-- managed platform ergonomics
-- enterprise operating model
-- decentralized verifiable deployment
-- cluster orchestration
+### 6.9 Nova Platform on top of Capsule
 
-That distinction is useful because it prevents a common category error:
+Nova needs one important distinction that is easy to blur if everything is discussed under one name:
 
-> Nitro Enclaves is the TEE primitive. Many “Nitro solutions” are really platform choices above that primitive.
+- **`nova-enclave-capsule`** is the lower-level packaging / runtime framework
+- **Nova Stack / Nova Platform** is the broader ecosystem that uses Capsule as one of its core building blocks
 
-### 6.9 Primary sources
+The official Sparsity site frames **Nova Platform** as a path from:
+
+> source code -> public build -> Nitro deployment -> on-chain verification
+
+At the same time, the GitHub organization exposes a set of repos that make it clear the public Nova footprint is not just Capsule.
+
+That gives a cleaner two-layer picture:
+
+| Nova layer | What it is | Representative public artifact |
+| --- | --- | --- |
+| **Capsule layer** | Tooling / framework for packaging and running applications inside AWS Nitro Enclaves | `nova-enclave-capsule` |
+| **Platform / ecosystem layer** | Higher-level Nova developer and deployment ecosystem built on top of Capsule capabilities | `nova-stack`, `nova-app-template`, `sparsity-nova-app-hub`, `sparsity-nova-examples`, `nova-kms` |
+
+The public components currently visible in the official Nova / Sparsity footprint include:
+
+| Nova component | Role in the ecosystem |
+| --- | --- |
+| `nova-enclave-capsule` | Core framework / toolkit for packaging and running applications inside AWS Nitro Enclaves; handles enclave networking, attestation, KMS integration, mounts, and lifecycle management |
+| `nova-stack` | Open-source Nitro tech stack that sits at the broader application-platform layer |
+| `nova-app-template` | Developer starting point for building Nova apps within the larger Nova workflow |
+| `sparsity-nova-app-hub` | Build hub / distribution layer for Nova apps |
+| `sparsity-nova-examples` | Reference applications for building verifiable Nitro apps on Nova |
+| `nova-kms` | Key management service component for the Nova platform |
+
+**Analysis:** this distinction matters because otherwise Nova gets compared unfairly in two opposite ways:
+
+- if you compare **Capsule** to **Nova Platform**, you collapse tool and ecosystem into one bucket
+- if you compare **Capsule** only to `nitro-cli`, you miss the larger Nova developer and verification workflow that sits above it
+
+The more accurate framing is:
+
+- **Nova Enclave Capsule** is comparable to a Nitro-oriented toolkit / framework layer
+- **Nova Stack / Nova Platform** is a higher-level Nitro-native ecosystem that builds on Capsule
+
+**Analysis:** in the Nitro landscape, `nova-enclave-capsule` should be treated as a very strong open-source Nitro toolkit. It is a more complete and more opinionated toolkit layer than thinner alternatives such as Enclaver, while offerings like Anjuna and Marlin are better understood as different higher-level product categories rather than direct toolkit peers.
+
+### 6.10 Primary sources
 
 - [What is Nitro Enclaves?](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html)
 - [Nitro Enclaves concepts](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html)
@@ -310,6 +344,14 @@ That distinction is useful because it prevents a common category error:
 - [Verifying the Nitro root of trust](https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html)
 - [Require attestation to use an AWS KMS key](https://docs.aws.amazon.com/prescriptive-guidance/latest/privacy-reference-architecture/require-attestation-for-kms-key.html)
 - [Using Nitro Enclaves with Amazon EKS](https://docs.aws.amazon.com/enclaves/latest/user/kubernetes.html)
+- [Sparsity Nova homepage](https://www.sparsity.xyz/)
+- [Sparsity GitHub organization](https://github.com/sparsity-xyz)
+- [Nova Enclave Capsule](https://github.com/sparsity-xyz/nova-enclave-capsule)
+- [Nova Stack](https://github.com/sparsity-xyz/nova-stack)
+- [Sparsity Nova App Template](https://github.com/sparsity-xyz/nova-app-template)
+- [Sparsity Nova App Hub](https://github.com/sparsity-xyz/sparsity-nova-app-hub)
+- [Sparsity Nova Examples](https://github.com/sparsity-xyz/sparsity-nova-examples)
+- [Nova KMS](https://github.com/sparsity-xyz/nova-kms)
 - [Enclaver](https://enclaver.io/)
 - [Evervault Enclaves](https://docs.evervault.com/enclaves)
 - [Anjuna on AWS Nitro Enclaves](https://www.anjuna.io/partners/aws)
@@ -998,6 +1040,14 @@ If a document does not clearly distinguish those categories, it will almost alwa
 - [Nitro root of trust verification](https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html)
 - [KMS attestation policy example](https://docs.aws.amazon.com/prescriptive-guidance/latest/privacy-reference-architecture/require-attestation-for-kms-key.html)
 - [Using Nitro Enclaves with Amazon EKS](https://docs.aws.amazon.com/enclaves/latest/user/kubernetes.html)
+- [Sparsity Nova homepage](https://www.sparsity.xyz/)
+- [Sparsity GitHub organization](https://github.com/sparsity-xyz)
+- [Nova Enclave Capsule](https://github.com/sparsity-xyz/nova-enclave-capsule)
+- [Nova Stack](https://github.com/sparsity-xyz/nova-stack)
+- [Sparsity Nova App Template](https://github.com/sparsity-xyz/nova-app-template)
+- [Sparsity Nova App Hub](https://github.com/sparsity-xyz/sparsity-nova-app-hub)
+- [Sparsity Nova Examples](https://github.com/sparsity-xyz/sparsity-nova-examples)
+- [Nova KMS](https://github.com/sparsity-xyz/nova-kms)
 - [Enclaver](https://enclaver.io/)
 - [Evervault Enclaves](https://docs.evervault.com/enclaves)
 - [Anjuna on AWS Nitro Enclaves](https://www.anjuna.io/partners/aws)
