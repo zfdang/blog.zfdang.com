@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776302678569,
+  "projectRoot": "/Users/zfdang/workspaces/blog.zfdang.com",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {
+      "build": "hexo generate",
+      "clean": "hexo clean",
+      "deploy": "hexo deploy",
+      "server": "hexo server"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 6,
+      "lastAccessed": 1776302678560,
+      "keyFiles": [
+        "CNAME",
+        "Discuz_X3.4_SC_UTF8_20220131.zip",
+        "content.json",
+        "favicon.ico",
+        "index.html"
+      ]
+    },
+    "scaffolds": {
+      "path": "scaffolds",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776302678560,
+      "keyFiles": [
+        "draft.md",
+        "page.md",
+        "post.md"
+      ]
+    },
+    "source": {
+      "path": "source",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776302678564,
+      "keyFiles": []
+    },
+    "temp": {
+      "path": "temp",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1776302678564,
+      "keyFiles": [
+        "the-fallen-fw-series-part-1-shameless-lawsuits.md",
+        "the-fallen-fw-series-part-2-tampered-translations.md",
+        "the-fallen-fw-series-part-3-fabricated-edits.md",
+        "the-fallen-fw-series-part-4-suspiciously-prescient-contracts.md",
+        "the-fallen-fw-series-part-5-servile-and-superiors-of-c.md"
+      ]
+    },
+    "themes": {
+      "path": "themes",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776302678565,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "source/_posts/From-Component-Ownership-to-Feature-Ownership-in-the-Age-of-AI-Coding.md",
+      "accessCount": 6,
+      "lastAccessed": 1776302788458,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
