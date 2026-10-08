@@ -1,5 +1,5 @@
 ---
-title: SECRETARY RUBIO: In Defense of Western Civilization 
+title: SECRETARY RUBIO In Defense of Western Civilization 
 date: 2026-10-08 17:10:10
 tags:
 
