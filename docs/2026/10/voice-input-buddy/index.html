@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="在日常文字输入、写文章、回邮件或者记录灵感时，语音输入的高效往往是键盘无法比拟的。 如今像微信输入法、豆包输入法以及 Typeless 这类现代化 AI 语音工具，语音识别的准确率和智能润色效果已经极其惊艳。但在 Mac 上使用语音输入，往往会遇到一个尴尬的操作体验问题：  姿态受限：手必须一直悬在键盘上按住快捷键（比如连按两次 Fn 或长按 Option）； 拾音距离尴尬：想要靠在椅背上放松思考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器">
+<meta property="og:url" content="https://blog.zfdang.com/2026/10/voice-input-buddy/index.html">
+<meta property="og:site_name" content="Zhengfa&#39;s Blog">
+<meta property="og:description" content="在日常文字输入、写文章、回邮件或者记录灵感时，语音输入的高效往往是键盘无法比拟的。 如今像微信输入法、豆包输入法以及 Typeless 这类现代化 AI 语音工具，语音识别的准确率和智能润色效果已经极其惊艳。但在 Mac 上使用语音输入，往往会遇到一个尴尬的操作体验问题：  姿态受限：手必须一直悬在键盘上按住快捷键（比如连按两次 Fn 或长按 Option）； 拾音距离尴尬：想要靠在椅背上放松思考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zfdang.com/img/voice-input-buddy/connection.png">
+<meta property="og:image" content="https://blog.zfdang.com/img/voice-input-buddy/wizard-remote.png">
+<meta property="og:image" content="https://blog.zfdang.com/img/voice-input-buddy/wizard-test.png">
+<meta property="og:image" content="https://blog.zfdang.com/img/voice-input-buddy/mapping.png">
+<meta property="og:image" content="https://blog.zfdang.com/img/voice-input-buddy/phrases.png">
+<meta property="og:image" content="https://blog.zfdang.com/img/voice-input-buddy/integration.png">
+<meta property="article:published_time" content="2026-10-16T05:30:35.000Z">
+<meta property="article:modified_time" content="2026-10-16T05:36:00.178Z">
+<meta property="article:author" content="Zhengfa Dang">
+<meta property="article:tag" content="MacOS">
+<meta property="article:tag" content="效率工具">
+<meta property="article:tag" content="语音输入">
+<meta property="article:tag" content="开源软件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.zfdang.com/img/voice-input-buddy/connection.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/favicon.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+        
+      
+    
+    <!-- title -->
+    <title>语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇 " href="/2026/10/rubio_in_defense_of_western_civilization_analysis/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部 " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章 " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/10/voice-input-buddy/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&text=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&is_video=false&description=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器&body=Check out this article: https://blog.zfdang.com/2026/10/voice-input-buddy/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&name=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/10/voice-input-buddy/&t=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%EF%BC%9A%E4%B8%8D%E9%80%A0%E9%87%8D%E5%A4%8D%E7%9A%84%E8%BD%AE%E5%AD%90%EF%BC%8C%E5%8F%AA%E5%81%9A%E6%9C%80%E7%BA%AF%E7%B2%B9%E7%9A%84%E6%A1%A5%E6%A2%81"><span class="toc-number">1.</span> <span class="toc-text">核心原理：不造重复的轮子，只做最纯粹的桥梁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">支持的硬件设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">核心功能与使用体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E6%AD%A5%E6%96%B0%E6%89%8B%E5%BC%95%E5%AF%BC%E5%90%91%E5%AF%BC%EF%BC%8C%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">1. 7 步新手引导向导，开箱即用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%A8%E6%8C%89%E9%94%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%98%A0%E5%B0%84"><span class="toc-number">3.2.</span> <span class="toc-text">2. 全按键可视化映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BA%94%E5%90%91%E9%94%AE%E2%80%9C%E5%B8%B8%E7%94%A8%E8%AF%AD%E9%9D%A2%E6%9D%BF%E2%80%9D%EF%BC%9A%E9%AB%98%E9%A2%91%E5%9B%9E%E5%A4%8D%E4%B8%80%E9%94%AE%E5%8D%B3%E5%8F%91"><span class="toc-number">3.3.</span> <span class="toc-text">3. 五向键“常用语面板”：高频回复一键即发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B7%B1%E5%BA%A6%E9%80%82%E9%85%8D%E4%B8%BB%E6%B5%81%E8%BE%93%E5%85%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">3.4.</span> <span class="toc-text">4. 深度适配主流输入工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">下载与安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">5.</span> <span class="toc-text">结语</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zhengfa Dang</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-10-16T05:30:35.000Z" itemprop="datePublished">2026-10-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/MacOS/" rel="tag">MacOS</a>, <a class="tag-link-link" href="/tags/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6/" rel="tag">开源软件</a>, <a class="tag-link-link" href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" rel="tag">效率工具</a>, <a class="tag-link-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BE%93%E5%85%A5/" rel="tag">语音输入</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>在日常文字输入、写文章、回邮件或者记录灵感时，语音输入的高效往往是键盘无法比拟的。</p>
+<p>如今像<strong>微信输入法</strong>、<strong>豆包输入法</strong>以及 <strong>Typeless</strong> 这类现代化 AI 语音工具，语音识别的准确率和智能润色效果已经极其惊艳。但在 Mac 上使用语音输入，往往会遇到一个尴尬的操作体验问题：</p>
+<ul>
+<li><strong>姿态受限</strong>：手必须一直悬在键盘上按住快捷键（比如连按两次 Fn 或长按 Option）；</li>
+<li><strong>拾音距离尴尬</strong>：想要靠在椅背上放松思考，Mac 自带的麦克风距离太远，环境稍有噪音识别率就大打折扣；</li>
+<li><strong>不够自然随手</strong>：缺乏那种“拿起就说、说完就走”的轻快感。</li>
+</ul>
+<p>其实很多人家里都有闲置吃灰的电视盒子遥控器（例如<strong>小米蓝牙语音遥控器</strong>、<strong>Google Chromecast G9N9N 遥控器</strong>等）。这些遥控器做工精巧、握持手感舒适，自带高品质近场降噪麦克风，还有手感极好的实体物理按键。</p>
+<p>能不能把这只遥控器连到 Mac 上，让它变成一只专属的<strong>无线语音输入手柄</strong>？</p>
+<p>这就是开源项目 <strong><a target="_blank" rel="noopener" href="https://voice.zfdang.com/">Voice Input Buddy（语音搭子）</a></strong> 诞生的原因。</p>
+<hr>
+<h2 id="核心原理：不造重复的轮子，只做最纯粹的桥梁"><a href="#核心原理：不造重复的轮子，只做最纯粹的桥梁" class="headerlink" title="核心原理：不造重复的轮子，只做最纯粹的桥梁"></a>核心原理：不造重复的轮子，只做最纯粹的桥梁</h2><p>市面上有一些语音输入软件喜欢内嵌体积巨大的离线语音模型，结果不仅 App 体积动辄几个 G，Mac 风扇呼呼转，识别速度和准确度还远比不上大家平时习惯用的输入法。</p>
+<p><strong>Voice Input Buddy</strong> 选择了极其克制与优雅的设计思路：<strong>专注于硬件与输入工具之间的系统级桥梁</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[蓝牙遥控器 (按键 + 音频)]</span><br><span class="line">        │ (Bluetooth)</span><br><span class="line">        ▼</span><br><span class="line">[Voice Input Buddy (App + 虚拟声卡驱动)]</span><br><span class="line">   ├── 音频实时解码 ──► Voice Input Buddy Mic (专用虚拟麦克风)</span><br><span class="line">   └── 按键事件映射 ──► 自动触发语音快捷键 (如长按 Fn / Option)</span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line">[输入法 / 语音工具 (微信输入法 / 豆包 / Typeless / Vokie 等)]</span><br><span class="line">        │ (识别转换)</span><br><span class="line">        ▼</span><br><span class="line">[任意活动输入框：文字秒速上屏]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>音频直通</strong>：遥控器通过蓝牙发送私有音频流，语音搭子将其实时解码并输入到内置的 <strong>Voice Input Buddy Mic</strong> 虚拟麦克风驱动中；</li>
+<li><strong>快捷键联动</strong>：按下遥控器语音键时，语音搭子同时向系统发送输入法的唤醒按键；</li>
+<li><strong>输入法识别</strong>：你常用的输入法（或听写工具）从该虚拟麦克风拾取高保真声音，完成高精度文字识别并上屏；</li>
+<li><strong>隐私零顾虑</strong>：纯本地管道桥接，不保存任何录音，不上传任何文字历史或使用统计，零远程网络请求。</li>
+</ol>
+<hr>
+<h2 id="支持的硬件设备"><a href="#支持的硬件设备" class="headerlink" title="支持的硬件设备"></a>支持的硬件设备</h2><p>语音搭子目前重点适配了多款主流常见的蓝牙遥控器：</p>
+<ul>
+<li><strong>小米蓝牙语音遥控器</strong>：如常见的小米电视遥控器 2 代 &#x2F; 2 Pro（RC001 &#x2F; RC003 等）；</li>
+<li>**Google Chromecast Voice Remote (G9N9N)**；</li>
+<li>**Google TV Streamer Voice Remote (GY3LE)**；</li>
+<li><strong>Apple Siri Remote</strong>；</li>
+<li><strong>手机伴侣模式</strong>：如果你身边暂时没有实体遥控器，还可以使用手机扫码，把手机浏览器直接变成语音输入遥控手柄。</li>
+</ul>
+<p>在主界面的“设备连接”面板中，可以同时管理多台已配对的遥控器，实时查看蓝牙连接状态、剩余电量与充电状态，甚至可以为每只遥控器单独微调麦克风输入增益（0 dB 至 20 dB）：</p>
+<p><img src="/img/voice-input-buddy/connection.png" alt="设备连接界面"></p>
+<hr>
+<h2 id="核心功能与使用体验"><a href="#核心功能与使用体验" class="headerlink" title="核心功能与使用体验"></a>核心功能与使用体验</h2><h3 id="1-7-步新手引导向导，开箱即用"><a href="#1-7-步新手引导向导，开箱即用" class="headerlink" title="1. 7 步新手引导向导，开箱即用"></a>1. 7 步新手引导向导，开箱即用</h3><p>为了让初次配置毫无门槛，App 内置了清晰的交互式新手向导，一步一步带领你完成初始化：</p>
+<ol>
+<li><strong>系统权限检查</strong>：一键授权蓝牙、输入监控和辅助功能；</li>
+<li><strong>控制设备类型</strong>：选择实体遥控器或手机伴侣；</li>
+<li><strong>蓝牙连接遥控器</strong>：图文图解按键配对组合（如长按主页+菜单键）；</li>
+<li><strong>实体按键测试</strong>：按下遥控器任意按键，屏幕即时亮起反馈；</li>
+<li><strong>声卡驱动检查</strong>：确认虚拟麦克风驱动状态完好；</li>
+<li><strong>输入工具配置</strong>：针对微信输入法、豆包等提供截屏式的快捷键指引；</li>
+<li><strong>试说录音与微调</strong>：按住语音键说出第一句话，实时核对上屏效果与音量。</li>
+</ol>
+<p><img src="/img/voice-input-buddy/wizard-remote.png" alt="遥控器蓝牙配对指引"></p>
+<p><img src="/img/voice-input-buddy/wizard-test.png" alt="试说与录音增益微调"></p>
+<h3 id="2-全按键可视化映射"><a href="#2-全按键可视化映射" class="headerlink" title="2. 全按键可视化映射"></a>2. 全按键可视化映射</h3><p>除了中央核心的麦克风语音键之外，遥控器上的其他物理按键也都物尽其用：</p>
+<ul>
+<li>支持为<strong>电源键、确定键、五向导航键、返回键、主页键、菜单键与 TV 键</strong>独立分配动作；</li>
+<li>每颗按键均支持<strong>单击、双击、长按</strong>三种独立触发模式；</li>
+<li>不仅可以绑定常规快捷键（如 Spotlight 搜索、复制粘贴、截图），还可以绑定应用切换、系统多媒体控制等。</li>
+</ul>
+<p><img src="/img/voice-input-buddy/mapping.png" alt="按键映射界面"></p>
+<h3 id="3-五向键“常用语面板”：高频回复一键即发"><a href="#3-五向键“常用语面板”：高频回复一键即发" class="headerlink" title="3. 五向键“常用语面板”：高频回复一键即发"></a>3. 五向键“常用语面板”：高频回复一键即发</h3><p>在按键映射中，还内置了一个非常实用的“常用语”功能：</p>
+<p>你可以把遥控器的圆盘方向键（上、下、左、右）和 OK 键分别绑定常用的短语、邮箱地址、客服常用回复或终端命令。在任何输入框中按下对应按键，文字即可瞬间上屏，无需反复打字或剪贴板查找。</p>
+<p><img src="/img/voice-input-buddy/phrases.png" alt="常用语编辑界面"></p>
+<h3 id="4-深度适配主流输入工具"><a href="#4-深度适配主流输入工具" class="headerlink" title="4. 深度适配主流输入工具"></a>4. 深度适配主流输入工具</h3><p>无论你习惯用哪款输入法，语音搭子都提供了顺手的集成入口：</p>
+<ul>
+<li><strong>微信输入法</strong>：支持长按空格&#x2F;语音键模式，识别速度极快，标点符号智能推断；</li>
+<li><strong>豆包输入法</strong>：深度集成字节豆包大模型，语境理解与中英混说极佳；</li>
+<li><strong>Typeless</strong>：新一代 AI 语音听写神器，支持语气词过滤与文本智能润色；</li>
+<li><strong>Vokie &#x2F; VoiceCursor</strong> 等现代语音辅助工具。</li>
+</ul>
+<p><img src="/img/voice-input-buddy/integration.png" alt="输入法与语音工具集成"></p>
+<hr>
+<h2 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h2><ul>
+<li><strong>项目官网</strong>：<a target="_blank" rel="noopener" href="https://voice.zfdang.com/">https://voice.zfdang.com/</a></li>
+<li><strong>GitHub 仓库</strong>：<a target="_blank" rel="noopener" href="https://github.com/zfdang/voice-input-buddy">https://github.com/zfdang/voice-input-buddy</a></li>
+<li><strong>下载最新安装包</strong>：在 GitHub Releases 中下载对应架构的 <code>.pkg</code> 安装包即可。</li>
+</ul>
+<blockquote>
+<p><strong>系统要求</strong>：macOS 14.0 (Sonoma) 及以上版本，原生支持 Apple Silicon (M 系列芯片) 与 Intel 架构。</p>
+<p>安装包内已包含 App 本身以及配套的低延迟虚拟麦克风驱动，安装过程无需单独折腾额外的音频虚拟跳线软件（如 BlackHole 等）。</p>
+</blockquote>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>硬件复用不仅环保，而且电视遥控器那种符合人体工学的握持感和按压反馈，是用键盘快捷键输入完全无法比拟的。</p>
+<p>平时写东西或者看文献时，背靠椅子，单手握着遥控器，按住说话、松开上屏，整个打字与记录灵感的过程变得轻松又自然。如果你家里也有闲置的蓝牙电视遥控器，强烈推荐找出来试试看！</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%EF%BC%9A%E4%B8%8D%E9%80%A0%E9%87%8D%E5%A4%8D%E7%9A%84%E8%BD%AE%E5%AD%90%EF%BC%8C%E5%8F%AA%E5%81%9A%E6%9C%80%E7%BA%AF%E7%B2%B9%E7%9A%84%E6%A1%A5%E6%A2%81"><span class="toc-number">1.</span> <span class="toc-text">核心原理：不造重复的轮子，只做最纯粹的桥梁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">支持的硬件设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">核心功能与使用体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E6%AD%A5%E6%96%B0%E6%89%8B%E5%BC%95%E5%AF%BC%E5%90%91%E5%AF%BC%EF%BC%8C%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">1. 7 步新手引导向导，开箱即用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%A8%E6%8C%89%E9%94%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%98%A0%E5%B0%84"><span class="toc-number">3.2.</span> <span class="toc-text">2. 全按键可视化映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BA%94%E5%90%91%E9%94%AE%E2%80%9C%E5%B8%B8%E7%94%A8%E8%AF%AD%E9%9D%A2%E6%9D%BF%E2%80%9D%EF%BC%9A%E9%AB%98%E9%A2%91%E5%9B%9E%E5%A4%8D%E4%B8%80%E9%94%AE%E5%8D%B3%E5%8F%91"><span class="toc-number">3.3.</span> <span class="toc-text">3. 五向键“常用语面板”：高频回复一键即发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B7%B1%E5%BA%A6%E9%80%82%E9%85%8D%E4%B8%BB%E6%B5%81%E8%BE%93%E5%85%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">3.4.</span> <span class="toc-text">4. 深度适配主流输入工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">下载与安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">5.</span> <span class="toc-text">结语</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.zfdang.com/2026/10/voice-input-buddy/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&text=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&is_video=false&description=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器&body=Check out this article: https://blog.zfdang.com/2026/10/voice-input-buddy/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&title=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.zfdang.com/2026/10/voice-input-buddy/&name=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.zfdang.com/2026/10/voice-input-buddy/&t=语音搭子 (Voice Input Buddy)：让吃灰的蓝牙遥控器成为 Mac 语音输入神器"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    Zhengfa Dang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/zfdang/">项目</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://zfdang.com">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6920954-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-6920954-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'zhengfas-blog';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
